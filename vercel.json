@@ -3,5 +3,5 @@
   "installCommand": "pnpm install",
   "buildCommand": "pnpm turbo run build --filter=@bigcommerce/catalyst-makeswift",
   "outputDirectory": "core/.next",
-  "framework": null
+  "framework": "nextjs"
 }
