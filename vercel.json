@@ -1,7 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo run build --filter=@bigcommerce/catalyst-makeswift",
-  "outputDirectory": "core/.next",
+  "installCommand": "cd .. && pnpm install",
+  "buildCommand": "cd .. && pnpm turbo run build --filter=@bigcommerce/catalyst-makeswift",
   "framework": "nextjs"
 }
