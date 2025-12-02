@@ -14,3 +14,6 @@ import './components/site-header/register';
 import './components/site-theme/register';
 import './components/slideshow/register';
 import './components/sticky-sidebar/register';
+
+// B2B Homepage Components (remove this line to rollback)
+import './components/b2b-homepage/register';

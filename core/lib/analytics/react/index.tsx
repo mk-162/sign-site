@@ -22,5 +22,28 @@ export const AnalyticsProvider = ({
 };
 
 export const useAnalytics = () => {
-  return useContext(AnalyticsContext);
+  const analytics = useContext(AnalyticsContext);
+
+  if (!analytics) {
+    // eslint-disable-next-line no-console
+    console.warn('Analytics: useAnalytics called outside of AnalyticsProvider');
+
+    return {
+      cart: {
+        cartViewed: () => console.warn('Analytics: cartViewed called without provider'),
+        productAdded: () => console.warn('Analytics: productAdded called without provider'),
+        productRemoved: () => console.warn('Analytics: productRemoved called without provider'),
+      },
+      navigation: {
+        categoryViewed: () => console.warn('Analytics: categoryViewed called without provider'),
+        productViewed: () => console.warn('Analytics: productViewed called without provider'),
+      },
+      consent: {
+        consentUpdated: () => console.warn('Analytics: consentUpdated called without provider'),
+      },
+      initialize: () => console.warn('Analytics: initialize called without provider'),
+    } as Analytics;
+  }
+
+  return analytics;
 };

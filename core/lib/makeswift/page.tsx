@@ -1,7 +1,10 @@
 import { notFound } from 'next/navigation';
 import { connection } from 'next/server';
 
+import { Suspense } from 'react';
+
 import { getPageSnapshot } from './client';
+import { ErrorBoundary, Loading } from './error-boundary';
 import { MakeswiftPageShim } from './makeswift-page-shim';
 
 export async function Page({ path, locale }: { path: string; locale: string }) {
@@ -14,5 +17,12 @@ export async function Page({ path, locale }: { path: string; locale: string }) {
     return notFound();
   }
 
-  return <MakeswiftPageShim snapshot={snapshot} />;
+  return (
+    <ErrorBoundary>
+      <Suspense fallback={<Loading />}>
+        <MakeswiftPageShim snapshot={snapshot} />
+      </Suspense>
+    </ErrorBoundary>
+  );
 }
+

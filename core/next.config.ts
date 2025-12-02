@@ -68,6 +68,15 @@ export default async (): Promise<NextConfig> => {
       optimizePackageImports: ['@icons-pack/react-simple-icons'],
       ppr: 'incremental',
     },
+    // B2B Demo: Allow Unsplash placeholder images (remove to rollback)
+    images: {
+      remotePatterns: [
+        {
+          protocol: 'https',
+          hostname: 'images.unsplash.com',
+        },
+      ],
+    },
     typescript: {
       ignoreBuildErrors: !!process.env.CI,
     },

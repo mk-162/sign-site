@@ -30,3 +30,33 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
+
+.theme-experiment {
+  /* SafetySignHub (GTSE) Theme */
+  --primary: 22 89% 54%;
+  /* GTSE Orange #F36F21 */
+  --accent: 212 67% 12%;
+  /* Dark Navy #0A1D33 (Used as secondary/accent) */
+  --background: 0 0% 100%;
+  /* White */
+  --foreground: 212 67% 12%;
+  /* Dark Navy #0A1D33 (Primary Text) */
+
+  /* Greys */
+  --contrast-100: 210 8% 96%;
+  /* Light Grey #F5F6F7 (Backgrounds) */
+  --contrast-200: 210 2% 85%;
+  /* Lighter Grey for borders */
+  --contrast-300: 210 2% 66%;
+  /* GTSE Grey #A7A9AC */
+  --contrast-400: 216 6% 52%;
+  /* Mid Grey #7D838C (Support Text) */
+  --contrast-500: 212 67% 12%;
+  /* Navy (High contrast text) */
+
+  /* Button overrides (optional, if mapped in component) */
+  --button-primary-background: hsl(var(--primary));
+  --button-primary-text: white;
+  --button-secondary-background: hsl(var(--accent));
+  --button-secondary-text: white;
+}
