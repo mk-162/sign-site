@@ -9,5 +9,8 @@ export const logoTransformer = (data: ResultOf<typeof StoreLogoFragment>) => {
     return logo.text;
   }
 
-  return { src: logo.image.url, alt: logo.image.altText };
+  return {
+    src: logo.image.url.replace('{:size}', 'original'),
+    alt: logo.image.altText,
+  };
 };

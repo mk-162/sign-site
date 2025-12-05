@@ -60,7 +60,7 @@ export async function renameWishlist(
       };
     }
 
-    revalidateTag(TAGS.customer);
+    revalidateTag(TAGS.customer, 'default');
 
     return {
       lastResult: submission.reply(),

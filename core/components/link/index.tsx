@@ -1,17 +1,24 @@
 'use client';
 
-import { ComponentPropsWithRef, ComponentRef, forwardRef, useReducer } from 'react';
+import { ComponentPropsWithRef, ComponentRef, forwardRef, ReactNode, useReducer } from 'react';
+import { LinkProps as NextJsLinkProps } from 'next/link';
 
 import { Link as NavLink, useRouter } from '../../i18n/routing';
 
-type NextLinkProps = Omit<ComponentPropsWithRef<typeof NavLink>, 'prefetch'>;
+// Use NextJsLinkProps to ensure href and other standard props are present.
+// We omit prefetch because we redefine it in PrefetchOptions.
+type NextLinkProps = Omit<NextJsLinkProps, 'prefetch'> & Omit<ComponentPropsWithRef<'a'>, keyof NextJsLinkProps>;
 
 interface PrefetchOptions {
   prefetch?: 'hover' | 'viewport' | 'none';
   prefetchKind?: 'auto' | 'full';
 }
 
-type Props = NextLinkProps & PrefetchOptions;
+type Props = NextLinkProps &
+  PrefetchOptions & {
+    children?: ReactNode;
+    className?: string;
+  };
 
 /**
  * This custom `Link` is based on  Next-Intl's `Link` component
@@ -24,7 +31,7 @@ type Props = NextLinkProps & PrefetchOptions;
  * page load performance and resource usage. https://nextjs.org/docs/app/api-reference/components/link#prefetch
  */
 export const Link = forwardRef<ComponentRef<'a'>, Props>(
-  ({ href, prefetch = 'hover', prefetchKind = 'auto', children, className, ...rest }, ref) => {
+  ({ href, prefetch = 'hover', prefetchKind = 'auto', children, className, locale, ...rest }, ref) => {
     const router = useRouter();
     const [prefetched, setPrefetched] = useReducer(() => true, false);
     const computedPrefetch = computePrefetchProp({ prefetch, prefetchKind });
@@ -51,13 +58,14 @@ export const Link = forwardRef<ComponentRef<'a'>, Props>(
 
     return (
       <NavLink
+        {...(rest as any)}
         className={className}
         href={href}
+        locale={locale as string | undefined}
         onMouseEnter={prefetch === 'hover' ? triggerPrefetch : undefined}
         onTouchStart={prefetch === 'hover' ? triggerPrefetch : undefined}
         prefetch={computedPrefetch}
         ref={ref}
-        {...rest}
       >
         {children}
       </NavLink>

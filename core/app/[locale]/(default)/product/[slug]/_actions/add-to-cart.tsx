@@ -78,9 +78,9 @@ export const addToCart = async (
           optionValueEntityId:
             optionValueEntityId === 'true'
               ? // @ts-expect-error Types from custom fields are not yet available, pending fix
-                Number(field.checkedValue)
+              Number(field.checkedValue)
               : // @ts-expect-error Types from custom fields are not yet available, pending fix
-                Number(field.uncheckedValue),
+              Number(field.uncheckedValue),
         };
 
         if (accum.checkboxes) {

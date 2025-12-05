@@ -1,0 +1,48 @@
+---
+import { ShoppingCart } from "lucide-react";
+import { STORE_URL } from "../consts";
+
+interface Props {
+    productId: string;
+}
+
+const { productId } = Astro.props;
+
+// Mock fetch - in production this would query BigCommerce GraphQL
+const product = {
+    id: productId,
+    name: "Fire Exit Sign (Rigid Plastic)",
+    price: "£12.99",
+    image: "https://cdn11.bigcommerce.com/s-r13p7z/images/stencil/1280x1280/products/366/1234/fire-exit-sign__12345.jpg?c=2",
+    url: `${STORE_URL}/products/fire-exit-sign`,
+};
+---
+
+<div
+    class="group relative flex flex-col overflow-hidden rounded-lg border border-contrast-200 bg-white shadow-sm hover:shadow-md transition-shadow"
+>
+    <div class="aspect-square overflow-hidden bg-contrast-100 p-4">
+        <img
+            src={product.image}
+            alt={product.name}
+            class="h-full w-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-300"
+        />
+    </div>
+    <div class="flex flex-1 flex-col p-4">
+        <h3 class="text-sm font-bold text-foreground mb-2 line-clamp-2">
+            <a href={product.url}>
+                <span aria-hidden="true" class="absolute inset-0"></span>
+                {product.name}
+            </a>
+        </h3>
+        <div class="mt-auto flex items-center justify-between">
+            <span class="text-lg font-bold text-primary">{product.price}</span>
+            <button
+                class="rounded-full bg-contrast-100 p-2 text-foreground hover:bg-primary hover:text-white transition-colors"
+            >
+                <ShoppingCart className="h-4 w-4" />
+                <span class="sr-only">Add to cart</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<Layout title="Blog | SafetySignHub">
+    <main class="container mx-auto px-4 py-12">
+        <div class="mb-12 text-center">
+            <h1 class="text-4xl font-heading font-bold text-foreground mb-4">
+                Safety Insights
+            </h1>
+            <p class="text-lg text-contrast-500">
+                News, guides, and updates from the safety experts.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                posts.map((post) => (
+                    <a
+                        href={`/blog/${post.slug}/`}
+                        class="group flex flex-col h-full border border-contrast-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+                    >
+                        <div class="aspect-video bg-contrast-100 relative overflow-hidden">
+                            {post.data.heroImage ? (
+                                <img
+                                    src={post.data.heroImage}
+                                    alt=""
+                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                />
+                            ) : (
+                                <div class="w-full h-full flex items-center justify-center text-contrast-300">
+                                    <span class="text-4xl">📝</span>
+                                </div>
+                            )}
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 text-xs font-bold uppercase text-primary mb-2">
+                                {post.data.tags[0] || "News"}
+                            </div>
+                            <h2 class="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+                                {post.data.title}
+                            </h2>
+                            <p class="text-sm text-contrast-500 line-clamp-3 mb-4 flex-1">
+                                {post.data.description}
+                            </p>
+                            <div class="flex items-center justify-between text-xs text-contrast-400 mt-auto pt-4 border-t border-contrast-100">
+                                <span>{post.data.author}</span>
+                                <time
+                                    datetime={post.data.pubDate.toISOString()}
+                                >
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "en-gb",
+                                        {
+                                            year: "numeric",
+                                            month: "short",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </time>
+                            </div>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </main>
+</Layout>

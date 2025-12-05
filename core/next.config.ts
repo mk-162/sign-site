@@ -80,23 +80,6 @@ export default async (): Promise<NextConfig> => {
     typescript: {
       ignoreBuildErrors: !!process.env.CI,
     },
-    eslint: {
-      ignoreDuringBuilds: !!process.env.CI,
-      dirs: [
-        'app',
-        'auth',
-        'build-config',
-        'client',
-        'components',
-        'data-transformers',
-        'i18n',
-        'lib',
-        'middlewares',
-        'scripts',
-        'tests',
-        'vibes',
-      ],
-    },
     // default URL generation in BigCommerce uses trailing slash
     trailingSlash: process.env.TRAILING_SLASH !== 'false',
     // eslint-disable-next-line @typescript-eslint/require-await
@@ -122,16 +105,16 @@ export default async (): Promise<NextConfig> => {
   };
 
   // Apply withNextIntl to the config
-  nextConfig = withNextIntl(nextConfig);
+  nextConfig = withNextIntl(nextConfig as any) as any;
 
   // Apply withMakeswift to the config
-  nextConfig = withMakeswift(nextConfig);
+  nextConfig = withMakeswift(nextConfig as any) as any;
 
   if (process.env.ANALYZE === 'true') {
     const withBundleAnalyzer = bundleAnalyzer();
 
-    nextConfig = withBundleAnalyzer(nextConfig);
+    nextConfig = withBundleAnalyzer(nextConfig as any) as any;
   }
 
-  return nextConfig;
+  return nextConfig as any;
 };

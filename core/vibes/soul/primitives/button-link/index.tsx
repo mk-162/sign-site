@@ -1,5 +1,5 @@
 import { clsx } from 'clsx';
-import { ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 import { Link } from '~/components/link';
 
@@ -7,6 +7,7 @@ export interface ButtonLinkProps extends ComponentPropsWithoutRef<typeof Link> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
   size?: 'large' | 'medium' | 'small' | 'x-small';
   shape?: 'pill' | 'rounded' | 'square' | 'circle';
+  children?: ReactNode;
 }
 
 // eslint-disable-next-line valid-jsdoc
@@ -67,12 +68,12 @@ export function ButtonLink({
           large: 'min-h-14 text-base',
         }[size],
         shape !== 'circle' &&
-          {
-            'x-small': 'gap-x-2 px-3 py-1.5',
-            small: 'gap-x-2 px-4 py-2.5',
-            medium: 'gap-x-2.5 px-5 py-3',
-            large: 'gap-x-3 px-6 py-4',
-          }[size],
+        {
+          'x-small': 'gap-x-2 px-3 py-1.5',
+          small: 'gap-x-2 px-4 py-2.5',
+          medium: 'gap-x-2.5 px-5 py-3',
+          large: 'gap-x-3 px-6 py-4',
+        }[size],
         {
           pill: 'rounded-full after:rounded-full',
           rounded: 'rounded-lg after:rounded-lg',

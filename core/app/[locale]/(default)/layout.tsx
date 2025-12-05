@@ -1,8 +1,8 @@
 import { setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
-import { Footer } from '~/components/footer';
-import { Header } from '~/components/header';
+import { Footer } from '~/components/vibe/Footer';
+import { Header } from '~/components/vibe/Header';
 
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;

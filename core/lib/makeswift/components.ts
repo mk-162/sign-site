@@ -17,3 +17,4 @@ import './components/sticky-sidebar/register';
 
 // B2B Homepage Components (remove this line to rollback)
 import './components/b2b-homepage/register';
+import './components/vibe/register';
