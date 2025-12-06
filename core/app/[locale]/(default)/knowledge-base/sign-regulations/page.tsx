@@ -64,6 +64,15 @@ async function getRelatedProducts() {
 
     return { products, categories };
   } catch (error) {
+    // Re-throw Next.js/React internal flow control errors (bailout, redirect, etc)
+    if (
+      typeof error === 'object' &&
+      error !== null &&
+      ((error as any).$$typeof === Symbol.for('react.postpone') ||
+        (error as any).digest?.startsWith('NEXT_'))
+    ) {
+      throw error;
+    }
     console.error('Error fetching related products:', error);
     return { products: [], categories: [] };
   }
