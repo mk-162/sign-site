@@ -122,7 +122,7 @@ export default async function Search(props: Props) {
       title: product.name,
       href: product.path,
       image: product.defaultImage
-        ? { src: product.defaultImage.url, alt: product.defaultImage.altText }
+        ? { src: product.defaultImage.url.replace('{:size}', 'original'), alt: product.defaultImage.altText }
         : undefined,
       price: pricesTransformer(product.prices, format),
       subtitle: product.brand?.name ?? undefined,
@@ -226,7 +226,7 @@ export default async function Search(props: Props) {
       id: product.entityId.toString(),
       title: product.name,
       image: product.defaultImage
-        ? { src: product.defaultImage.url, alt: product.defaultImage.altText }
+        ? { src: product.defaultImage.url.replace('{:size}', 'original'), alt: product.defaultImage.altText }
         : undefined,
       href: product.path,
     }));

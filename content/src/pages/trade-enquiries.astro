@@ -1,0 +1,257 @@
+---
+import Layout from "../layouts/Layout.astro";
+import {
+    Shield,
+    LayoutGrid,
+    CheckCircle2,
+    TrendingDown,
+    Clock,
+    MoveRight,
+} from "lucide-react";
+---
+
+<Layout title="Trade Enquiries | Safety Sign Hub">
+    <div class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-4 text-center max-w-4xl">
+            <h1 class="text-4xl md:text-5xl font-black mb-6">
+                Bulk Safety Signage for Businesses
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-8">
+                Compliance Made Simple. High-volume safety signage at
+                competitive trade prices.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a
+                    href="#contact-fom"
+                    class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+                >
+                    Get a Quote
+                </a>
+                <a
+                    href="/contact-us"
+                    class="bg-white/10 hover:bg-white/20 text-white font-bold py-3 px-8 rounded-full transition-colors backdrop-blur-sm"
+                >
+                    Contact Team
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+        <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+            <div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-6">
+                    Why Choose Safety Sign Hub for Your Business?
+                </h2>
+                <p class="text-lg text-slate-600 mb-8">
+                    <strong class="text-slate-900">Safety Sign Hub</strong>,
+                    powered by GTSE’s global supply network, delivers
+                    high-volume safety signage at competitive trade prices with
+                    guaranteed regulatory compliance.
+                </p>
+
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="bg-orange-100 p-2 rounded-lg h-fit">
+                            <Shield className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Regulatory Expertise
+                            </h3>
+                            <p class="text-slate-600">
+                                All signage meets UK Health & Safety
+                                requirements including Fire Safety Order 2005
+                                and BS EN ISO 7010:2020.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="bg-orange-100 p-2 rounded-lg h-fit">
+                            <LayoutGrid className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Industry Specialization
+                            </h3>
+                            <p class="text-slate-600">
+                                We supply major organizations across
+                                Construction, Manufacturing, Facilities
+                                Management, Property, Marine, Healthcare,
+                                Hospitality, and Industrial sectors.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="bg-orange-100 p-2 rounded-lg h-fit">
+                            <CheckCircle2 className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Quality Assurance
+                            </h3>
+                            <p class="text-slate-600">
+                                Premium materials tested for durability and
+                                visibility—from photoluminescent to weatherproof
+                                aluminum.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="bg-orange-100 p-2 rounded-lg h-fit">
+                            <TrendingDown className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Bulk Pricing
+                            </h3>
+                            <p class="text-slate-600">
+                                Volume discounts for recurring orders and
+                                multi-site deployments.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="bg-orange-100 p-2 rounded-lg h-fit">
+                            <Clock className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Fast Response
+                            </h3>
+                            <p class="text-slate-600">
+                                Expert advice and rapid quotations backed by
+                                GTSE’s established logistics network.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                id="contact-fom"
+                class="bg-white p-8 rounded-xl shadow-xl border border-slate-100"
+            >
+                <h3 class="text-2xl font-bold text-slate-900 mb-2">
+                    Apply for a Trade Credit Account
+                </h3>
+                <p class="text-slate-500 mb-6">
+                    Streamline procurement across your sites with a GTSE trade
+                    account.
+                </p>
+
+                <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >First Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >Last Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Company Name</label
+                        >
+                        <input
+                            type="text"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        />
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >Email Address</label
+                            >
+                            <input
+                                type="email"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >Phone Number</label
+                            >
+                            <input
+                                type="tel"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                    </div>
+
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Estimated Monthly Spend</label
+                        >
+                        <select
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        >
+                            <option>Not sure</option>
+                            <option>Less than £500</option>
+                            <option>£500 - £2000</option>
+                            <option>£2000+</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Additional Details</label
+                        >
+                        <textarea
+                            rows="3"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        ></textarea>
+                    </div>
+                    <button
+                        type="button"
+                        class="w-full bg-slate-900 text-white font-bold py-3 rounded-md hover:bg-slate-800 transition-colors shadow-md flex items-center justify-center gap-2"
+                    >
+                        Submit Application <MoveRight className="w-4 h-4" />
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div
+            class="bg-orange-50 rounded-xl p-8 border border-orange-100 text-center"
+        >
+            <h3 class="text-xl font-bold text-slate-900 mb-4">
+                How to Connect
+            </h3>
+            <p class="text-slate-700">
+                Reach us via live chat, phone <strong class="text-slate-900"
+                    >(01246 386 126)</strong
+                >, email <strong class="text-slate-900"
+                    >(safety@gtse.co.uk)</strong
+                >, or the contact form above.
+            </p>
+        </div>
+
+        <div class="mt-8 text-center text-sm text-slate-500">
+            Safety Sign Hub is operated by Gocableties Ltd (trading as GTSE) |
+            Company No. 09162871 | VAT No. 197 116 978
+        </div>
+    </div>
+</Layout>

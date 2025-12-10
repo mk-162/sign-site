@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 
 import { Stream, type Streamable } from '@/vibes/soul/lib/streamable';
-import { ProductDetail, ProductDetailSkeleton } from '@/vibes/soul/sections/product-detail';
+import { ProductDetail, ProductDetailSkeleton } from '~/components/product/product-detail';
 import { mergeSections } from '~/lib/makeswift/utils/merge-sections';
 
 type VibesProductDetailProps = ComponentPropsWithoutRef<typeof ProductDetail>;
@@ -75,9 +75,9 @@ const ProductDetailImpl = ({
     ): Awaited<ProductDetail['accordions']> =>
       productAccordions != null
         ? mergeSections(productAccordions, accordions, (left, right) => ({
-            ...left,
-            content: right.content,
-          }))
+          ...left,
+          content: right.content,
+        }))
         : undefined,
     [accordions],
   );

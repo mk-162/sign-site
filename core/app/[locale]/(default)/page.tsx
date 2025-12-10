@@ -1,5 +1,8 @@
 import { locales } from '~/i18n/locales';
-import { Page as MakeswiftPage } from '~/lib/makeswift';
+import { HeroSection } from '~/components/sections/HeroSection';
+import { CategoriesGrid } from '~/components/sections/CategoriesGrid';
+import { FeaturedProducts } from '~/components/sections/FeaturedProducts';
+import { WhyChooseUs } from '~/components/sections/WhyChooseUs';
 
 interface Params {
   locale: string;
@@ -16,5 +19,12 @@ interface Props {
 export default async function Home({ params }: Props) {
   const { locale } = await params;
 
-  return <MakeswiftPage locale={locale} path="/" />;
+  return (
+    <main className="space-y-0 pb-0">
+      <HeroSection />
+      <CategoriesGrid />
+      <FeaturedProducts />
+      <WhyChooseUs />
+    </main>
+  );
 }

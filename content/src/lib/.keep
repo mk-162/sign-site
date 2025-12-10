@@ -1,0 +1,4 @@
+
+// Ensure utils.ts exists before copying if directory missing, but copy command should handle file. 
+// However, `content/src/lib` might not exist.
+// Let's create it.

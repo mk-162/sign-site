@@ -18,6 +18,10 @@ export const SiteTheme = ({ fontTokens, ...theme }: TokensProps & ThemeProps) =>
       ${themeToCssVars(theme).join('\n')}
       /* Variable aliases for backward compatibility */
       --font-family-mono: var(--font-family-accent);
+      --font-family-heading: var(--font-family-inter);
+      --font-family-body: var(--font-family-inter);
+      --font-family-accent: var(--font-family-inter);
+      
       --button-primary-text: var(--button-primary-foreground);
       --button-secondary-text: var(--button-secondary-foreground);
       --button-tertiary-text: var(--button-tertiary-foreground);

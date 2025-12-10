@@ -1,0 +1,277 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Truck, Clock, AlertCircle } from "lucide-react";
+---
+
+<Layout title="Delivery & Returns | Safety Sign Hub">
+    <div class="container mx-auto px-4 py-12 max-w-4xl">
+        <h1 class="text-4xl font-black text-slate-900 mb-8">
+            Delivery & Returns
+        </h1>
+        <p class="lead text-xl text-slate-600 mb-8">
+            Fast, Reliable Safety Signage Delivery Across the UK.
+        </p>
+
+        <div
+            class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-12 rounded-r-lg"
+        >
+            <h3
+                class="text-lg font-bold text-blue-900 mb-2 flex items-center gap-2"
+            >
+                <Clock className="w-5 h-5" /> Christmas Warehouse Closure Notice
+            </h3>
+            <p class="text-blue-800">
+                Please note that our warehouse will close for Christmas on 23rd
+                December 2025 and will reopen on 2nd January 2026. The last day
+                for next-day delivery is 23rd December (orders placed before
+                3:15 pm). We will resume dispatch on 2nd January.
+            </p>
+        </div>
+
+        <div class="space-y-12">
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    Dispatch Times
+                </h2>
+                <p class="text-slate-700 mb-4">
+                    Our standard dispatch times are Monday to Friday until
+                    15:15.
+                </p>
+                <p class="text-slate-700">
+                    Occasionally, dispatch may occur the next working day due to
+                    stock locations and preparation requirements for certain
+                    safety signage products (particularly custom or large-format
+                    signs). You will receive an email notification with FedEx
+                    tracking information once your order is dispatched.
+                </p>
+                <p class="text-slate-700 mt-4">
+                    For order status enquiries, please email <a
+                        href="mailto:safety@gtse.co.uk"
+                        class="text-orange-600 hover:underline"
+                        >safety@gtse.co.uk</a
+                    > and our customer service team will assist you.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    Delivery Options
+                </h2>
+                <p class="text-slate-700 mb-6">
+                    When you place your order, you will be presented with
+                    delivery options based on your location and order size:
+                </p>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left font-sm">
+                        <thead>
+                            <tr class="bg-slate-100 border-b border-slate-200">
+                                <th class="p-4 font-bold text-slate-900"
+                                    >Delivery Service</th
+                                >
+                                <th class="p-4 font-bold text-slate-900"
+                                    >Description</th
+                                >
+                                <th class="p-4 font-bold text-slate-900"
+                                    >Price ex VAT</th
+                                >
+                                <th class="p-4 font-bold text-slate-900"
+                                    >Price inc VAT</th
+                                >
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >UK Express Courier - FedEx</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >1-2 working days tracked service</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£5.99</td
+                                >
+                                <td class="p-4 text-slate-600">£7.19</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >Free Next Working Day - FedEx</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >1-2 working days tracked for orders over
+                                    £75 ex VAT (selected UK areas)</td
+                                >
+                                <td class="p-4 text-green-600 font-bold"
+                                    >FREE</td
+                                >
+                                <td class="p-4 text-green-600 font-bold"
+                                    >FREE</td
+                                >
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >Northern Ireland</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >Approx. 2 working days (per 30kg)</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£18.50</td
+                                >
+                                <td class="p-4 text-slate-600">£22.20</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >Scottish Highlands</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >Approx. 2 working days (per 30kg)</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£14.00</td
+                                >
+                                <td class="p-4 text-slate-600">£16.80</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >UK Offshore Outer Areas</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >Approx. 2 working days (per 30kg)</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£20.00</td
+                                >
+                                <td class="p-4 text-slate-600">£24.00</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >Shetland Islands</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >Approx. 2 working days (per 30kg)</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£34.00</td
+                                >
+                                <td class="p-4 text-slate-600">£40.80</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >Outer Hebrides (HS postcodes)</td
+                                >
+                                <td class="p-4 text-slate-600"
+                                    >Approx. 2 working days (per 30kg)</td
+                                >
+                                <td class="p-4 text-slate-900 font-medium"
+                                    >£40.00</td
+                                >
+                                <td class="p-4 text-slate-600">£48.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    Custom & Large Format Safety Signs
+                </h2>
+                <div
+                    class="bg-orange-50 border border-orange-100 p-6 rounded-lg"
+                >
+                    <p class="text-slate-700 mb-4">
+                        Custom safety signs and large-format signage may require
+                        additional production time (typically 3-5 working days).
+                        Delivery charges and lead times will be confirmed before
+                        order confirmation.
+                    </p>
+                    <p
+                        class="font-bold text-orange-800 flex items-center gap-2"
+                    >
+                        <AlertCircle className="w-5 h-5" /> Please note: Custom-made
+                        safety signage cannot be returned unless faulty or incorrectly
+                        produced.
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    EU & International Orders
+                </h2>
+                <p class="text-slate-700">
+                    To arrange safety signage delivery outside the UK, please
+                    contact us at <a
+                        href="mailto:safety@gtse.co.uk"
+                        class="text-orange-600 hover:underline"
+                        >safety@gtse.co.uk</a
+                    > or call 01246 386 126.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-bold text-slate-900 mb-4">
+                    Returns Policy
+                </h2>
+                <p class="text-slate-700 mb-4">
+                    We take pride in the quality and compliance of our safety
+                    signage. If your order doesn’t meet your requirements,
+                    please contact us for assistance.
+                </p>
+
+                <h3 class="text-lg font-bold text-slate-900 mb-2">
+                    Returns Period
+                </h3>
+                <p class="text-slate-700 mb-2">
+                    Returns accepted within <strong class="text-slate-900"
+                        >28 days of order</strong
+                    > if:
+                </p>
+                <ul class="list-disc pl-6 space-y-1 my-2 text-slate-700">
+                    <li>The product is faulty or damaged</li>
+                    <li>We’ve sent the incorrect item</li>
+                    <li>
+                        You’ve changed your mind (signs must be unused and in
+                        original packaging)
+                    </li>
+                </ul>
+                <p class="text-slate-500 italic text-sm mb-6">
+                    Please note: We cannot refund opened packs or custom-made
+                    safety signage unless faulty.
+                </p>
+
+                <h3 class="text-lg font-bold text-slate-900 mb-2">
+                    Returns Process
+                </h3>
+                <p class="text-slate-700 mb-6">
+                    Email <a
+                        href="mailto:safety@gtse.co.uk"
+                        class="text-orange-600 hover:underline"
+                        >safety@gtse.co.uk</a
+                    > with your order number. We’ll arrange the best return method
+                    and process your refund or replacement promptly.
+                </p>
+
+                <h3 class="text-lg font-bold text-slate-900 mb-2">
+                    Missing Items
+                </h3>
+                <p class="text-slate-700">
+                    Please notify us within 14 days of delivery if items are
+                    missing. Contact <a
+                        href="mailto:safety@gtse.co.uk"
+                        class="text-orange-600 hover:underline"
+                        >safety@gtse.co.uk</a
+                    > or call 01246 386 126 with your order number.
+                </p>
+            </section>
+
+            <div
+                class="mt-12 border-t border-slate-200 pt-8 text-center text-sm text-slate-500"
+            >
+                Operated by: Gocableties Ltd trading as GTSE | Company No.
+                09162871 | VAT No. 197 116 978
+            </div>
+        </div>
+    </div>
+</Layout>

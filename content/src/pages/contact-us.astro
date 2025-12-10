@@ -1,0 +1,239 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Phone, Mail, MessageSquare, Briefcase } from "lucide-react";
+---
+
+<Layout title="Contact Us | Safety Sign Hub">
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+        <h1 class="text-4xl font-black text-slate-900 mb-4">Contact Us</h1>
+        <p class="text-xl text-slate-600 mb-12">
+            Get Expert Safety Signage Advice. Contact Hours: Monday - Friday:
+            9:00AM - 5:30PM GMT
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="space-y-8">
+                <div>
+                    <p class="text-slate-700 mb-6">
+                        Our safety signage specialists are here to help you meet
+                        compliance requirements and protect your workplace.
+                        Contact us via live chat, email, phone, WhatsApp, or the
+                        form below.
+                    </p>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-orange-100 p-3 rounded-lg">
+                            <Phone className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Phone
+                            </h3>
+                            <p class="text-orange-600 font-bold text-xl my-1">
+                                01246 386 126
+                            </p>
+                            <p class="text-slate-600">
+                                Speak directly with our safety signage team for
+                                expert advice on regulations, materials, and
+                                custom solutions.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-orange-100 p-3 rounded-lg">
+                            <Mail className="w-6 h-6 text-orange-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Email
+                            </h3>
+                            <a
+                                href="mailto:safety@gtse.co.uk"
+                                class="text-orange-600 font-bold text-lg hover:underline block my-1"
+                                >safety@gtse.co.uk</a
+                            >
+                            <p class="text-slate-600">
+                                Contact us for compliance advice, bulk orders,
+                                or product enquiries. We aim to respond within
+                                the same working day.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-orange-100 p-3 rounded-lg">
+                            <MessageSquare
+                                className="w-6 h-6 text-orange-600"
+                            />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Live Chat
+                            </h3>
+                            <p class="text-slate-600">
+                                Get instant answers to your safety signage
+                                questions. Click the speech bubble in the corner
+                                of your screen to speak with a team member.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="w-6 h-6 text-green-600"
+                                ><circle cx="12" cy="12" r="10"></circle><path
+                                    d="M16.95 7.43c-1.42-.92-3.1-1.43-4.95-1.43-4.96 0-9 3.58-9 8s4.04 8 9 8c1.85 0 3.53-.51 4.95-1.43"
+                                ></path><path
+                                    d="M16.95 16.57c-1.42.92-3.1 1.43-4.95 1.43-4.96 0-9-3.58-9-8s4.04-8 9-8c1.85 0 3.53.51 4.95 1.43"
+                                ></path><path d="M12 8v8"></path><path
+                                    d="M8 12h8"></path></svg
+                            >
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                WhatsApp Business
+                            </h3>
+                            <p class="text-slate-600 my-1">
+                                For business-specific safety signage enquiries: <strong
+                                    class="text-slate-900">07548 383832</strong>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-100 p-3 rounded-lg">
+                            <Briefcase className="w-6 h-6 text-blue-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">
+                                Trade & Bulk Orders
+                            </h3>
+                            <p class="text-slate-600">
+                                Looking for high-volume safety signage for
+                                multiple sites? Visit our <a
+                                    href="/trade-enquiries"
+                                    class="text-orange-600 font-semibold hover:underline"
+                                    >Trade Enquiries page</a
+                                > for competitive pricing on bulk orders.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="bg-white p-8 rounded-xl shadow-lg border border-slate-100 h-fit"
+            >
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">
+                    Send us a Message
+                </h2>
+                <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >First Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-slate-700 mb-1"
+                                >Last Name</label
+                            >
+                            <input
+                                type="text"
+                                class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Email Address</label
+                        >
+                        <input
+                            type="email"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Phone Number (Optional)</label
+                        >
+                        <input
+                            type="tel"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        />
+                    </div>
+                    <div>
+                        <label
+                            class="block text-sm font-medium text-slate-700 mb-1"
+                            >Message</label
+                        >
+                        <textarea
+                            rows="4"
+                            class="w-full px-4 py-2 border border-slate-300 rounded-md focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                        ></textarea>
+                    </div>
+                    <button
+                        type="button"
+                        class="w-full bg-orange-600 text-white font-bold py-3 rounded-md hover:bg-orange-700 transition-colors shadow-md"
+                    >
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-16 border-t border-slate-200 pt-8">
+            <h3 class="text-lg font-bold text-slate-900 mb-4">
+                Company Information
+            </h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 text-sm">
+                <div>
+                    <span class="block text-slate-500">Trading as</span>
+                    <span class="font-medium text-slate-900"
+                        >Safety Sign Hub</span
+                    >
+                </div>
+                <div>
+                    <span class="block text-slate-500">Company Name</span>
+                    <span class="font-medium text-slate-900"
+                        >Gocableties Ltd (GTSE)</span
+                    >
+                </div>
+                <div>
+                    <span class="block text-slate-500">Registered Office</span>
+                    <span class="font-medium text-slate-900"
+                        >GTSE | WeWork - Dalton Place | 29 John Dalton St |
+                        Manchester | M2 6DS</span
+                    >
+                </div>
+                <div>
+                    <span class="block text-slate-500">Registration</span>
+                    <span class="font-medium text-slate-900"
+                        >Company No. 09162871 | VAT No. 197 116 978</span
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

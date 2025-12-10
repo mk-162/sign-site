@@ -29,6 +29,6 @@ export const config = {
      * - xmlsitemap.php (legacy sitemap route)
      * - robots.txt (robots route)
      */
-    '/((?!api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt|stock_images).*)',
+    '/((?!api|admin|_next/static|_next/image|_vercel|favicon.ico|xmlsitemap.php|sitemap.xml|robots.txt|stock_images|about-us|contact-us|trade-enquiries|delivery-returns|terms-conditions|privacy-policy|kb|blog|images|_astro|@.*|.*\\.css|.*\\.js|src|node_modules).*)',
   ],
 };

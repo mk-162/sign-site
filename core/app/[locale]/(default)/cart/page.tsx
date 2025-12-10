@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import { getFormatter, getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Streamable } from '@/vibes/soul/lib/streamable';
-import { Cart as CartComponent, CartEmptyState } from '@/vibes/soul/sections/cart';
+import { Cart as CartComponent } from '~/components/cart/cart';
+import { CartEmptyState } from '@/vibes/soul/sections/cart'; // Keep EmptyState for now or replace if needed
 import { CartAnalyticsProvider } from '~/app/[locale]/(default)/cart/_components/cart-analytics-provider';
 import { getCartId } from '~/lib/cart';
 import { getPreferredCurrencyCode } from '~/lib/currency';
@@ -154,7 +155,7 @@ export default async function Cart({ params }: Props) {
         })
         .join(', '),
       title: item.name,
-      image: item.image?.url ? { src: item.image.url, alt: item.name } : undefined,
+      image: item.image?.url ? { src: item.image.url.replace('{:size}', 'original'), alt: item.name } : undefined,
       href: new URL(item.url).pathname,
       selectedOptions: item.selectedOptions,
       productEntityId: item.productEntityId,
@@ -222,21 +223,21 @@ export default async function Cart({ params }: Props) {
               },
               cart.discountedAmount.value > 0
                 ? {
-                    label: t('CheckoutSummary.discounts'),
-                    value: `-${format.number(cart.discountedAmount.value, {
-                      style: 'currency',
-                      currency: cart.currencyCode,
-                    })}`,
-                  }
+                  label: t('CheckoutSummary.discounts'),
+                  value: `-${format.number(cart.discountedAmount.value, {
+                    style: 'currency',
+                    currency: cart.currencyCode,
+                  })}`,
+                }
                 : null,
               totalCouponDiscount > 0
                 ? {
-                    label: t('CheckoutSummary.CouponCode.couponCode'),
-                    value: `-${format.number(totalCouponDiscount, {
-                      style: 'currency',
-                      currency: cart.currencyCode,
-                    })}`,
-                  }
+                  label: t('CheckoutSummary.CouponCode.couponCode'),
+                  value: `-${format.number(totalCouponDiscount, {
+                    style: 'currency',
+                    currency: cart.currencyCode,
+                  })}`,
+                }
                 : null,
               ...giftCertificatesSummary.map((gc) => ({
                 label: `${t('GiftCertificate.giftCertificate')} (${gc.code})`,
@@ -273,12 +274,12 @@ export default async function Cart({ params }: Props) {
           giftCertificate={
             giftCertificatesEnabled
               ? {
-                  action: updateGiftCertificate,
-                  giftCertificateCodes: checkout?.giftCertificates.map((gc) => gc.code) ?? [],
-                  ctaLabel: t('GiftCertificate.apply'),
-                  label: t('GiftCertificate.giftCertificateCode'),
-                  removeLabel: t('GiftCertificate.removeGiftCertificate'),
-                }
+                action: updateGiftCertificate,
+                giftCertificateCodes: checkout?.giftCertificates.map((gc) => gc.code) ?? [],
+                ctaLabel: t('GiftCertificate.apply'),
+                label: t('GiftCertificate.giftCertificateCode'),
+                removeLabel: t('GiftCertificate.removeGiftCertificate'),
+              }
               : undefined
           }
           incrementLineItemLabel={t('increment')}
@@ -291,40 +292,40 @@ export default async function Cart({ params }: Props) {
             states: statesOrProvinces,
             address: shippingConsignment?.address
               ? {
-                  country: shippingConsignment.address.countryCode,
-                  city:
-                    shippingConsignment.address.city !== ''
-                      ? (shippingConsignment.address.city ?? undefined)
-                      : undefined,
-                  state:
-                    shippingConsignment.address.stateOrProvince !== ''
-                      ? (shippingConsignment.address.stateOrProvince ?? undefined)
-                      : undefined,
-                  postalCode:
-                    shippingConsignment.address.postalCode !== ''
-                      ? (shippingConsignment.address.postalCode ?? undefined)
-                      : undefined,
-                }
+                country: shippingConsignment.address.countryCode,
+                city:
+                  shippingConsignment.address.city !== ''
+                    ? (shippingConsignment.address.city ?? undefined)
+                    : undefined,
+                state:
+                  shippingConsignment.address.stateOrProvince !== ''
+                    ? (shippingConsignment.address.stateOrProvince ?? undefined)
+                    : undefined,
+                postalCode:
+                  shippingConsignment.address.postalCode !== ''
+                    ? (shippingConsignment.address.postalCode ?? undefined)
+                    : undefined,
+              }
               : undefined,
             shippingOptions: shippingConsignment?.availableShippingOptions
               ? shippingConsignment.availableShippingOptions.map((option) => ({
-                  label: option.description,
-                  value: option.entityId,
-                  price: format.number(option.cost.value, {
-                    style: 'currency',
-                    currency: checkout?.cart?.currencyCode,
-                  }),
-                }))
+                label: option.description,
+                value: option.entityId,
+                price: format.number(option.cost.value, {
+                  style: 'currency',
+                  currency: checkout?.cart?.currencyCode,
+                }),
+              }))
               : undefined,
             shippingOption: shippingConsignment?.selectedShippingOption
               ? {
-                  value: shippingConsignment.selectedShippingOption.entityId,
-                  label: shippingConsignment.selectedShippingOption.description,
-                  price: format.number(shippingConsignment.selectedShippingOption.cost.value, {
-                    style: 'currency',
-                    currency: checkout?.cart?.currencyCode,
-                  }),
-                }
+                value: shippingConsignment.selectedShippingOption.entityId,
+                label: shippingConsignment.selectedShippingOption.description,
+                price: format.number(shippingConsignment.selectedShippingOption.cost.value, {
+                  style: 'currency',
+                  currency: checkout?.cart?.currencyCode,
+                }),
+              }
               : undefined,
             showShippingForm,
             shippingLabel: t('CheckoutSummary.Shipping.shipping'),

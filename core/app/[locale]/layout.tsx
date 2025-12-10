@@ -78,7 +78,7 @@ export async function generateMetadata(): Promise<Metadata> {
       default: pageTitle || storeName,
     },
     icons: {
-      icon: '/favicon.ico', // app/favicon.ico/route.ts
+      icon: '/favicon.png',
     },
     description: metaDescription,
     keywords: metaKeywords ? metaKeywords.split(',') : null,

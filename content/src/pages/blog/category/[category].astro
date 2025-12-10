@@ -1,0 +1,249 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog", ({ data }) => !data.draft);
+    const categories = [
+        ...new Set(posts.map((post) => post.data.category).filter(Boolean)),
+    ];
+
+    return categories.map((category) => ({
+        params: {
+            category: (category || "").toLowerCase().replace(/\s+/g, "-"),
+        },
+        props: { categoryName: category },
+    }));
+}
+
+const { categoryName } = Astro.props;
+const { category } = Astro.params;
+
+// Helper to get date from either field
+const getDate = (post: any) =>
+    post.data.pubDate || post.data.publishedAt || new Date();
+
+const allPosts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+    (a, b) => getDate(b).valueOf() - getDate(a).valueOf(),
+);
+
+// Filter posts by the current category
+// We match loosely to handle potential slug mismatches, but ideally we match exact name if we passed it down
+const posts = allPosts.filter((post) => post.data.category === categoryName);
+
+// Get unique categories for the filter bar
+const categories = [
+    ...new Set(allPosts.map((post) => post.data.category).filter(Boolean)),
+];
+
+const featuredPosts = posts.filter((post) => post.data.featured);
+const regularPosts = posts.filter((post) => !post.data.featured);
+---
+
+<Layout title={`${categoryName} | Blog | SafetySignHub`}>
+    <main class="bg-slate-50 min-h-screen">
+        <!-- Hero Section -->
+        <div class="bg-[#1e293b] text-white py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl font-black mb-4">Safety Insights</h1>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+                    News, guides, and updates from the safety experts.
+                </p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-12">
+            <!-- Category Filters -->
+            {
+                categories.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mb-10 justify-center">
+                        <a
+                            href="/blog"
+                            class="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all"
+                        >
+                            All Posts
+                        </a>
+                        {categories.map((cat) => {
+                            if (!cat) return null;
+                            const isActive = cat === categoryName;
+                            const slug = cat.toLowerCase().replace(/\s+/g, "-");
+                            return (
+                                <a
+                                    href={`/blog/category/${slug}`}
+                                    class={`px-4 py-2 rounded-full text-sm font-bold border transition-all
+                                        ${
+                                            isActive
+                                                ? "bg-orange-500 text-white border-orange-500"
+                                                : "bg-white border-slate-200 text-slate-600 hover:bg-orange-500 hover:text-white hover:border-orange-500"
+                                        }`}
+                                >
+                                    {cat}
+                                </a>
+                            );
+                        })}
+                    </div>
+                )
+            }
+
+            <!-- Category Title -->
+            <div class="mb-8 flex items-center gap-3">
+                <span class="bg-orange-500 w-2 h-8 rounded-full"></span>
+                <h2 class="text-3xl font-black text-slate-900">
+                    {categoryName}
+                </h2>
+            </div>
+
+            <!-- Featured Posts -->
+            {
+                featuredPosts.length > 0 && (
+                    <div class="mb-12">
+                        <div class="flex items-center gap-3 mb-6">
+                            <h3 class="text-xl font-bold text-slate-700">
+                                Featured in {categoryName}
+                            </h3>
+                        </div>
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            {featuredPosts.slice(0, 2).map((post) => {
+                                const postDate = getDate(post);
+                                const heroImg =
+                                    post.data.heroImage || post.data.image;
+                                return (
+                                    <a
+                                        href={`/blog/${post.slug}/`}
+                                        class="group flex flex-col h-full border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all"
+                                    >
+                                        <div class="aspect-video bg-slate-100 relative overflow-hidden">
+                                            {heroImg ? (
+                                                <img
+                                                    src={heroImg}
+                                                    alt=""
+                                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                                />
+                                            ) : (
+                                                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600">
+                                                    <span class="text-6xl text-white/50">
+                                                        📝
+                                                    </span>
+                                                </div>
+                                            )}
+                                            <span class="absolute top-4 left-4 px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full uppercase">
+                                                Featured
+                                            </span>
+                                        </div>
+                                        <div class="p-6 flex flex-col flex-1">
+                                            {post.data.category && (
+                                                <div class="flex items-center gap-2 text-xs font-bold uppercase text-orange-600 mb-2">
+                                                    {post.data.category}
+                                                </div>
+                                            )}
+                                            <h3 class="text-xl font-black text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
+                                                {post.data.title}
+                                            </h3>
+                                            <p class="text-sm text-slate-500 line-clamp-2 mb-4 flex-1">
+                                                {post.data.description}
+                                            </p>
+                                            <div class="flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-slate-100">
+                                                <span>{post.data.author}</span>
+                                                <time
+                                                    datetime={postDate.toISOString()}
+                                                >
+                                                    {postDate.toLocaleDateString(
+                                                        "en-gb",
+                                                        {
+                                                            year: "numeric",
+                                                            month: "short",
+                                                            day: "numeric",
+                                                        },
+                                                    )}
+                                                </time>
+                                            </div>
+                                        </div>
+                                    </a>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )
+            }
+
+            <!-- All Posts Grid -->
+            <div class="mb-12">
+                {
+                    regularPosts.length > 0 && (
+                        <div class="flex items-center gap-3 mb-6">
+                            <h3 class="text-xl font-bold text-slate-700">
+                                Latest in {categoryName}
+                            </h3>
+                        </div>
+                    )
+                }
+                {
+                    regularPosts.length === 0 && featuredPosts.length === 0 && (
+                        <p class="text-center text-slate-500 py-12">
+                            No posts found in this category.
+                        </p>
+                    )
+                }
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                    {
+                        regularPosts.map((post) => {
+                            const postDate = getDate(post);
+                            const heroImg =
+                                post.data.heroImage || post.data.image;
+                            return (
+                                <a
+                                    href={`/blog/${post.slug}/`}
+                                    class="group flex flex-col h-full border border-slate-200 rounded-lg overflow-hidden bg-white shadow-sm hover:shadow-md transition-all"
+                                >
+                                    <div class="aspect-video bg-slate-100 relative overflow-hidden">
+                                        {heroImg ? (
+                                            <img
+                                                src={heroImg}
+                                                alt=""
+                                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                        ) : (
+                                            <div class="w-full h-full flex items-center justify-center text-slate-300">
+                                                <span class="text-4xl">📝</span>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div class="p-6 flex flex-col flex-1">
+                                        {post.data.category && (
+                                            <div class="flex items-center gap-2 text-xs font-bold uppercase text-orange-600 mb-2">
+                                                {post.data.category}
+                                            </div>
+                                        )}
+                                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
+                                            {post.data.title}
+                                        </h3>
+                                        <p class="text-sm text-slate-500 line-clamp-3 mb-4 flex-1">
+                                            {post.data.description}
+                                        </p>
+                                        <div class="flex items-center justify-between text-xs text-slate-400 mt-auto pt-4 border-t border-slate-100">
+                                            <span>{post.data.author}</span>
+                                            <time
+                                                datetime={postDate.toISOString()}
+                                            >
+                                                {postDate.toLocaleDateString(
+                                                    "en-gb",
+                                                    {
+                                                        year: "numeric",
+                                                        month: "short",
+                                                        day: "numeric",
+                                                    },
+                                                )}
+                                            </time>
+                                        </div>
+                                    </div>
+                                </a>
+                            );
+                        })
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

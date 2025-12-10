@@ -7,7 +7,7 @@ import { cache } from 'react';
 
 import { Stream, Streamable } from '@/vibes/soul/lib/streamable';
 import { createCompareLoader } from '@/vibes/soul/primitives/compare-drawer/loader';
-import { ProductsListSection } from '@/vibes/soul/sections/products-list-section';
+import { ProductsListSection } from '~/components/product/products-list-section';
 import { getFilterParsers } from '@/vibes/soul/sections/products-list-section/filter-parsers';
 import { getSessionCustomerAccessToken } from '~/auth';
 import { facetsTransformer } from '~/data-transformers/facets-transformer';
@@ -151,7 +151,7 @@ export default async function Category(props: Props) {
       title: product.name,
       href: product.path,
       image: product.defaultImage
-        ? { src: product.defaultImage.url, alt: product.defaultImage.altText }
+        ? { src: product.defaultImage.url.replace('{:size}', 'original'), alt: product.defaultImage.altText }
         : undefined,
       price: pricesTransformer(product.prices, format),
       subtitle: product.brand?.name ?? undefined,
@@ -203,15 +203,15 @@ export default async function Category(props: Props) {
       tree == null || tree.children.length === 0
         ? []
         : [
-            {
-              type: 'link-group' as const,
-              label: t('Category.subCategories'),
-              links: tree.children.map((child) => ({
-                label: child.name,
-                href: child.path,
-              })),
-            },
-          ];
+          {
+            type: 'link-group' as const,
+            label: t('Category.subCategories'),
+            links: tree.children.map((child) => ({
+              label: child.name,
+              href: child.path,
+            })),
+          },
+        ];
 
     return [...subCategoriesFilters, ...filters];
   });
@@ -233,7 +233,7 @@ export default async function Category(props: Props) {
       id: product.entityId.toString(),
       title: product.name,
       image: product.defaultImage
-        ? { src: product.defaultImage.url, alt: product.defaultImage.altText }
+        ? { src: product.defaultImage.url.replace('{:size}', 'original'), alt: product.defaultImage.altText }
         : undefined,
       href: product.path,
     }));

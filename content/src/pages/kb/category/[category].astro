@@ -1,0 +1,192 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+    const articles = await getCollection("kb", ({ data }) => !data.draft);
+
+    // Helper to get category (mirrors logic in index.astro)
+    const getCategory = (article: any) => {
+        if (article.data.category) return article.data.category;
+        const parts = article.slug.split("/");
+        if (parts.length > 1) {
+            return parts[0]
+                .split("-")
+                .map(
+                    (word: string) =>
+                        word.charAt(0).toUpperCase() + word.slice(1),
+                )
+                .join(" ");
+        }
+        return "General";
+    };
+
+    const categories = [
+        ...new Set(articles.map((article) => getCategory(article))),
+    ];
+
+    return categories.map((category) => ({
+        params: {
+            category: (category || "").toLowerCase().replace(/\s+/g, "-"),
+        },
+        props: { categoryName: category },
+    }));
+}
+
+const { categoryName } = Astro.props;
+
+// Fetch all articles again to filter
+const articles = await getCollection("kb", ({ data }) => !data.draft);
+
+// Helper to get category (duplicated to ensure same logic)
+const getCategory = (article: any) => {
+    if (article.data.category) return article.data.category;
+    const parts = article.slug.split("/");
+    if (parts.length > 1) {
+        return parts[0]
+            .split("-")
+            .map((word: string) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+    }
+    return "General";
+};
+
+const categoryArticles = articles
+    .filter((article) => getCategory(article) === categoryName)
+    .sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+
+// Get all categories for the filter bar
+const allCategories = [
+    ...new Set(articles.map((article) => getCategory(article))),
+].sort();
+
+// Image mapping (mirrors index.astro)
+const categoryImages: Record<string, string> = {
+    Compliance: "/images/kb/compliance.png",
+    "Getting Started": "/images/kb/getting-started.png",
+    "Industry Guides": "/images/kb/industry-guides.png",
+    Installation: "/images/kb/installation.png",
+    Materials: "/images/kb/materials.png",
+    "Sign Types": "/images/kb/sign-types.png",
+};
+---
+
+<Layout title={`${categoryName} | Knowledge Base | SafetySignHub`}>
+    <main class="bg-slate-50 min-h-screen">
+        <!-- Hero Section -->
+        <div class="bg-[#1e293b] text-white py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl font-black mb-4">Knowledge Base</h1>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+                    Expert guides, compliance information, and installation tips
+                    to help you make the right choices.
+                </p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-12">
+            <!-- Category Navigation -->
+            <div class="flex flex-wrap gap-2 mb-12 justify-center">
+                <a
+                    href="/kb"
+                    class="px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-full text-sm font-bold hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all"
+                >
+                    All Categories
+                </a>
+                {
+                    allCategories.map((cat) => {
+                        const slug = cat.toLowerCase().replace(/\s+/g, "-");
+                        const isActive = cat === categoryName;
+                        return (
+                            <a
+                                href={`/kb/category/${slug}`}
+                                class={`px-4 py-2 rounded-full text-sm font-bold border transition-all
+                                    ${
+                                        isActive
+                                            ? "bg-orange-500 text-white border-orange-500"
+                                            : "bg-white border-slate-200 text-slate-600 hover:bg-orange-500 hover:text-white hover:border-orange-500"
+                                    }`}
+                            >
+                                {cat}
+                            </a>
+                        );
+                    })
+                }
+            </div>
+
+            <!-- Articles in Category -->
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center gap-4 mb-8">
+                    {
+                        categoryImages[categoryName] && (
+                            <div class="w-16 h-16 rounded-lg overflow-hidden shadow-sm shrink-0">
+                                <img
+                                    src={categoryImages[categoryName]}
+                                    alt={categoryName}
+                                    class="w-full h-full object-cover"
+                                />
+                            </div>
+                        )
+                    }
+                    <div>
+                        <div class="flex items-center gap-3 mb-1">
+                            <span class="bg-orange-500 w-2 h-6 rounded-full"
+                            ></span>
+                            <h2 class="text-3xl font-black text-slate-900">
+                                {categoryName}
+                            </h2>
+                        </div>
+                        <p class="text-slate-500">
+                            {categoryArticles.length} article{
+                                categoryArticles.length !== 1 ? "s" : ""
+                            } available
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                >
+                    {
+                        categoryArticles.map((article) => (
+                            <a
+                                href={`/kb/${article.slug}/`}
+                                class="group bg-white border border-slate-200 rounded-lg p-6 hover:border-orange-500 hover:shadow-lg transition-all"
+                            >
+                                <div class="flex items-center gap-2 mb-3">
+                                    {article.data.difficulty && (
+                                        <span
+                                            class={`text-xs font-bold px-2 py-0.5 rounded ${
+                                                article.data.difficulty ===
+                                                "Beginner"
+                                                    ? "bg-green-100 text-green-700"
+                                                    : article.data
+                                                            .difficulty ===
+                                                        "Intermediate"
+                                                      ? "bg-yellow-100 text-yellow-700"
+                                                      : "bg-red-100 text-red-700"
+                                            }`}
+                                        >
+                                            {article.data.difficulty}
+                                        </span>
+                                    )}
+                                    {article.data.readingTime && (
+                                        <span class="text-xs text-slate-400">
+                                            {article.data.readingTime} min read
+                                        </span>
+                                    )}
+                                </div>
+                                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
+                                    {article.data.title}
+                                </h3>
+                                <p class="text-sm text-slate-500 line-clamp-2">
+                                    {article.data.description}
+                                </p>
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>

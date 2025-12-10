@@ -4,7 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import ProductCard from "../../components/ProductCard.astro";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("blog");
+    const posts = await getCollection("blog", ({ data }) => !data.draft);
     return posts.map((post) => ({
         params: { slug: post.slug },
         props: post,
@@ -14,72 +14,171 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
+
+// Get date from either field
+const postDate = post.data.pubDate || post.data.publishedAt || new Date();
+
+// Get image from either field
+const heroImage = post.data.heroImage || post.data.image;
+
+// Breadcrumb data
+const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: "Blog", href: "/blog" },
+];
+
+if (post.data.category) {
+    breadcrumbs.push({
+        label: post.data.category,
+        href: `/blog?category=${encodeURIComponent(post.data.category)}`,
+    });
+}
 ---
 
 <Layout title={post.data.title}>
-    <main class="container mx-auto px-4 py-12">
-        <article class="max-w-3xl mx-auto">
-            <header class="mb-8 text-center">
-                <div
-                    class="flex items-center justify-center gap-2 text-sm font-bold uppercase text-primary mb-4"
-                >
-                    {post.data.tags.map((tag) => <span>#{tag}</span>)}
-                </div>
-                <h1
-                    class="text-4xl md:text-5xl font-heading font-bold text-foreground mb-4 leading-tight"
-                >
-                    {post.data.title}
-                </h1>
-                <div
-                    class="flex items-center justify-center gap-4 text-sm text-contrast-500"
-                >
-                    <span>By {post.data.author}</span>
-                    <span>•</span>
-                    <time datetime={post.data.pubDate.toISOString()}>
-                        {
-                            post.data.pubDate.toLocaleDateString("en-gb", {
-                                year: "numeric",
-                                month: "long",
-                                day: "numeric",
-                            })
-                        }
-                    </time>
-                </div>
-            </header>
-
-            {
-                post.data.heroImage && (
-                    <div class="aspect-video rounded-xl overflow-hidden mb-12 shadow-md">
-                        <img
-                            src={post.data.heroImage}
-                            alt=""
-                            class="w-full h-full object-cover"
-                        />
-                    </div>
-                )
-            }
-
+    <main class="bg-slate-50 min-h-screen">
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b border-slate-200">
             <div
-                class="prose prose-lg prose-headings:font-heading prose-headings:font-bold prose-headings:text-foreground prose-p:text-contrast-500 prose-a:text-primary prose-strong:text-foreground max-w-none"
+                class="container mx-auto px-4 py-3 text-xs text-slate-500 flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap"
             >
-                <Content />
+                {
+                    breadcrumbs.map((crumb, i) => (
+                        <>
+                            {i > 0 && (
+                                <svg
+                                    class="w-3 h-3 flex-shrink-0"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 5l7 7-7 7"
+                                    />
+                                </svg>
+                            )}
+                            <a
+                                href={crumb.href}
+                                class="hover:text-orange-600 transition-colors"
+                            >
+                                {crumb.label}
+                            </a>
+                        </>
+                    ))
+                }
+                <svg
+                    class="w-3 h-3 flex-shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="font-bold text-slate-900 truncate"
+                    >{post.data.title}</span
+                >
             </div>
+        </div>
 
-            {
-                post.data.relatedProducts &&
-                    post.data.relatedProducts.length > 0 && (
-                        <div class="mt-12 pt-12 border-t border-contrast-100">
-                            <h2 class="text-2xl font-bold font-heading mb-6">
-                                Related Products
-                            </h2>
-                            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                                {post.data.relatedProducts.map((id) => (
-                                    <ProductCard productId={id} />
+        <div class="container mx-auto px-4 py-12">
+            <article class="max-w-3xl mx-auto">
+                <header class="mb-8 text-center">
+                    <!-- Category & Subcategory -->
+                    <div class="flex items-center justify-center gap-2 mb-4">
+                        {
+                            post.data.category && (
+                                <span class="px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full uppercase tracking-wide">
+                                    {post.data.category}
+                                </span>
+                            )
+                        }
+                        {
+                            post.data.subcategory && (
+                                <span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-full">
+                                    {post.data.subcategory}
+                                </span>
+                            )
+                        }
+                    </div>
+
+                    <h1
+                        class="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 mb-4 leading-tight"
+                    >
+                        {post.data.title}
+                    </h1>
+
+                    <div
+                        class="flex items-center justify-center gap-4 text-sm text-slate-500"
+                    >
+                        <span class="font-medium">By {post.data.author}</span>
+                        <span>•</span>
+                        <time datetime={postDate.toISOString()}>
+                            {
+                                postDate.toLocaleDateString("en-gb", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })
+                            }
+                        </time>
+                    </div>
+
+                    <!-- Tags -->
+                    {
+                        post.data.tags && post.data.tags.length > 0 && (
+                            <div class="flex items-center justify-center gap-2 mt-4">
+                                {post.data.tags.map((tag) => (
+                                    <span class="text-xs text-orange-600 font-medium">
+                                        #{tag}
+                                    </span>
                                 ))}
                             </div>
+                        )
+                    }
+                </header>
+
+                {
+                    heroImage && (
+                        <div class="aspect-video rounded-xl overflow-hidden mb-12 shadow-lg">
+                            <img
+                                src={heroImage}
+                                alt=""
+                                class="w-full h-full object-cover"
+                            />
                         </div>
                     )
-            }
-        </article>
+                }
+
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-8 prose prose-lg prose-headings:font-black prose-headings:text-slate-900 prose-p:text-slate-600 prose-a:text-orange-600 prose-strong:text-slate-900 max-w-none"
+                >
+                    <Content />
+                </div>
+
+                {
+                    post.data.relatedProducts &&
+                        post.data.relatedProducts.length > 0 && (
+                            <div class="mt-12 pt-12 border-t border-slate-200">
+                                <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                                    <span class="bg-orange-500 w-2 h-8 rounded-full" />
+                                    Related Products
+                                </h2>
+                                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                                    {post.data.relatedProducts.map((id) => (
+                                        <ProductCard productId={id} />
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                }
+            </article>
+        </div>
     </main>
 </Layout>

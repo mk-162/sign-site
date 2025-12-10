@@ -1,0 +1,156 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("kb", ({ data }) => !data.draft);
+
+// Infer category from slug path if not in frontmatter
+const getCategory = (article: (typeof articles)[0]) => {
+    if (article.data.category) return article.data.category;
+    // Infer from folder structure (e.g., "compliance/some-article" -> "Compliance")
+    const parts = article.slug.split("/");
+    if (parts.length > 1) {
+        return parts[0]
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+    }
+    return "General";
+};
+
+// Group articles by category
+const categories = articles.reduce(
+    (acc, article) => {
+        const cat = getCategory(article);
+        if (!acc[cat]) {
+            acc[cat] = [];
+        }
+        acc[cat].push(article);
+        return acc;
+    },
+    {} as Record<string, typeof articles>,
+);
+
+// Sort articles within each category by order
+Object.keys(categories).forEach((cat) => {
+    categories[cat].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+});
+
+// Get sorted category names
+const categoryNames = Object.keys(categories).sort();
+
+const categoryImages: Record<string, string> = {
+    Compliance: "/images/kb/compliance.png",
+    "Getting Started": "/images/kb/getting-started.png",
+    "Industry Guides": "/images/kb/industry-guides.png",
+    Installation: "/images/kb/installation.png",
+    Materials: "/images/kb/materials.png",
+    "Sign Types": "/images/kb/sign-types.png",
+};
+---
+
+<Layout title="Knowledge Base | SafetySignHub">
+    <main class="bg-slate-50 min-h-screen">
+        <!-- Hero Section -->
+        <div class="bg-[#1e293b] text-white py-16">
+            <div class="container mx-auto px-4 text-center">
+                <h1 class="text-4xl font-black mb-4">Knowledge Base</h1>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+                    Expert guides, compliance information, and installation tips
+                    to help you make the right choices.
+                </p>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 py-12">
+            <!-- Category Navigation -->
+            <div class="flex flex-wrap gap-2 mb-12 justify-center">
+                {
+                    categoryNames.map((cat) => {
+                        const slug = cat.toLowerCase().replace(/\s+/g, "-");
+                        return (
+                            <a
+                                href={`/kb/category/${slug}`}
+                                class="px-4 py-2 bg-white border border-slate-200 rounded-full text-sm font-bold text-slate-600 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all"
+                            >
+                                {cat}
+                                <span class="ml-1 text-slate-400">
+                                    ({categories[cat].length})
+                                </span>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+
+            <!-- Articles by Category -->
+            <div class="space-y-16">
+                {
+                    categoryNames.map((cat) => (
+                        <section id={cat.toLowerCase().replace(/\s+/g, "-")}>
+                            <div class="flex items-center gap-4 mb-6">
+                                {categoryImages[cat] && (
+                                    <div class="w-16 h-16 rounded-lg overflow-hidden shadow-sm shrink-0">
+                                        <img
+                                            src={categoryImages[cat]}
+                                            alt={cat}
+                                            class="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                )}
+                                <div>
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <span class="bg-orange-500 w-2 h-6 rounded-full" />
+                                        <h2 class="text-2xl font-black text-slate-900">
+                                            {cat}
+                                        </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {categories[cat].map((article) => (
+                                    <a
+                                        href={`/kb/${article.slug}/`}
+                                        class="group bg-white border border-slate-200 rounded-lg p-6 hover:border-orange-500 hover:shadow-lg transition-all"
+                                    >
+                                        <div class="flex items-center gap-2 mb-3">
+                                            {article.data.difficulty && (
+                                                <span
+                                                    class={`text-xs font-bold px-2 py-0.5 rounded ${
+                                                        article.data
+                                                            .difficulty ===
+                                                        "Beginner"
+                                                            ? "bg-green-100 text-green-700"
+                                                            : article.data
+                                                                    .difficulty ===
+                                                                "Intermediate"
+                                                              ? "bg-yellow-100 text-yellow-700"
+                                                              : "bg-red-100 text-red-700"
+                                                    }`}
+                                                >
+                                                    {article.data.difficulty}
+                                                </span>
+                                            )}
+                                            {article.data.readingTime && (
+                                                <span class="text-xs text-slate-400">
+                                                    {article.data.readingTime}{" "}
+                                                    min read
+                                                </span>
+                                            )}
+                                        </div>
+                                        <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-orange-600 transition-colors line-clamp-2">
+                                            {article.data.title}
+                                        </h3>
+                                        <p class="text-sm text-slate-500 line-clamp-2">
+                                            {article.data.description}
+                                        </p>
+                                    </a>
+                                ))}
+                            </div>
+                        </section>
+                    ))
+                }
+            </div>
+        </div>
+    </main>
+</Layout>
