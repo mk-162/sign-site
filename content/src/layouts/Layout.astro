@@ -7,137 +7,44 @@ interface Props {
 	title: string;
 }
 
-// Fetch Category Tree
-const GRAPHQL_ENDPOINT = "http://localhost:3000/api/graphql"; // Use Next.js proxy if available, or direct:
-// Next.js app is at localhost:3000. It likely proxies /api/graphql.
-// If not, we might fail CORS if we hit BigCommerce directly from browser, but this is server-side in Astro (mostly SSG/SSR).
-// Wait, Astro `output: 'static'` by default? If so, fetch happens at build time.
-// If server, it happens at request time.
-// Let's assume build time or server mode. Next.js creates a proxy?
-// Let's try to hit the Next.js API route if it exists, otherwise hardcode BC endpoint.
-// Given I don't want to expose tokens here, let's use a public-ish approach or just hardcode for the sandbox.
-// The user has `pnpm dev` running for both.
-// Let's use a hardcoded category tree for now to verify UI, OR better:
-// The `core` app fetched it during build/request. `content` app has no easy access to `core`'s data layer without shared lib.
-// I will implement a simpler static nav for now matching `core`'s logic but maybe fetching from a known JSON or just hardcoding the top levels if I can't fetch.
-// BUT `core` just implemented `getCategoryTree`.
-// Let's try to fetch from `http://localhost:3000/api/category-tree`? Does that exist? No.
-// Let's implement the GraphQL fetch with the token if I can find it in `process.env`.
-// I'll stick to a robust fetch if I can.
-// For now, to unblock the user: I will use a placeholder fetch that returns the `navigationData` structure but adapted to `CategoryTreeItem`.
-// Actually, `core`'s Header was using `navigationData`. I just replaced it to use dynamic data.
-// So `content` should also use dynamic data.
-// I'll try to fetch from BigCommerce directly. I need the token.
-// I'll assume `content` has access to `BIGCOMMERCE_STOREFRONT_TOKEN` in `.env`.
-// If not, I'll fallback to an empty array and the user will see a simplified header, which is better than broken.
-
 const { title } = Astro.props;
 
-// Helper to fetch categories
-async function getCategories() {
-	try {
-		const response = await fetch(
-			"https://store-749ow690.mybigcommerce.com/graphql",
-			{
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${import.meta.env.BIGCOMMERCE_STOREFRONT_TOKEN}`,
-				},
-				body: JSON.stringify({
-					query: `
-                    query CategoryTree {
-                        site {
-                            categoryTree {
-                                name
-                                path
-                                children {
-                                    name
-                                    path
-                                    children {
-                                        name
-                                        path
-                                    }
-                                }
-                            }
-                        }
-                    }
-                `,
-				}),
-			},
-		);
-		const data = await response.json();
-		return data.data?.site?.categoryTree || [];
-	} catch (e) {
-		console.error("Failed to fetch categories:", e);
-	}
-
-	// Fallback Mock Data for Demo
-	return [
-		{
-			name: "Warning Signs",
-			path: "/warning-signs",
-			children: [
-				{
-					name: "Electrical Warning",
-					path: "/warning-signs/electrical",
-					children: [],
-				},
-				{
-					name: "Chemical Hazard",
-					path: "/warning-signs/chemical",
-					children: [],
-				},
-			],
-		},
-		{
-			name: "Fire Safety",
-			path: "/fire-safety",
-			children: [
-				{
-					name: "Fire Extinguishers",
-					path: "/fire-safety/extinguishers",
-					children: [],
-				},
-				{
-					name: "Fire Exits",
-					path: "/fire-safety/exits",
-					children: [],
-				},
-			],
-		},
-		{
-			name: "First Aid",
-			path: "/first-aid",
-			children: [
-				{
-					name: "First Aid Kits",
-					path: "/first-aid/kits",
-					children: [],
-				},
-				{ name: "Eye Wash", path: "/first-aid/eye-wash", children: [] },
-			],
-		},
-		{
-			name: "PPE & Workwear",
-			path: "/ppe",
-			children: [
-				{
-					name: "Eye Protection",
-					path: "/ppe/eye-protection",
-					children: [],
-				},
-				{
-					name: "Safety Footwear",
-					path: "/ppe/safety-footwear",
-					children: [],
-				},
-			],
-		},
-	];
-}
-
-const categories = await getCategories();
+// Static category data for the content site header navigation
+// This keeps the content site independent of BigCommerce API
+const categories = [
+	{
+		name: "Warning Signs",
+		path: "/warning-signs",
+		children: [
+			{ name: "Electrical Warning", path: "/warning-signs/electrical", children: [] },
+			{ name: "Chemical Hazard", path: "/warning-signs/chemical", children: [] },
+		],
+	},
+	{
+		name: "Fire Safety",
+		path: "/fire-safety",
+		children: [
+			{ name: "Fire Extinguishers", path: "/fire-safety/extinguishers", children: [] },
+			{ name: "Fire Exits", path: "/fire-safety/exits", children: [] },
+		],
+	},
+	{
+		name: "First Aid",
+		path: "/first-aid",
+		children: [
+			{ name: "First Aid Kits", path: "/first-aid/kits", children: [] },
+			{ name: "Eye Wash", path: "/first-aid/eye-wash", children: [] },
+		],
+	},
+	{
+		name: "PPE & Workwear",
+		path: "/ppe",
+		children: [
+			{ name: "Eye Protection", path: "/ppe/eye-protection", children: [] },
+			{ name: "Safety Footwear", path: "/ppe/safety-footwear", children: [] },
+		],
+	},
+];
 ---
 
 <!doctype html>
