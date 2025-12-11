@@ -110,16 +110,18 @@ export const MakeswiftHeader = forwardRef(
         navigation={{
           ...passedProps,
           links: combineLinks(passedProps.links, links),
-          logo: logo.desktop.src
+          // Always use the SafetySignHub logo from code (passedProps.logo)
+          // This overrides any Makeswift-configured logo
+          logo: passedProps.logo ?? (logo.desktop.src
             ? { src: logo.desktop.src, alt: logo.desktop.alt }
-            : passedProps.logo,
-          logoWidth: logo.desktop.width,
-          logoHeight: logo.desktop.height,
-          mobileLogo: logo.mobile.src
+            : undefined),
+          logoWidth: logo.desktop.width || 200,
+          logoHeight: logo.desktop.height || 60,
+          mobileLogo: passedProps.logo ?? (logo.mobile.src
             ? { src: logo.mobile.src, alt: logo.mobile.alt }
-            : passedProps.mobileLogo,
-          mobileLogoWidth: logo.mobile.width,
-          mobileLogoHeight: logo.mobile.height,
+            : undefined),
+          mobileLogoWidth: logo.mobile.width || 160,
+          mobileLogoHeight: logo.mobile.height || 48,
           linksPosition,
           logoHref: logo.link?.href ?? passedProps.logoHref,
         }}
