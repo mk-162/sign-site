@@ -200,7 +200,7 @@ export default async function TradeEnquiriesPage({ params }: Props) {
               </div>
               <button
                 className="flex w-full items-center justify-center gap-2 rounded-md bg-slate-900 py-3 font-bold text-white shadow-md transition-colors hover:bg-slate-800"
-                type="button"
+                type="submit"
               >
                 Submit Application <MoveRight className="h-4 w-4" />
               </button>

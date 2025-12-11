@@ -169,7 +169,7 @@ export default async function ContactUsPage({ params }: Props) {
             </div>
             <button
               className="w-full rounded-md bg-orange-600 py-3 font-bold text-white shadow-md transition-colors hover:bg-orange-700"
-              type="button"
+              type="submit"
             >
               Send Message
             </button>
