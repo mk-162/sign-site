@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Book, Shield, AlertTriangle, Info, FileText, ChevronRight } from 'lucide-react';
 
 import { allKBArticles } from 'contentlayer/generated';
 
