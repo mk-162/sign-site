@@ -76,7 +76,11 @@ export const Header = async () => {
 
   const data = await getHeaderData();
 
-  const logo = data.settings ? logoTransformer(data.settings) : '';
+  // Use custom SafetySignHub logo instead of BigCommerce store logo
+  const logo = {
+    src: '/images/ss-logo.svg',
+    alt: 'SafetySignHub - GTSE Brand',
+  };
 
   const locales = routing.locales.map((enabledLocales) => ({
     id: enabledLocales,
