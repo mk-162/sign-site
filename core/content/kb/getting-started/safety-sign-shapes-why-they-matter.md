@@ -71,9 +71,9 @@ Now that you understand the basics, consider conducting a safety sign audit of y
 
 ## Related Resources
 
-- [UK Safety Sign Regulations: The Complete 2024 Guide](#)
-- [Safety Sign Materials Explained](#)
-- [How to Install Safety Signs: Step-by-Step Guide](#)
+- [UK Safety Sign Regulations: The Complete 2024 Guide](/kb/compliance/uk-safety-sign-regulations-the-complete-2024-guide)
+- [Safety Sign Materials Explained](/kb/materials/safety-sign-materials-explained-complete-comparison-guide)
+- [How to Install Safety Signs: Step-by-Step Guide](/kb/installation/how-to-install-safety-signs-step-by-step-guide)
 
 ## Conclusion
 

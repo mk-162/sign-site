@@ -58,7 +58,7 @@ export default async function KnowledgeBasePage({ params }: Props) {
 
   // Sort articles within each category by order
   Object.keys(categories).forEach((cat) => {
-    categories[cat].sort((a, b) => (a.order || 0) - (b.order || 0));
+    categories[cat]?.sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
   // Get sorted category names
@@ -89,7 +89,7 @@ export default async function KnowledgeBasePage({ params }: Props) {
                 key={cat}
               >
                 {cat}
-                <span className="ml-1 text-slate-400">({categories[cat].length})</span>
+                <span className="ml-1 text-slate-400">({categories[cat]?.length ?? 0})</span>
               </Link>
             );
           })}
@@ -119,7 +119,7 @@ export default async function KnowledgeBasePage({ params }: Props) {
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {categories[cat].map((article) => (
+                {categories[cat]?.map((article) => (
                   <Link
                     className="group rounded-lg border border-slate-200 bg-white p-6 transition-all hover:border-orange-500 hover:shadow-lg"
                     href={article.url}

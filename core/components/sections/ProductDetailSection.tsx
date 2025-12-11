@@ -61,7 +61,7 @@ export function ProductDetailSection({ product, breadcrumbs, onAddToCart }: Prod
         ? product.images
         : [{ src: 'https://via.placeholder.com/800', alt: product.title }];
 
-    const selectedImage = images[selectedImageIndex] || images[0];
+    const selectedImage = images[selectedImageIndex] ?? images[0] ?? { src: 'https://via.placeholder.com/800', alt: product.title };
 
     return (
         <div className="min-h-screen bg-gray-50 font-sans flex flex-col">

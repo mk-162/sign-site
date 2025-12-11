@@ -189,9 +189,8 @@ function CartClient({
                                                 <CounterForm
                                                     lineItem={item}
                                                     action={formAction}
-                                                    onSubmit={(formData) => {
+                                                    onSubmit={(formData: FormData) => {
                                                         startTransition(() => {
-                                                            formAction(formData);
                                                             setOptimisticLineItems(formData);
                                                             // Event tracking omitted for brevity, add back if critical
                                                         });
