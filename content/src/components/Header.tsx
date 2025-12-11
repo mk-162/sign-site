@@ -73,16 +73,19 @@ export function Header({ categories = [] }: { categories?: CategoryTreeItem[] })
                             {/* Logo Area */}
                             <div className="flex flex-col shrink-0">
                                 <a href={STORE_URL}>
-                                    <div className="flex items-center gap-2 cursor-pointer">
-                                        <div className="bg-orange-500 p-1.5 rounded-sm shadow-lg shadow-orange-500/20">
-                                            <Shield className="h-7 w-7 text-white" fill="currentColor" />
-                                        </div>
+                                    <div className="flex items-center gap-3 cursor-pointer">
+                                        {/* Orange Chevrons */}
+                                        <svg width="48" height="56" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                                            <path d="M4 8L20 28L4 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                                            <path d="M16 8L32 28L16 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                                            <path d="M28 8L44 28L28 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                                        </svg>
                                         <div className="leading-none">
-                                            <h1 className="text-2xl font-black tracking-tight text-white" style={{ fontFamily: 'var(--font-family-inter), Inter, system-ui, sans-serif' }}>
-                                                SafetySign<span className="text-orange-500">Hub</span>
+                                            <h1 className="text-3xl font-black tracking-tight text-white italic" style={{ fontFamily: 'var(--font-family-inter), Inter, system-ui, sans-serif' }}>
+                                                Safety<br/>Sign<span className="text-orange-500">Hub</span>
                                             </h1>
-                                            <div className="text-[10px] uppercase tracking-[0.2em] text-slate-400 font-bold mt-0.5 ml-0.5">
-                                                A GTSE Brand
+                                            <div className="text-xs text-slate-400 font-normal mt-1">
+                                                a <span className="text-orange-500 font-semibold">GTSE</span> Brand
                                             </div>
                                         </div>
                                     </div>
