@@ -44,6 +44,9 @@
       ],
       "~/*": [
         "./*"
+      ],
+      "contentlayer/generated": [
+        "./.contentlayer/generated"
       ]
     },
     "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
@@ -57,7 +60,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "tests/**/*",
-    ".next\\dev/types/**/*.ts"
+    ".next\\dev/types/**/*.ts",
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules",
