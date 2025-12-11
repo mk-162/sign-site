@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Shield, Phone, Mail, User } from 'lucide-react';
+import { Phone, Mail, User, MapPin } from 'lucide-react';
 
 export function Footer() {
     return (
@@ -8,11 +8,21 @@ export function Footer() {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
                     <div className="col-span-2 lg:col-span-2 space-y-6">
-                        <div className="flex items-center gap-2">
-                            <Shield className="h-8 w-8 text-orange-500" fill="currentColor" />
-                            <span className="text-2xl font-black text-white">
-                                SafetySign<span className="text-orange-500">Hub</span>
-                            </span>
+                        <div className="flex items-center gap-3">
+                            {/* Orange Chevrons */}
+                            <svg width="40" height="48" viewBox="0 0 48 56" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                                <path d="M4 8L20 28L4 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M16 8L32 28L16 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M28 8L44 28L28 48" stroke="#FF7A00" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                            <div className="leading-none">
+                                <span className="text-2xl font-black text-white italic">
+                                    Safety<br/>Sign<span className="text-orange-500">Hub</span>
+                                </span>
+                                <div className="text-xs text-slate-400 font-normal mt-1">
+                                    a <span className="text-orange-500 font-semibold">GTSE</span> Brand
+                                </div>
+                            </div>
                         </div>
                         <p className="text-sm max-w-sm leading-relaxed">
                             The leading provider of industrial safety signage and equipment. Dedicated to keeping your
@@ -108,7 +118,7 @@ export function Footer() {
                                 <span>support@safetysignhub.com</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <div className="w-5 h-5 text-orange-500 shrink-0">📍</div>
+                                <MapPin className="w-5 h-5 text-orange-500 shrink-0" />
                                 <span>
                                     GTSE | WeWork - Dalton Place
                                     <br />
