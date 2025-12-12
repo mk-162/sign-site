@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety Sign Hub - Brand Guidelines</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1A2C43;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            background: #000000;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        header h1 span {
+            color: #FF7300;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #1A2C43;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #FF7300;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1A2C43;
+            margin: 40px 0 20px;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .color-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+        
+        .color-swatch {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+        
+        .color-info {
+            padding: 20px;
+            background: white;
+        }
+        
+        .color-name {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1A2C43;
+            margin-bottom: 15px;
+        }
+        
+        .color-values {
+            display: grid;
+            gap: 8px;
+        }
+        
+        .color-value {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .color-value strong {
+            color: #1A2C43;
+        }
+        
+        .color-value code {
+            background: #e0e0e0;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .typography-section {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .font-demo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            margin: 30px 0;
+        }
+        
+        .font-size-1 { font-size: 4rem; line-height: 1.2; }
+        .font-size-2 { font-size: 3rem; line-height: 1.2; }
+        .font-size-3 { font-size: 2rem; line-height: 1.3; }
+        .font-size-4 { font-size: 1.5rem; line-height: 1.4; }
+        
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .logo-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .logo-preview {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+        
+        .logo-preview.dark {
+            background: #000000;
+        }
+        
+        .logo-preview.light {
+            background: #f5f5f5;
+        }
+        
+        .logo-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-info {
+            padding: 20px;
+            background: white;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .logo-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #1A2C43;
+            margin-bottom: 10px;
+        }
+        
+        .logo-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .usage-box {
+            background: #e8f4ff;
+            border-left: 4px solid #FF7300;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .usage-box h4 {
+            color: #1A2C43;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        .usage-box ul {
+            margin-left: 20px;
+        }
+        
+        .usage-box li {
+            margin: 8px 0;
+        }
+        
+        .file-structure {
+            background: #1A2C43;
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            margin: 30px 0;
+        }
+        
+        .file-structure pre {
+            color: #ffffff;
+            line-height: 1.8;
+        }
+        
+        .info-banner {
+            background: linear-gradient(135deg, #FF7300 0%, #ff8c1a 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .info-banner h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .info-banner a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #1A2C43;
+            color: white;
+            font-weight: 800;
+        }
+        
+        tr:hover {
+            background: #f9f9f9;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .spec-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .spec-card h4 {
+            color: #FF7300;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background: #1A2C43;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 80px;
+        }
+        
+        footer p {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Safety Sign <span>Hub</span></h1>
+        <p>Brand Guidelines & Asset Package</p>
+        <p style="opacity: 0.7; margin-top: 10px;">a GTSE brand</p>
+    </header>
+
+    <div class="container">
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 20px;">
+                Welcome to the Safety Sign Hub Brand Guidelines. This comprehensive guide provides all the essential 
+                information needed to maintain brand consistency across all applications. The brand pack includes 
+                high-resolution logo files in multiple formats, designed for both light and dark backgrounds.
+            </p>
+            
+            <div class="info-banner">
+                <h3>📁 About Affinity Files</h3>
+                <p style="line-height: 1.8;">
+                    <strong>Affinity Designer/Photo</strong> is a free, professional-grade alternative to Adobe Photoshop and Illustrator. 
+                    The original <strong>.af files</strong> (Affinity format) have been provided in this brand pack, allowing you to 
+                    edit and customize the logos with full layer access. Download Affinity Designer at 
+                    <a href="https://affinity.serif.com" target="_blank">affinity.serif.com</a>.
+                </p>
+            </div>
+        </section>
+
+        <section id="file-structure">
+            <h2>File Structure</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                All logo assets are organized in a clear hierarchy for easy access:
+            </p>
+            <div class="file-structure">
+                <pre>GTSC_Brand_Pack/
+├── With_GTSE/
+│   ├── Light_Mode/
+│   │   ├── JPEG/    (High-res, white background)
+│   │   ├── PNG/     (High-res, transparent)
+│   │   ├── GIF/     (Transparent)
+│   │   ├── SVG/     (Scalable vector)
+│   │   └── TIFF/    (High-res print, transparent)
+│   └── Dark_Mode/
+│       ├── JPEG/
+│       ├── PNG/
+│       ├── GIF/
+│       ├── SVG/
+│       └── TIFF/
+└── Without_GTSE/
+    ├── Light_Mode/
+    │   ├── JPEG/
+    │   ├── PNG/
+    │   ├── GIF/
+    │   ├── SVG/
+    │   └── TIFF/
+    └── Dark_Mode/
+        ├── JPEG/
+        ├── PNG/
+        ├── GIF/
+        ├── SVG/
+        └── TIFF/</pre>
+            </div>
+        </section>
+
+        <section id="colors">
+            <h2>Brand Colors</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                The Safety Sign Hub color palette is designed for high visibility and professional impact.
+            </p>
+            
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #FF7300; color: white;">
+                        ORANGE
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Safety Orange</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                <code>#FF7300</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                <code>255, 115, 0</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>CMYK</strong>
+                                <code>0, 55, 100, 0</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #FFFFFF; color: #1A2C43; border: 2px solid #e0e0e0;">
+                        WHITE
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Pure White</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                <code>#FFFFFF</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                <code>255, 255, 255</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>CMYK</strong>
+                                <code>0, 0, 0, 0</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #1A2C43; color: white;">
+                        NAVY
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Deep Navy</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                <code>#1A2C43</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                <code>26, 44, 67</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>CMYK</strong>
+                                <code>61, 34, 0, 74</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #000000; color: white;">
+                        BLACK
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">True Black</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                <code>#000000</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                <code>0, 0, 0</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>CMYK</strong>
+                                <code>0, 0, 0, 100</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-swatch" style="background: #A0A0A0; color: white;">
+                        GREY
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Light Grey</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                <code>#A0A0A0</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                <code>160, 160, 160</code>
+                            </div>
+                            <div class="color-value">
+                                <strong>CMYK</strong>
+                                <code>0, 0, 0, 37</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Color Usage Guidelines</h3>
+            <div class="usage-box">
+                <h4>Primary Brand Color: Safety Orange (#FF7300)</h4>
+                <ul>
+                    <li>Use for the word "Hub" in all logo variations</li>
+                    <li>Use for accent elements, call-to-action buttons, and highlights</li>
+                    <li>Provides high visibility and reinforces safety messaging</li>
+                    <li>Never use reversed or at less than 100% opacity</li>
+                </ul>
+            </div>
+
+            <div class="usage-box">
+                <h4>Text Colors</h4>
+                <ul>
+                    <li><strong>Light Mode:</strong> Use White (#FFFFFF) for "Safety Sign" text on dark backgrounds</li>
+                    <li><strong>Dark Mode:</strong> Use Deep Navy (#1A2C43) for "Safety Sign" text on light backgrounds</li>
+                    <li><strong>GTSE Brand Tag:</strong> Always use Light Grey (#A0A0A0) for subtle brand attribution</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="typography">
+            <h2>Typography</h2>
+            
+            <div class="typography-section">
+                <h3 style="color: #1A2C43;">Primary Typeface: Inter ExtraBold</h3>
+                <p style="margin-bottom: 30px; color: #666;">
+                    Inter is a modern, highly legible sans-serif typeface designed specifically for digital interfaces. 
+                    We use <strong>Inter ExtraBold (weight: 800)</strong> exclusively for all logo and headline applications.
+                </p>
+
+                <div class="font-demo font-size-1">
+                    Safety Sign Hub
+                </div>
+                <div class="font-demo font-size-2" style="color: #666;">
+                    Safety Sign Hub
+                </div>
+                <div class="font-demo font-size-3" style="color: #FF7300;">
+                    Safety Sign Hub
+                </div>
+                <div class="font-demo font-size-4" style="color: #1A2C43;">
+                    a GTSE brand
+                </div>
+
+                <h4 style="margin-top: 40px; color: #1A2C43;">Font Specifications</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Element</th>
+                            <th>Font Family</th>
+                            <th>Weight</th>
+                            <th>Size (Relative)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Logo Text</td>
+                            <td>Inter</td>
+                            <td>ExtraBold (800)</td>
+                            <td>Base size</td>
+                        </tr>
+                        <tr>
+                            <td>GTSE Brand Tag</td>
+                            <td>Inter</td>
+                            <td>Regular (400)</td>
+                            <td>~30% of base</td>
+                        </tr>
+                        <tr>
+                            <td>Headings</td>
+                            <td>Inter</td>
+                            <td>ExtraBold (800)</td>
+                            <td>Variable</td>
+                        </tr>
+                        <tr>
+                            <td>Body Text</td>
+                            <td>Inter</td>
+                            <td>Regular (400)</td>
+                            <td>Variable</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="usage-box" style="margin-top: 30px;">
+                    <h4>Typography Guidelines</h4>
+                    <ul>
+                        <li>Always use <strong>Inter ExtraBold</strong> for the main logo text</li>
+                        <li>Never substitute with similar fonts (Arial, Helvetica, etc.)</li>
+                        <li>Maintain proper spacing and kerning as shown in provided logo files</li>
+                        <li>Download Inter font family free from <a href="https://fonts.google.com/specimen/Inter" target="_blank">Google Fonts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="logo-variations">
+            <h2>Logo Variations</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                Four main logo variations are provided to ensure optimal visibility across all applications:
+            </p>
+
+            <div class="logo-grid">
+                <div class="logo-card">
+                    <div class="logo-preview dark">
+                        <div style="width: 100%; text-align: center; color: white; font-size: 0.8rem;">
+                            Preview on Dark Background
+                        </div>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-title">Light Mode - Without GTSE</div>
+                        <div class="logo-description">
+                            White "Safety Sign" + Orange "Hub" on dark backgrounds
+                        </div>
+                        <strong>Best for:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Dark website headers</li>
+                            <li>Black/dark colored materials</li>
+                            <li>Video overlays on dark content</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-preview light">
+                        <div style="width: 100%; text-align: center; color: #1A2C43; font-size: 0.8rem;">
+                            Preview on Light Background
+                        </div>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-title">Dark Mode - Without GTSE</div>
+                        <div class="logo-description">
+                            Navy "Safety Sign" + Orange "Hub" on light backgrounds
+                        </div>
+                        <strong>Best for:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>White/light website backgrounds</li>
+                            <li>Print materials</li>
+                            <li>Light colored presentations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-preview dark">
+                        <div style="width: 100%; text-align: center; color: white; font-size: 0.8rem;">
+                            Preview on Dark Background
+                        </div>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-title">Light Mode - With GTSE</div>
+                        <div class="logo-description">
+                            White "Safety Sign" + Orange "Hub" + "a GTSE brand" tag
+                        </div>
+                        <strong>Best for:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Official brand communications</li>
+                            <li>Marketing materials requiring brand attribution</li>
+                            <li>Partnership presentations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="logo-card">
+                    <div class="logo-preview light">
+                        <div style="width: 100%; text-align: center; color: #1A2C43; font-size: 0.8rem;">
+                            Preview on Light Background
+                        </div>
+                    </div>
+                    <div class="logo-info">
+                        <div class="logo-title">Dark Mode - With GTSE</div>
+                        <div class="logo-description">
+                            Navy "Safety Sign" + Orange "Hub" + "a GTSE brand" tag
+                        </div>
+                        <strong>Best for:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Light background brand communications</li>
+                            <li>Print documents with brand attribution</li>
+                            <li>Official letterheads and documents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="file-formats">
+            <h2>File Format Specifications</h2>
+            
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>PNG Format</h4>
+                    <p><strong>Resolution:</strong> 4x scale (high-res)</p>
+                    <p><strong>DPI:</strong> 300</p>
+                    <p><strong>Transparency:</strong> Yes</p>
+                    <p><strong>Best for:</strong> Web graphics, digital presentations, apps</p>
+                </div>
+
+                <div class="spec-card">
+                    <h4>TIFF Format</h4>
+                    <p><strong>Resolution:</strong> 4x scale (high-res)</p>
+                    <p><strong>DPI:</strong> 300</p>
+                    <p><strong>Compression:</strong> LZW</p>
+                    <p><strong>Best for:</strong> Professional printing, archival, publication</p>
+                </div>
+
+                <div class="spec-card">
+                    <h4>JPEG Format</h4>
+                    <p><strong>Resolution:</strong> 4x scale (high-res)</p>
+                    <p><strong>DPI:</strong> 300</p>
+                    <p><strong>Quality:</strong> 100%</p>
+                    <p><strong>Best for:</strong> Email, documents, general use (no transparency)</p>
+                </div>
+
+                <div class="spec-card">
+                    <h4>SVG Format</h4>
+                    <p><strong>Type:</strong> Scalable vector</p>
+                    <p><strong>Scaling:</strong> Infinite</p>
+                    <p><strong>Transparency:</strong> Yes</p>
+                    <p><strong>Best for:</strong> Web, responsive design, any size application</p>
+                </div>
+
+                <div class="spec-card">
+                    <h4>GIF Format</h4>
+                    <p><strong>Resolution:</strong> 4x scale</p>
+                    <p><strong>Colors:</strong> 255 color palette</p>
+                    <p><strong>Transparency:</strong> Yes</p>
+                    <p><strong>Best for:</strong> Simple web graphics, compatibility</p>
+                </div>
+
+                <div class="spec-card">
+                    <h4>.AF Files (Affinity)</h4>
+                    <p><strong>Type:</strong> Editable source</p>
+                    <p><strong>Layers:</strong> Fully editable</p>
+                    <p><strong>Software:</strong> Affinity Designer/Photo</p>
+                    <p><strong>Best for:</strong> Logo editing, customization, design work</p>
+                </div>
+            </div>
+
+            <h3>Format Selection Guide</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Use Case</th>
+                        <th>Recommended Format</th>
+                        <th>Alternative</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Website Header</td>
+                        <td>SVG or PNG</td>
+                        <td>GIF</td>
+                    </tr>
+                    <tr>
+                        <td>Print Materials</td>
+                        <td>TIFF</td>
+                        <td>PNG</td>
+                    </tr>
+                    <tr>
+                        <td>PowerPoint/Presentations</td>
+                        <td>PNG</td>
+                        <td>JPEG</td>
+                    </tr>
+                    <tr>
+                        <td>Email Signature</td>
+                        <td>PNG or JPEG</td>
+                        <td>GIF</td>
+                    </tr>
+                    <tr>
+                        <td>Social Media Profile</td>
+                        <td>PNG</td>
+                        <td>JPEG</td>
+                    </tr>
+                    <tr>
+                        <td>T-shirt/Merchandise</td>
+                        <td>TIFF or PNG</td>
+                        <td>SVG</td>
+                    </tr>
+                    <tr>
+                        <td>Large Format (Banners)</td>
+                        <td>TIFF</td>
+                        <td>PNG</td>
+                    </tr>
+                    <tr>
+                        <td>App Icon</td>
+                        <td>PNG</td>
+                        <td>SVG</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="usage-guidelines">
+            <h2>Logo Usage Guidelines</h2>
+
+            <h3>Clear Space Requirements</h3>
+            <p>Maintain clear space around the logo equal to the height of the letter "S" in "Safety". This ensures the logo has proper breathing room and maximum visibility.</p>
+
+            <h3>Minimum Size</h3>
+            <div class="usage-box">
+                <h4>Size Requirements</h4>
+                <ul>
+                    <li><strong>Digital/Screen:</strong> Minimum 120px wide</li>
+                    <li><strong>Print:</strong> Minimum 1 inch (2.54cm) wide</li>
+                    <li>Always maintain aspect ratio when scaling</li>
+                    <li>Never stretch or distort the logo</li>
+                </ul>
+            </div>
+
+            <h3>What NOT to Do</h3>
+            <div class="usage-box" style="background: #ffe8e8; border-left-color: #cc0000;">
+                <h4 style="color: #cc0000;">❌ Prohibited Uses</h4>
+                <ul>
+                    <li>Do not change the logo colors</li>
+                    <li>Do not rotate or skew the logo</li>
+                    <li>Do not add effects (shadows, outlines, glows)</li>
+                    <li>Do not rearrange or separate logo elements</li>
+                    <li>Do not place the logo on busy or low-contrast backgrounds</li>
+                    <li>Do not recreate or redraw the logo</li>
+                </ul>
+            </div>
+
+            <h3>Background Guidelines</h3>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4 style="color: #00aa00;">✓ Use Light Mode When:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Background is dark (black, navy, dark grey)</li>
+                        <li>Background is a dark photo/image</li>
+                        <li>High contrast is needed</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h4 style="color: #00aa00;">✓ Use Dark Mode When:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Background is light (white, cream, light grey)</li>
+                        <li>Background is a light photo/image</li>
+                        <li>Printing on white paper</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h4 style="color: #00aa00;">✓ Use With GTSE When:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Official brand communication</li>
+                        <li>Marketing materials</li>
+                        <li>Partnership presentations</li>
+                        <li>Legal documents</li>
+                    </ul>
+                </div>
+
+                <div class="spec-card">
+                    <h4 style="color: #00aa00;">✓ Use Without GTSE When:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Space is limited</li>
+                        <li>Informal communications</li>
+                        <li>Social media posts</li>
+                        <li>App interfaces</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="quick-reference">
+            <h2>Quick Reference</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Specification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Primary Font</strong></td>
+                        <td>Inter ExtraBold (Weight: 800)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Primary Color</strong></td>
+                        <td>Safety Orange #FF7300</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Secondary Colors</strong></td>
+                        <td>White #FFFFFF, Navy #1A2C43, Black #000000</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accent Color</strong></td>
+                        <td>Light Grey #A0A0A0 (GTSE brand tag)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File Formats</strong></td>
+                        <td>PNG, JPEG, GIF, SVG, TIFF, .AF (Affinity)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resolution</strong></td>
+                        <td>300 DPI, 4x scale for high-resolution</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimum Size (Digital)</strong></td>
+                        <td>120px wide</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minimum Size (Print)</strong></td>
+                        <td>1 inch (2.54cm) wide</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logo Variations</strong></td>
+                        <td>4 total (Light/Dark × With/Without GTSE)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transparency</strong></td>
+                        <td>Available in PNG, TIFF, GIF, and SVG formats</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact">
+            <h2>Questions & Support</h2>
+            <div class="info-banner">
+                <h3>Need Help?</h3>
+                <p style="line-height: 1.8;">
+                    For questions about logo usage, additional file formats, or custom applications, 
+                    please contact the GTSC brand team. We're here to ensure you have everything needed 
+                    for successful brand implementation.
+                </p>
+                <p style="margin-top: 15px;">
+                    <strong>Remember:</strong> Always use the provided logo files. Never recreate or redraw the logo.
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <h2 style="color: white; border: none; padding: 0; margin-bottom: 10px;">
+            Safety Sign <span style="color: #FF7300;">Hub</span>
+        </h2>
+        <p>a GTSE brand</p>
+        <p style="margin-top: 20px; font-size: 0.9rem;">
+            Brand Guidelines Document | Version 1.0 | © 2024 GTSC Team
+        </p>
+    </footer>
+</body>
+</html>

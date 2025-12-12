@@ -1,0 +1,31 @@
+{
+  "title": "OSHA 2025 Updates: What You Need to Know",
+  "description": "Key changes to OSHA signage requirements coming in 2025 and how to prepare your facility.",
+  "publishedAt": "2025-01-20T00:00:00.000Z",
+  "author": "Michael Torres",
+  "image": "/images/blog/osha-2025-updates.png",
+  "category": "Compliance Updates",
+  "tags": [
+    "OSHA",
+    "Compliance",
+    "2025 Updates",
+    "Regulations"
+  ],
+  "featured": true,
+  "draft": false,
+  "body": {
+    "raw": "\n# OSHA 2025 Updates: What You Need to Know\n\nThe Occupational Safety and Health Administration (OSHA) has announced several key updates to workplace signage requirements that will take effect in 2025.\n\n## Key Changes\n\n### 1. Enhanced Hazard Communication\n\nNew requirements mandate more specific hazard symbols for chemical storage areas.\n\n### 2. Photoluminescent Requirements\n\nEmergency exit signs in buildings with more than 50 occupants must now include photoluminescent elements.\n\n### 3. Digital Signage Standards\n\nFor the first time, OSHA has issued guidance on the use of digital safety displays.\n\n## Timeline\n\n- **March 2025**: New guidelines published\n- **June 2025**: Compliance grace period begins\n- **January 2026**: Full enforcement\n\n## How to Prepare\n\n1. Audit your current signage\n2. Identify gaps in compliance\n3. Order replacement signs early\n4. Train your team on new requirements\n\nStay ahead of the curve by updating your signage now.\n",
+    "html": "<h1>OSHA 2025 Updates: What You Need to Know</h1>\n<p>The Occupational Safety and Health Administration (OSHA) has announced several key updates to workplace signage requirements that will take effect in 2025.</p>\n<h2>Key Changes</h2>\n<h3>1. Enhanced Hazard Communication</h3>\n<p>New requirements mandate more specific hazard symbols for chemical storage areas.</p>\n<h3>2. Photoluminescent Requirements</h3>\n<p>Emergency exit signs in buildings with more than 50 occupants must now include photoluminescent elements.</p>\n<h3>3. Digital Signage Standards</h3>\n<p>For the first time, OSHA has issued guidance on the use of digital safety displays.</p>\n<h2>Timeline</h2>\n<ul>\n<li><strong>March 2025</strong>: New guidelines published</li>\n<li><strong>June 2025</strong>: Compliance grace period begins</li>\n<li><strong>January 2026</strong>: Full enforcement</li>\n</ul>\n<h2>How to Prepare</h2>\n<ol>\n<li>Audit your current signage</li>\n<li>Identify gaps in compliance</li>\n<li>Order replacement signs early</li>\n<li>Train your team on new requirements</li>\n</ol>\n<p>Stay ahead of the curve by updating your signage now.</p>"
+  },
+  "_id": "blog/osha-2025-updates.md",
+  "_raw": {
+    "sourceFilePath": "blog/osha-2025-updates.md",
+    "sourceFileName": "osha-2025-updates.md",
+    "sourceFileDir": "blog",
+    "contentType": "markdown",
+    "flattenedPath": "blog/osha-2025-updates"
+  },
+  "type": "BlogPost",
+  "slug": "osha-2025-updates",
+  "url": "/blog/osha-2025-updates"
+}

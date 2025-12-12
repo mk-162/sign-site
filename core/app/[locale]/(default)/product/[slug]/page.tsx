@@ -344,6 +344,26 @@ export default async function Product({ params, searchParams }: Props) {
     };
   });
 
+  // Build breadcrumbs from product categories
+  const streamableBreadcrumbs = Streamable.from(async () => {
+    const categories = removeEdgesAndNodes(baseProduct.categories);
+    const primaryCategory = categories[0];
+
+    if (!primaryCategory) {
+      return [{ label: baseProduct.name, href: baseProduct.path }];
+    }
+
+    const categoryBreadcrumbs = removeEdgesAndNodes(primaryCategory.breadcrumbs);
+
+    return [
+      ...categoryBreadcrumbs.map(crumb => ({
+        label: crumb.name,
+        href: crumb.path ?? '#',
+      })),
+      { label: baseProduct.name, href: baseProduct.path },
+    ];
+  });
+
   return (
     <>
       <ProductAnalyticsProvider data={streamableAnalyticsData}>
@@ -357,6 +377,7 @@ export default async function Product({ params, searchParams }: Props) {
             />
           }
           additionalInformationTitle={t('ProductDetails.additionalInformation')}
+          breadcrumbs={streamableBreadcrumbs}
           ctaDisabled={streameableCtaDisabled}
           ctaLabel={streameableCtaLabel}
           decrementLabel={t('ProductDetails.decreaseQuantity')}

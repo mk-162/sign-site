@@ -138,12 +138,13 @@ export function Select({
         </SelectPrimitive.Trigger>
         <SelectPrimitive.Portal>
           <SelectPrimitive.Content
+            position="popper"
+            sideOffset={4}
             className={clsx(
-              'z-50 max-h-80 w-full overflow-y-auto rounded-xl p-2 shadow-xl ring-1 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 @4xl:rounded-3xl @4xl:p-4',
+              'z-[9999] max-h-80 w-[var(--radix-select-trigger-width)] overflow-y-auto rounded-xl p-2 shadow-2xl border data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
               {
-                light:
-                  'bg-[var(--select-light-content-background,hsl(var(--background)))] ring-[var(--select-light-content-border,hsl(var(--contrast-100)))]',
-                dark: 'bg-[var(--select-dark-content-background,hsl(var(--foreground)))] ring-[var(--select-dark-content-border,hsl(var(--contrast-500)))]',
+                light: 'bg-white border-slate-200',
+                dark: 'bg-slate-900 border-slate-700',
               }[colorScheme],
             )}
           >
@@ -152,8 +153,8 @@ export function Select({
                 className={clsx(
                   'w-5',
                   {
-                    light: 'text-(--select-light-icon,var(--foreground))',
-                    dark: 'text-(--select-dark-icon,var(--background))',
+                    light: 'text-slate-600',
+                    dark: 'text-slate-300',
                   }[colorScheme],
                 )}
                 strokeWidth={1.5}
@@ -163,11 +164,11 @@ export function Select({
               {options.map((option) => (
                 <SelectPrimitive.Item
                   className={clsx(
-                    'w-full cursor-default select-none rounded-xl px-3 py-2 text-sm font-medium outline-none transition-colors @4xl:text-base',
+                    'w-full cursor-pointer select-none rounded-lg px-3 py-2.5 text-sm font-medium outline-none transition-colors',
                     {
                       light:
-                        'text-[var(--select-light-item-text,hsl(var(--contrast-400)))] hover:bg-[var(--select-light-item-background-hover,hsl(var(--contrast-100)))] hover:text-[var(--select-light-item-text-hover,hsl(var(--foreground)))] focus-visible:bg-[var(--select-light-item-background-focus,hsl(var(--contrast-100)))] focus-visible:text-[var(--select-light-item-text-focus,hsl(var(--foreground)))] data-[state=checked]:text-[var(--select-light-item-checked-text-focus,hsl(var(--foreground)))]',
-                      dark: 'text-[var(--select-dark-item-text,hsl(var(--contrast-200)))] hover:bg-[var(--select-dark-item-background-hover,hsl(var(--contrast-500)))] hover:text-[var(--select-dark-item-text-hover,hsl(var(--background)))] focus-visible:bg-[var(--select-dark-item-background-focus,hsl(var(--contrast-500)))] focus-visible:text-[var(--select-dark-item-text-focus,hsl(var(--background)))] data-[state=checked]:text-[var(--select-dark-item-checked-text-focus,hsl(var(--background)))]',
+                        'text-slate-700 hover:bg-orange-50 hover:text-orange-600 focus:bg-orange-50 focus:text-orange-600 data-[state=checked]:bg-orange-50 data-[state=checked]:text-orange-600',
+                      dark: 'text-slate-300 hover:bg-slate-800 hover:text-white focus:bg-slate-800 focus:text-white data-[state=checked]:bg-slate-800 data-[state=checked]:text-white',
                     }[colorScheme],
                   )}
                   key={option.value}

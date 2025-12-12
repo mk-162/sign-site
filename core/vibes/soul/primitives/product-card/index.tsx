@@ -79,7 +79,7 @@ export function ProductCard({
               '1:1': 'aspect-square',
             }[aspectRatio],
             {
-              light: 'bg-[var(--product-card-light-background,hsl(var(--contrast-100)))]',
+              light: 'bg-white border border-slate-200',
               dark: 'bg-[var(--product-card-dark-background,hsl(var(--contrast-500)))]',
             }[colorScheme],
           )}
@@ -88,9 +88,9 @@ export function ProductCard({
             <Image
               alt={image.alt}
               className={clsx(
-                'w-full scale-100 select-none object-cover transition-transform duration-500 ease-out group-hover:scale-110',
+                'w-full scale-100 select-none object-contain p-4 transition-transform duration-500 ease-out group-hover:scale-105',
                 {
-                  light: 'bg-[var(--product-card-light-background,hsl(var(--contrast-100))]',
+                  light: 'bg-white',
                   dark: 'bg-[var(--product-card-dark-background,hsl(var(--contrast-500))]',
                 }[colorScheme],
               )}

@@ -7,6 +7,13 @@ import { ProductGallery } from './product-gallery';
 import { Field } from '@/vibes/soul/sections/product-detail/schema';
 import { Skeleton } from '~/components/ui/skeleton';
 import { Badge } from '~/components/ui/badge';
+import { Link } from '~/components/link';
+import { ChevronRight, Home } from 'lucide-react';
+
+export interface Breadcrumb {
+    label: string;
+    href: string;
+}
 
 // Reusing the interface from Vines to keep compatibility with page props
 interface ProductDetailProduct {
@@ -32,6 +39,7 @@ interface ProductDetailProduct {
 }
 
 export interface ProductDetailProps<F extends Field> {
+    breadcrumbs?: Streamable<Breadcrumb[]>;
     product: Streamable<ProductDetailProduct | null>;
     action: ProductDetailFormAction<F>;
     fields: Streamable<F[]>;
@@ -48,6 +56,7 @@ export interface ProductDetailProps<F extends Field> {
 }
 
 export function ProductDetail<F extends Field>({
+    breadcrumbs: streamableBreadcrumbs,
     product: streamableProduct,
     action,
     fields: streamableFields,
@@ -60,6 +69,30 @@ export function ProductDetail<F extends Field>({
 }: ProductDetailProps<F>) {
     return (
         <div className="container mx-auto px-4 py-8">
+            {/* Breadcrumbs */}
+            {streamableBreadcrumbs && (
+                <Stream fallback={<Skeleton className="h-6 w-64 mb-6" />} value={streamableBreadcrumbs}>
+                    {(breadcrumbs) => breadcrumbs && breadcrumbs.length > 0 && (
+                        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6 flex-wrap" aria-label="Breadcrumb">
+                            <Link href="/" className="hover:text-orange-600 transition-colors">
+                                <Home className="h-4 w-4" />
+                            </Link>
+                            {breadcrumbs.map((crumb, index) => (
+                                <div key={crumb.href} className="flex items-center gap-2">
+                                    <ChevronRight className="h-4 w-4 text-slate-300" />
+                                    {index === breadcrumbs.length - 1 ? (
+                                        <span className="text-slate-900 font-medium">{crumb.label}</span>
+                                    ) : (
+                                        <Link href={crumb.href} className="hover:text-orange-600 transition-colors">
+                                            {crumb.label}
+                                        </Link>
+                                    )}
+                                </div>
+                            ))}
+                        </nav>
+                    )}
+                </Stream>
+            )}
             <Stream fallback={<ProductDetailSkeleton />} value={streamableProduct}>
                 {(product) =>
                     product && (

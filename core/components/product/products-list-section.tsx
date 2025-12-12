@@ -115,32 +115,83 @@ export function ProductsListSection({
 }
 
 function FilterList({ filters }: { filters: Filter[] }) {
-    // Simplified filter rendering reusing the logic from vibes filters-panel
-    // but using our Accordion/Checkbox components
+    // Build parsers for all filters to connect to URL state
+    const filterParsers = filters.reduce<Record<string, typeof parseAsString>>((acc, filter) => {
+        if ('paramName' in filter && filter.paramName) {
+            return { ...acc, [filter.paramName]: parseAsString };
+        }
+        return acc;
+    }, {});
 
-    // NOTE: This logic needs to be robustly connected to URL state (nuqs)
-    // For now, I'm just scaffolding the UI structure. 
-    // The actual state handling code from vibes/filters-panel is complex and needs to be carefully ported.
+    const [params, setParams] = useQueryStates(filterParsers, { shallow: false });
+    const [isPending, startTransition] = useTransition();
 
-    // For this step, I'm just rendering the UI structure to prove the visual change.
+    const handleFilterChange = (paramName: string, value: string, checked: boolean) => {
+        startTransition(() => {
+            const currentValues = params[paramName]?.split(',').filter(Boolean) || [];
+            let newValues: string[];
+
+            if (checked) {
+                newValues = [...currentValues, value];
+            } else {
+                newValues = currentValues.filter(v => v !== value);
+            }
+
+            setParams({ [paramName]: newValues.length > 0 ? newValues.join(',') : null });
+        });
+    };
+
+    if (filters.length === 0) {
+        return <p className="text-sm text-muted-foreground">No filters available</p>;
+    }
 
     return (
-        <Accordion type="multiple" className="w-full">
+        <Accordion type="multiple" className="w-full" defaultValue={filters.map((_, i) => `item-${i}`)}>
             {filters.map((filter, index) => {
-                if (filter.type === 'link-group') return null; // handle separately if needed
+                if (filter.type === 'link-group') return null;
+
+                const paramName = 'paramName' in filter ? filter.paramName : '';
+                const currentValues = params[paramName]?.split(',').filter(Boolean) || [];
 
                 return (
-                    <AccordionItem value={`item-${index}`} key={index}>
-                        <AccordionTrigger>{filter.label}</AccordionTrigger>
+                    <AccordionItem value={`item-${index}`} key={index} className="border-b border-slate-200">
+                        <AccordionTrigger className="text-sm font-semibold text-slate-900 hover:no-underline">
+                            {filter.label}
+                        </AccordionTrigger>
                         <AccordionContent>
-                            <div className="space-y-2">
-                                {/* Placeholder for specific filter inputs */}
-                                <p className="text-xs text-muted-foreground">Filter options here...</p>
+                            <div className="space-y-2 max-h-64 overflow-y-auto">
+                                {filter.type === 'toggle-group' && 'options' in filter && filter.options?.map((option, optIndex) => {
+                                    const isChecked = currentValues.includes(option.value);
+                                    return (
+                                        <div key={optIndex} className="flex items-center space-x-2">
+                                            <Checkbox
+                                                id={`${paramName}-${option.value}`}
+                                                checked={isChecked}
+                                                disabled={option.disabled && !isChecked}
+                                                onCheckedChange={(checked) =>
+                                                    handleFilterChange(paramName, option.value, checked as boolean)
+                                                }
+                                            />
+                                            <Label
+                                                htmlFor={`${paramName}-${option.value}`}
+                                                className={`text-sm cursor-pointer ${option.disabled && !isChecked ? 'text-slate-400' : 'text-slate-700'}`}
+                                            >
+                                                {option.label}
+                                            </Label>
+                                        </div>
+                                    );
+                                })}
+                                {filter.type === 'range' && (
+                                    <p className="text-xs text-muted-foreground">Price range filter</p>
+                                )}
+                                {filter.type === 'rating' && (
+                                    <p className="text-xs text-muted-foreground">Rating filter</p>
+                                )}
                             </div>
                         </AccordionContent>
                     </AccordionItem>
-                )
+                );
             })}
         </Accordion>
-    )
+    );
 }

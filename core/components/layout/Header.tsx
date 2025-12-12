@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   Shield,
   ShoppingCart,
@@ -22,6 +23,18 @@ import {
   Heart,
   ClipboardList,
   UserCircle,
+  X,
+  Stethoscope,
+  HardHat,
+  Warehouse,
+  Factory,
+  Building2,
+  GraduationCap,
+  Hotel,
+  Landmark,
+  UtensilsCrossed,
+  Anchor,
+  LucideIcon,
 } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
@@ -35,16 +48,25 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { CartSheet, CartSheetItem } from '~/components/cart/cart-sheet';
+import type { NavGroup, CategoryTreeItem } from '~/components/layout/header-data';
 
-// Define separate interfaces for the Category Tree structure
-interface CategoryTreeItem {
-  name: string;
-  path: string;
-  children: CategoryTreeItem[];
-}
+// Industry icon mapping
+const INDUSTRY_ICONS: Record<string, LucideIcon> = {
+  'Healthcare & Medical': Stethoscope,
+  'Construction Sites': HardHat,
+  'Warehouses & Distribution': Warehouse,
+  'Manufacturing & Industrial': Factory,
+  'Offices & Corporate': Building2,
+  'Education & Schools': GraduationCap,
+  'Hospitality & Retail': Hotel,
+  'Public Buildings': Landmark,
+  'Food & Catering': UtensilsCrossed,
+  'Marine & Offshore': Anchor,
+};
 
 export interface HeaderProps {
   categories?: CategoryTreeItem[];
+  navGroups?: NavGroup[];
   isLoggedIn?: boolean;
   customerName?: string;
   customerEmail?: string;
@@ -55,6 +77,7 @@ export interface HeaderProps {
 
 export function Header({
   categories = [],
+  navGroups = [],
   isLoggedIn = false,
   customerName,
   customerEmail,
@@ -62,6 +85,35 @@ export function Header({
   cartItemCount = 0,
   cartSubtotal = '£0.00',
 }: HeaderProps) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const router = useRouter();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      router.push(`/search?term=${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
+  const toggleSection = (sectionKey: string) => {
+    setExpandedSections((prev) =>
+      prev.includes(sectionKey)
+        ? prev.filter((k) => k !== sectionKey)
+        : [...prev, sectionKey]
+    );
+  };
+
+  const toggleSubSection = (parentKey: string, childKey: string) => {
+    const key = `${parentKey}-${childKey}`;
+    setExpandedSections((prev) =>
+      prev.includes(key)
+        ? prev.filter((k) => k !== key)
+        : [...prev, key]
+    );
+  };
 
   return (
     <>
@@ -129,29 +181,35 @@ export function Header({
                     )}
                   </button>
                 </CartSheet>
-                <Button variant="ghost" size="icon" className="text-white hover:bg-slate-800">
-                  <Menu className="h-6 w-6" />
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="text-white hover:bg-slate-800"
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                  {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                 </Button>
               </div>
             </div>
 
             {/* Search - High Prominence Center */}
-            <div className="flex-1 max-w-full lg:max-w-3xl order-last lg:order-none">
+            <form onSubmit={handleSearch} className="flex-1 max-w-full lg:max-w-3xl order-last lg:order-none">
               <div className="flex w-full shadow-lg shadow-black/20 rounded-md overflow-hidden group focus-within:ring-2 focus-within:ring-orange-500 transition-all">
-                <div className="relative w-full">
-                  <Input
-                    placeholder="Search over 25,000 safety products..."
-                    className="w-full pl-5 pr-10 h-12 border-0 rounded-none focus-visible:ring-0 text-slate-900 bg-white placeholder:text-slate-400 text-base"
-                  />
-                  <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400" />
-                </div>
-                <div className="bg-orange-500 h-12 px-4 flex items-center justify-center border-l border-orange-600">
-                  <div className="p-1 border-2 border-white/30 rounded">
-                    <Package className="h-5 w-5 text-white" />
-                  </div>
-                </div>
+                <Input
+                  name="term"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search over 25,000 safety products..."
+                  className="w-full pl-5 pr-4 h-12 border-0 rounded-none focus-visible:ring-0 text-slate-900 bg-white placeholder:text-slate-400 text-base"
+                />
+                <button
+                  type="submit"
+                  className="bg-orange-500 h-12 px-4 flex items-center justify-center border-l border-orange-600 hover:bg-orange-600 transition-colors"
+                >
+                  <Search className="h-5 w-5 text-white" />
+                </button>
               </div>
-            </div>
+            </form>
 
             {/* Desktop Account & Cart */}
             <div className="hidden lg:flex items-center gap-6 shrink-0">
@@ -172,54 +230,53 @@ export function Header({
                       </div>
                     </button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
-                    <DropdownMenuLabel className="font-normal">
+                  <DropdownMenuContent align="end" className="w-56 bg-[#1e293b] border-slate-700 text-white">
+                    <DropdownMenuLabel className="font-normal border-b border-slate-700 pb-3 mb-1">
                       <div className="flex flex-col space-y-1">
-                        <p className="text-sm font-medium leading-none">{customerName}</p>
+                        <p className="text-sm font-bold leading-none text-white">{customerName}</p>
                         {customerEmail && (
-                          <p className="text-xs leading-none text-slate-500">{customerEmail}</p>
+                          <p className="text-xs leading-none text-slate-400">{customerEmail}</p>
                         )}
                       </div>
                     </DropdownMenuLabel>
-                    <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
-                      <Link href="/account" className="flex items-center gap-2 cursor-pointer">
-                        <UserCircle className="h-4 w-4" />
+                      <Link href="/account/settings" className="flex items-center gap-2 cursor-pointer text-slate-200 hover:text-white focus:bg-slate-700 focus:text-white">
+                        <UserCircle className="h-4 w-4 text-orange-500" />
                         My Account
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/account/orders"
-                        className="flex items-center gap-2 cursor-pointer"
+                        className="flex items-center gap-2 cursor-pointer text-slate-200 hover:text-white focus:bg-slate-700 focus:text-white"
                       >
-                        <ClipboardList className="h-4 w-4" />
+                        <ClipboardList className="h-4 w-4 text-orange-500" />
                         Order History
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/account/wishlists"
-                        className="flex items-center gap-2 cursor-pointer"
+                        className="flex items-center gap-2 cursor-pointer text-slate-200 hover:text-white focus:bg-slate-700 focus:text-white"
                       >
-                        <Heart className="h-4 w-4" />
+                        <Heart className="h-4 w-4 text-orange-500" />
                         Wishlists
                       </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link
                         href="/account/settings"
-                        className="flex items-center gap-2 cursor-pointer"
+                        className="flex items-center gap-2 cursor-pointer text-slate-200 hover:text-white focus:bg-slate-700 focus:text-white"
                       >
-                        <Settings className="h-4 w-4" />
+                        <Settings className="h-4 w-4 text-orange-500" />
                         Settings
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuSeparator />
+                    <DropdownMenuSeparator className="bg-slate-700" />
                     <DropdownMenuItem asChild>
                       <Link
                         href="/logout"
-                        className="flex items-center gap-2 cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-50"
+                        className="flex items-center gap-2 cursor-pointer text-red-400 hover:text-red-300 focus:bg-red-900/30 focus:text-red-300"
                       >
                         <LogOut className="h-4 w-4" />
                         Sign Out
@@ -343,72 +400,264 @@ export function Header({
               </div>
 
               <div className="flex-1 flex overflow-x-auto no-scrollbar">
-                {['Warning Signs', 'Fire Safety', 'First Aid', 'PPE & Workwear', 'Lockout Tagout'].map(
-                  (item) => (
-                    <a
-                      key={item}
-                      href="#"
-                      className="px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 first:border-l"
-                    >
-                      {item}
-                    </a>
-                  )
-                )}
+                {/* Dynamic Nav Groups with Mega Menu Dropdowns */}
+                {navGroups.map((group) => (
+                  <div
+                    key={group.key}
+                    className="relative"
+                    onMouseEnter={() => setActiveDropdown(group.key)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <button className={`px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 first:border-l flex items-center gap-1 ${activeDropdown === group.key ? 'bg-orange-400' : ''}`}>
+                      {group.label}
+                      <ChevronDown className="h-3 w-3 opacity-70" />
+                    </button>
+
+                    {/* Mega Menu Dropdown for this group */}
+                    {activeDropdown === group.key && (
+                      <div className="absolute top-full left-0 min-w-[600px] bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 z-[100]">
+                        {group.isIndustry ? (
+                          /* Industry Icon Grid */
+                          <div className="p-6">
+                            <h3 className="text-lg font-black text-slate-900 mb-4 border-b border-slate-200 pb-2">
+                              Shop by Industry
+                            </h3>
+                            <div className="grid grid-cols-5 gap-4">
+                              {group.categories[0]?.children.map((industry) => {
+                                const IconComponent = INDUSTRY_ICONS[industry.name] || Building2;
+                                return (
+                                  <Link
+                                    key={industry.name}
+                                    href={industry.path}
+                                    className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-orange-50 transition-colors"
+                                  >
+                                    <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-orange-500 transition-colors group">
+                                      <IconComponent className="h-5 w-5 text-orange-500 group-hover:text-white transition-colors" />
+                                    </div>
+                                    <span className="text-xs font-medium text-slate-600 text-center hover:text-orange-600">
+                                      {industry.name}
+                                    </span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ) : (
+                          /* Standard Category Grid */
+                          <div className="flex">
+                            {group.categories.map((parentCat) =>
+                              parentCat.children.slice(0, 5).map((category, index) => (
+                                <div
+                                  key={category.name}
+                                  className={`flex-1 p-6 min-w-[180px] ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}
+                                >
+                                  <h3 className="text-sm font-black text-slate-900 mb-3 border-b border-slate-200 pb-2">
+                                    <Link href={category.path} className="hover:text-orange-600">
+                                      {category.name}
+                                    </Link>
+                                  </h3>
+                                  <div className="space-y-1">
+                                    {category.children.slice(0, 6).map((child) => (
+                                      <Link
+                                        key={child.name}
+                                        href={child.path}
+                                        className="text-sm text-slate-500 hover:text-orange-600 block py-1"
+                                      >
+                                        {child.name}
+                                      </Link>
+                                    ))}
+                                    {category.children.length > 6 && (
+                                      <Link
+                                        href={category.path}
+                                        className="text-xs text-orange-600 font-medium block pt-2"
+                                      >
+                                        View all →
+                                      </Link>
+                                    )}
+                                  </div>
+                                </div>
+                              ))
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
 
                 {/* Knowledge Link */}
-                <a
+                <Link
                   href="/kb"
                   className="px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 cursor-pointer flex items-center gap-1 bg-orange-600/20"
                 >
                   <Shield className="h-4 w-4" /> Knowledge
-                </a>
+                </Link>
 
-                <a
+                <Link
                   href="/blog"
                   className="px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 cursor-pointer flex items-center gap-1 bg-orange-600/20"
                 >
                   <FileText className="h-4 w-4" /> Blog
-                </a>
-              </div>
-
-              <div className="hidden xl:block">
-                <a
-                  href="/trade-enquiries"
-                  className="px-6 py-3 bg-orange-600 hover:bg-orange-700 transition-colors whitespace-nowrap flex items-center gap-2 shadow-inner"
-                >
-                  <FileText className="h-4 w-4" /> Quick Quote
-                </a>
+                </Link>
               </div>
             </nav>
           </div>
         </div>
 
-        {/* Mobile Category Pills */}
-        <div className="lg:hidden bg-orange-500 shadow-md border-t border-orange-600">
-          <nav className="flex items-center text-sm font-bold text-white overflow-x-auto no-scrollbar py-2 px-4 gap-2">
-            <a
-              href="/kb"
-              className="px-3 py-1.5 bg-orange-700 rounded-full whitespace-nowrap text-xs flex items-center gap-1"
-            >
-              <Shield className="h-3 w-3" /> Knowledge
-            </a>
-            <a
-              href="/blog"
-              className="px-3 py-1.5 bg-orange-700 rounded-full whitespace-nowrap text-xs flex items-center gap-1"
-            >
-              <FileText className="h-3 w-3" /> Blog
-            </a>
-            {['Warning Signs', 'Fire Safety', 'First Aid', 'PPE', 'Custom'].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="px-3 py-1.5 bg-orange-400/50 rounded-full whitespace-nowrap text-xs hover:bg-orange-600 transition-colors"
+        {/* Mobile Accordion Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-[#1e293b] border-t border-slate-700 max-h-[70vh] overflow-y-auto">
+            <nav className="text-white">
+              {/* Category Accordion */}
+              {navGroups.map((group) => (
+                <div key={group.key} className="border-b border-slate-700">
+                  <button
+                    onClick={() => toggleSection(group.key)}
+                    className="w-full px-4 py-3 flex items-center justify-between text-left font-semibold hover:bg-slate-700/50 transition-colors"
+                  >
+                    <span>{group.label}</span>
+                    {expandedSections.includes(group.key) ? (
+                      <ChevronDown className="h-4 w-4 text-orange-500" />
+                    ) : (
+                      <ChevronRight className="h-4 w-4 text-slate-400" />
+                    )}
+                  </button>
+
+                  {/* Expanded Content */}
+                  <div
+                    className={`overflow-hidden transition-all duration-200 ${
+                      expandedSections.includes(group.key) ? 'max-h-[2000px]' : 'max-h-0'
+                    }`}
+                  >
+                    {group.isIndustry ? (
+                      /* Industry Grid for Mobile */
+                      <div className="grid grid-cols-2 gap-2 p-4 bg-slate-800/50">
+                        {group.categories[0]?.children.map((industry) => {
+                          const IconComponent = INDUSTRY_ICONS[industry.name] || Building2;
+                          return (
+                            <Link
+                              key={industry.name}
+                              href={industry.path}
+                              onClick={() => setMobileMenuOpen(false)}
+                              className="flex items-center gap-2 p-2 rounded-lg hover:bg-slate-700 transition-colors"
+                            >
+                              <IconComponent className="h-4 w-4 text-orange-500" />
+                              <span className="text-sm text-slate-300">{industry.name}</span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      /* Standard Category Accordion */
+                      <div className="bg-slate-800/50">
+                        {group.categories.map((parentCat) =>
+                          parentCat.children.map((category) => (
+                            <div key={category.name}>
+                              <button
+                                onClick={() => toggleSubSection(group.key, category.name)}
+                                className="w-full px-6 py-2.5 flex items-center justify-between text-left text-sm hover:bg-slate-700/50 transition-colors"
+                              >
+                                <span className="text-slate-300">{category.name}</span>
+                                {category.children.length > 0 && (
+                                  expandedSections.includes(`${group.key}-${category.name}`) ? (
+                                    <ChevronDown className="h-3 w-3 text-orange-500" />
+                                  ) : (
+                                    <ChevronRight className="h-3 w-3 text-slate-500" />
+                                  )
+                                )}
+                              </button>
+
+                              {/* Third level items */}
+                              {category.children.length > 0 && (
+                                <div
+                                  className={`overflow-hidden transition-all duration-200 ${
+                                    expandedSections.includes(`${group.key}-${category.name}`)
+                                      ? 'max-h-[1000px]'
+                                      : 'max-h-0'
+                                  }`}
+                                >
+                                  <div className="bg-slate-900/50 py-1">
+                                    {category.children.map((child) => (
+                                      <Link
+                                        key={child.name}
+                                        href={child.path}
+                                        onClick={() => setMobileMenuOpen(false)}
+                                        className="block px-8 py-2 text-xs text-slate-400 hover:text-orange-400 hover:bg-slate-800/50 transition-colors"
+                                      >
+                                        {child.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          ))
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              {/* Static Links */}
+              <Link
+                href="/kb"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 border-b border-slate-700 hover:bg-slate-700/50 transition-colors"
               >
-                {item}
-              </a>
-            ))}
-          </nav>
-        </div>
+                <Shield className="h-4 w-4 text-orange-500" />
+                <span className="font-semibold">Knowledge Base</span>
+              </Link>
+              <Link
+                href="/blog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="flex items-center gap-2 px-4 py-3 border-b border-slate-700 hover:bg-slate-700/50 transition-colors"
+              >
+                <FileText className="h-4 w-4 text-orange-500" />
+                <span className="font-semibold">Blog</span>
+              </Link>
+
+              {/* Account Links for Mobile */}
+              {isLoggedIn ? (
+                <div className="border-t border-slate-600 mt-2 pt-2">
+                  <Link
+                    href="/account/settings"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 hover:bg-slate-700/50 transition-colors"
+                  >
+                    <UserCircle className="h-4 w-4 text-orange-500" />
+                    <span className="text-sm">My Account</span>
+                  </Link>
+                  <Link
+                    href="/account/orders"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 hover:bg-slate-700/50 transition-colors"
+                  >
+                    <ClipboardList className="h-4 w-4 text-orange-500" />
+                    <span className="text-sm">Order History</span>
+                  </Link>
+                  <Link
+                    href="/logout"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-2 px-4 py-3 text-red-400 hover:bg-red-900/20 transition-colors"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    <span className="text-sm">Sign Out</span>
+                  </Link>
+                </div>
+              ) : (
+                <Link
+                  href="/login"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-2 px-4 py-3 border-t border-slate-600 mt-2 hover:bg-slate-700/50 transition-colors"
+                >
+                  <User className="h-4 w-4 text-orange-500" />
+                  <span className="font-semibold">Sign In / Register</span>
+                </Link>
+              )}
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Trust Bar */}

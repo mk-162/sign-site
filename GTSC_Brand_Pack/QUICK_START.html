@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTSC Brand Pack - Quick Start</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1A2C43 0%, #000000 100%);
+            color: white;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        
+        header h1 span {
+            color: #FF7300;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+        
+        .highlight-box {
+            background: rgba(255, 115, 0, 0.1);
+            border: 2px solid #FF7300;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .highlight-box h2 {
+            color: #FF7300;
+            font-weight: 800;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #FF7300;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #FF7300;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .feature-card h3 {
+            color: #FF7300;
+            font-weight: 800;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FF7300;
+            font-weight: bold;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #FF7300 0%, #ff8c1a 100%);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(255, 115, 0, 0.3);
+        }
+        
+        .download-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .download-section p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #FF7300;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+        
+        .folder-structure {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .checklist {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #FF7300;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .checklist-item {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid #FF7300;
+        }
+        
+        .checklist-item strong {
+            color: #FF7300;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Safety Sign <span>Hub</span></h1>
+            <p>Complete Brand Pack - Quick Start Guide</p>
+            <p style="font-size: 1rem; margin-top: 10px; opacity: 0.6;">a GTSE brand</p>
+        </header>
+
+        <div class="highlight-box">
+            <h2>🎉 Your Brand Pack is Ready!</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                You've received a comprehensive brand package with <strong>20 high-quality logo files</strong> 
+                organized across 4 variations (Light/Dark × With/Without GTSE), complete with detailed brand 
+                guidelines, color specifications, and typography information.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Logo Files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">File Formats</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Logo Variations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">300</div>
+                <div class="stat-label">DPI Quality</div>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h2>📦 Download Your Brand Pack</h2>
+            <p>Complete package with all assets, brand guide, and documentation</p>
+            <a href="#" class="btn">⬇️ DOWNLOAD ZIP (6.3 MB)</a>
+        </div>
+
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin: 50px 0 30px; text-align: center;">
+            What's <span style="color: #FF7300;">Inside</span>
+        </h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>📁 Logo Files</h3>
+                <ul>
+                    <li>PNG (transparent, high-res)</li>
+                    <li>JPEG (white background)</li>
+                    <li>GIF (transparent)</li>
+                    <li>SVG (scalable vector)</li>
+                    <li>TIFF (print quality)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>🎨 Brand Guide</h3>
+                <ul>
+                    <li>Complete color palette</li>
+                    <li>HEX, RGB, CMYK values</li>
+                    <li>Typography specifications</li>
+                    <li>Usage guidelines</li>
+                    <li>Do's and Don'ts</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>📝 Documentation</h3>
+                <ul>
+                    <li>README file</li>
+                    <li>Quick start guide</li>
+                    <li>File structure map</li>
+                    <li>Format selection guide</li>
+                    <li>Affinity info & tips</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <h3>✨ Quality Specs</h3>
+                <ul>
+                    <li>4x high resolution</li>
+                    <li>300 DPI print ready</li>
+                    <li>Smart file conversion</li>
+                    <li>Transparency preserved</li>
+                    <li>Perfect quality</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin: 50px 0 30px; text-align: center;">
+            📂 Folder <span style="color: #FF7300;">Structure</span>
+        </h2>
+
+        <div class="folder-structure">
+<pre>GTSC_Brand_Pack/
+│
+├── 📄 Brand_Guide.html         ← Open in browser
+├── 📄 README.txt               ← Start here
+├── 📁 Source_Files/            ← Place .af files here
+│
+├── 📁 With_GTSE/               ← Logos with "a GTSE brand"
+│   ├── 📁 Light_Mode/          ← White text for dark backgrounds
+│   │   ├── 📁 JPEG/
+│   │   ├── 📁 PNG/
+│   │   ├── 📁 GIF/
+│   │   ├── 📁 SVG/
+│   │   └── 📁 TIFF/
+│   └── 📁 Dark_Mode/           ← Navy text for light backgrounds
+│       ├── 📁 JPEG/
+│       ├── 📁 PNG/
+│       ├── 📁 GIF/
+│       ├── 📁 SVG/
+│       └── 📁 TIFF/
+│
+└── 📁 Without_GTSE/            ← Logos without brand tag
+    ├── 📁 Light_Mode/          ← White text for dark backgrounds
+    │   ├── 📁 JPEG/
+    │   ├── 📁 PNG/
+    │   ├── 📁 GIF/
+    │   ├── 📁 SVG/
+    │   └── 📁 TIFF/
+    └── 📁 Dark_Mode/           ← Navy text for light backgrounds
+        ├── 📁 JPEG/
+        ├── 📁 PNG/
+        ├── 📁 GIF/
+        ├── 📁 SVG/
+        └── 📁 TIFF/</pre>
+        </div>
+
+        <div class="checklist">
+            <h3>🚀 Quick Start Checklist</h3>
+            
+            <div class="checklist-item">
+                <strong>1. Extract the ZIP file</strong><br>
+                Unzip GTSC_Brand_Pack_2024.zip to your preferred location
+            </div>
+            
+            <div class="checklist-item">
+                <strong>2. Read the README.txt</strong><br>
+                Quick overview of contents and file structure
+            </div>
+            
+            <div class="checklist-item">
+                <strong>3. Open Brand_Guide.html</strong><br>
+                Complete brand guidelines with colors, fonts, and usage rules
+            </div>
+            
+            <div class="checklist-item">
+                <strong>4. Choose Your Logo</strong><br>
+                • Dark background? → Use Light_Mode<br>
+                • Light background? → Use Dark_Mode<br>
+                • Official materials? → Use With_GTSE<br>
+                • Apps/Social media? → Use Without_GTSE
+            </div>
+            
+            <div class="checklist-item">
+                <strong>5. Select File Format</strong><br>
+                • Web → PNG or SVG<br>
+                • Print → TIFF or PNG<br>
+                • Presentations → PNG or JPEG<br>
+                • Email → PNG or JPEG
+            </div>
+        </div>
+
+        <h2 style="font-size: 2.5rem; font-weight: 800; margin: 50px 0 30px; text-align: center;">
+            🎨 Brand <span style="color: #FF7300;">Colors</span>
+        </h2>
+
+        <div class="features-grid">
+            <div class="feature-card" style="border-left-color: #FF7300;">
+                <h3 style="color: #FF7300;">Safety Orange</h3>
+                <p><strong>HEX:</strong> #FF7300</p>
+                <p><strong>RGB:</strong> 255, 115, 0</p>
+                <p><strong>CMYK:</strong> 0, 55, 100, 0</p>
+            </div>
+
+            <div class="feature-card" style="border-left-color: #FFFFFF;">
+                <h3 style="color: #FFFFFF;">Pure White</h3>
+                <p><strong>HEX:</strong> #FFFFFF</p>
+                <p><strong>RGB:</strong> 255, 255, 255</p>
+                <p><strong>CMYK:</strong> 0, 0, 0, 0</p>
+            </div>
+
+            <div class="feature-card" style="border-left-color: #1A2C43;">
+                <h3 style="color: #FF7300;">Deep Navy</h3>
+                <p><strong>HEX:</strong> #1A2C43</p>
+                <p><strong>RGB:</strong> 26, 44, 67</p>
+                <p><strong>CMYK:</strong> 61, 34, 0, 74</p>
+            </div>
+
+            <div class="feature-card" style="border-left-color: #000000;">
+                <h3 style="color: #FF7300;">True Black</h3>
+                <p><strong>HEX:</strong> #000000</p>
+                <p><strong>RGB:</strong> 0, 0, 0</p>
+                <p><strong>CMYK:</strong> 0, 0, 0, 100</p>
+            </div>
+        </div>
+
+        <div class="highlight-box" style="margin: 50px 0;">
+            <h2>💡 About Affinity Files</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                <strong>Affinity Designer/Photo</strong> is a professional-grade, FREE alternative to Adobe Photoshop 
+                and Illustrator. The original <strong>.af files</strong> can be placed in the Source_Files folder, 
+                giving you full editing capability with all layers intact.
+            </p>
+            <p style="margin-top: 15px; font-size: 1rem;">
+                Download at: <a href="https://affinity.serif.com" target="_blank" 
+                style="color: white; text-decoration: underline;">affinity.serif.com</a>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin: 60px 0 40px;">
+            <h1 style="font-size: 3rem; font-weight: 800;">
+                Safety Sign <span style="color: #FF7300;">Hub</span>
+            </h1>
+            <p style="font-size: 1.2rem; opacity: 0.7; margin-top: 10px;">a GTSE brand</p>
+            <p style="font-size: 1rem; opacity: 0.5; margin-top: 30px;">
+                Version 1.0 | © 2024 GTSC Team
+            </p>
+        </div>
+    </div>
+</body>
+</html>

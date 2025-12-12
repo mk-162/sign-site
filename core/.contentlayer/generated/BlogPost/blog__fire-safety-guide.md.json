@@ -1,0 +1,30 @@
+{
+  "title": "The Ultimate Guide to Fire Safety Signs",
+  "description": "Everything you need to know about ISO 7010 and keeping your workplace compliant.",
+  "publishedAt": "2025-01-15T00:00:00.000Z",
+  "author": "Sarah Jenkins",
+  "image": "/images/blog/fire-safety-guide.png",
+  "category": "Product Guides",
+  "tags": [
+    "Compliance",
+    "Fire Safety",
+    "ISO 7010"
+  ],
+  "featured": true,
+  "draft": false,
+  "body": {
+    "raw": "\n# The Ultimate Guide to Fire Safety Signs\n\nEnsuring your workplace is equipped with the correct fire safety signage is not just a legal requirement—it's a critical safety measure that saves lives.\n\n## Why ISO 7010 Matters\n\nISO 7010 is the international standard for safety symbols. It ensures that safety signs are easily recognizable regardless of language or culture.\n\n### Key Categories\n\n1. **Fire Exits**: Green and white, indicating safe escape routes.\n2. **Fire Equipment**: Red and white, locating extinguishers and alarms.\n3. **Mandatory Actions**: Blue and white, e.g., \"Fire Door Keep Shut\".\n\n## Placement Tips\n\n* **Eye Level**: Signs should be placed 1.5m to 2m from the floor.\n* **Visibility**: Ensure signs are not obstructed by furniture or decorations.\n* **Lighting**: Emergency routes must be lit, and photoluminescent signs are recommended.\n\nStay safe and compliant!\n",
+    "html": "<h1>The Ultimate Guide to Fire Safety Signs</h1>\n<p>Ensuring your workplace is equipped with the correct fire safety signage is not just a legal requirement—it's a critical safety measure that saves lives.</p>\n<h2>Why ISO 7010 Matters</h2>\n<p>ISO 7010 is the international standard for safety symbols. It ensures that safety signs are easily recognizable regardless of language or culture.</p>\n<h3>Key Categories</h3>\n<ol>\n<li><strong>Fire Exits</strong>: Green and white, indicating safe escape routes.</li>\n<li><strong>Fire Equipment</strong>: Red and white, locating extinguishers and alarms.</li>\n<li><strong>Mandatory Actions</strong>: Blue and white, e.g., \"Fire Door Keep Shut\".</li>\n</ol>\n<h2>Placement Tips</h2>\n<ul>\n<li><strong>Eye Level</strong>: Signs should be placed 1.5m to 2m from the floor.</li>\n<li><strong>Visibility</strong>: Ensure signs are not obstructed by furniture or decorations.</li>\n<li><strong>Lighting</strong>: Emergency routes must be lit, and photoluminescent signs are recommended.</li>\n</ul>\n<p>Stay safe and compliant!</p>"
+  },
+  "_id": "blog/fire-safety-guide.md",
+  "_raw": {
+    "sourceFilePath": "blog/fire-safety-guide.md",
+    "sourceFileName": "fire-safety-guide.md",
+    "sourceFileDir": "blog",
+    "contentType": "markdown",
+    "flattenedPath": "blog/fire-safety-guide"
+  },
+  "type": "BlogPost",
+  "slug": "fire-safety-guide",
+  "url": "/blog/fire-safety-guide"
+}

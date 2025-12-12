@@ -1,0 +1,27 @@
+{
+  "title": "Frequently Asked Questions",
+  "description": "Common questions about safety signs, materials, compliance, and ordering.",
+  "lastUpdated": "2025-01-20T00:00:00.000Z",
+  "category": "FAQ",
+  "difficulty": "Beginner",
+  "readingTime": 4,
+  "order": 1,
+  "featured": false,
+  "draft": false,
+  "body": {
+    "raw": "\n# Frequently Asked Questions\n\nFind answers to the most common questions about safety signage.\n\n## Ordering & Delivery\n\n### How quickly can I receive my order?\n\nMost stock items ship same-day for next-day delivery. Custom signs typically take 3-5 working days.\n\n### Do you offer bulk discounts?\n\nYes! Orders of 10+ items receive 10% off, 50+ items receive 20% off. Contact us for larger quantities.\n\n### Can I return signs?\n\nStock items can be returned within 30 days unused. Custom signs are non-returnable.\n\n## Materials & Durability\n\n### Which material should I choose for outdoor use?\n\nAluminum composite is best for outdoor use due to its weather resistance and 10+ year lifespan.\n\n### Are your signs UV resistant?\n\nYes, all our signs use UV-resistant inks and materials to prevent fading.\n\n### How do I clean safety signs?\n\nUse warm water and mild detergent. Avoid abrasive cleaners or solvents.\n\n## Compliance\n\n### Are your signs compliant with current regulations?\n\nAll signs comply with ISO 7010, ANSI Z535, and relevant OSHA standards.\n\n### Do you provide compliance certificates?\n\nYes, compliance documentation is available for all products upon request.\n\n### What if regulations change?\n\nWe update our product line promptly when standards change and notify affected customers.\n\n## Custom Signs\n\n### Can you create bespoke signs?\n\nYes! We offer custom sizing, text, and branding. Contact our team for a quote.\n\n### What's the minimum order for custom signs?\n\nThere's no minimum order for custom signs.\n\n### Can I add my company logo?\n\nAbsolutely. Provide your logo file and we'll incorporate it into your design.\n\n---\n\nStill have questions? [Contact our team](/contact) for expert assistance.\n",
+    "html": "<h1>Frequently Asked Questions</h1>\n<p>Find answers to the most common questions about safety signage.</p>\n<h2>Ordering &#x26; Delivery</h2>\n<h3>How quickly can I receive my order?</h3>\n<p>Most stock items ship same-day for next-day delivery. Custom signs typically take 3-5 working days.</p>\n<h3>Do you offer bulk discounts?</h3>\n<p>Yes! Orders of 10+ items receive 10% off, 50+ items receive 20% off. Contact us for larger quantities.</p>\n<h3>Can I return signs?</h3>\n<p>Stock items can be returned within 30 days unused. Custom signs are non-returnable.</p>\n<h2>Materials &#x26; Durability</h2>\n<h3>Which material should I choose for outdoor use?</h3>\n<p>Aluminum composite is best for outdoor use due to its weather resistance and 10+ year lifespan.</p>\n<h3>Are your signs UV resistant?</h3>\n<p>Yes, all our signs use UV-resistant inks and materials to prevent fading.</p>\n<h3>How do I clean safety signs?</h3>\n<p>Use warm water and mild detergent. Avoid abrasive cleaners or solvents.</p>\n<h2>Compliance</h2>\n<h3>Are your signs compliant with current regulations?</h3>\n<p>All signs comply with ISO 7010, ANSI Z535, and relevant OSHA standards.</p>\n<h3>Do you provide compliance certificates?</h3>\n<p>Yes, compliance documentation is available for all products upon request.</p>\n<h3>What if regulations change?</h3>\n<p>We update our product line promptly when standards change and notify affected customers.</p>\n<h2>Custom Signs</h2>\n<h3>Can you create bespoke signs?</h3>\n<p>Yes! We offer custom sizing, text, and branding. Contact our team for a quote.</p>\n<h3>What's the minimum order for custom signs?</h3>\n<p>There's no minimum order for custom signs.</p>\n<h3>Can I add my company logo?</h3>\n<p>Absolutely. Provide your logo file and we'll incorporate it into your design.</p>\n<hr>\n<p>Still have questions? <a href=\"/contact\">Contact our team</a> for expert assistance.</p>"
+  },
+  "_id": "kb/faq.md",
+  "_raw": {
+    "sourceFilePath": "kb/faq.md",
+    "sourceFileName": "faq.md",
+    "sourceFileDir": "kb",
+    "contentType": "markdown",
+    "flattenedPath": "kb/faq"
+  },
+  "type": "KBArticle",
+  "slug": "faq",
+  "url": "/kb/faq",
+  "categoryFromPath": "faq"
+}

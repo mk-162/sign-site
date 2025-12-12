@@ -1,0 +1,27 @@
+{
+  "title": "ISO 7010 Safety Sign Standards Explained",
+  "description": "Complete guide to understanding ISO 7010 symbols, colors, and requirements for workplace safety signage.",
+  "lastUpdated": "2025-01-18T00:00:00.000Z",
+  "category": "Signage Standards",
+  "difficulty": "Intermediate",
+  "readingTime": 8,
+  "order": 1,
+  "featured": false,
+  "draft": false,
+  "body": {
+    "raw": "\n# ISO 7010 Safety Sign Standards Explained\n\nISO 7010 is the international standard for safety symbols. Understanding it is essential for workplace compliance.\n\n## What is ISO 7010?\n\nISO 7010:2019 specifies safety signs used in workplaces and public facilities. It was designed to provide a globally consistent set of safety symbols that transcend language barriers.\n\n## Sign Categories\n\n### Prohibition Signs (Red Circle)\n\n- White background, red border and diagonal line\n- Black symbol\n- Example: No Smoking, No Entry\n\n### Warning Signs (Yellow Triangle)\n\n- Yellow background, black border\n- Black symbol\n- Example: Electrical Hazard, Slippery Floor\n\n### Mandatory Signs (Blue Circle)\n\n- Blue background\n- White symbol\n- Example: Wear Eye Protection, Hard Hat Required\n\n### Safe Condition Signs (Green Rectangle)\n\n- Green background\n- White symbol\n- Example: Fire Exit, First Aid\n\n### Fire Equipment Signs (Red Rectangle)\n\n- Red background\n- White symbol\n- Example: Fire Extinguisher, Fire Alarm\n\n## Key Requirements\n\n1. **Size**: Must be proportional to viewing distance\n2. **Colors**: Must match exact specifications (RAL colors)\n3. **Symbols**: Must use approved pictograms only\n4. **Placement**: Must be visible and unobstructed\n\n## Viewing Distance Formula\n\n```\nSign height = Viewing distance / 200\n```\n\nFor example, a sign at 10m viewing distance needs a minimum height of 50mm.\n\n## Compliance Benefits\n\n- Universal recognition across cultures\n- Legal protection\n- Reduced workplace accidents\n- Insurance requirements met\n\nEnsure your workplace meets these standards today.\n",
+    "html": "<h1>ISO 7010 Safety Sign Standards Explained</h1>\n<p>ISO 7010 is the international standard for safety symbols. Understanding it is essential for workplace compliance.</p>\n<h2>What is ISO 7010?</h2>\n<p>ISO 7010:2019 specifies safety signs used in workplaces and public facilities. It was designed to provide a globally consistent set of safety symbols that transcend language barriers.</p>\n<h2>Sign Categories</h2>\n<h3>Prohibition Signs (Red Circle)</h3>\n<ul>\n<li>White background, red border and diagonal line</li>\n<li>Black symbol</li>\n<li>Example: No Smoking, No Entry</li>\n</ul>\n<h3>Warning Signs (Yellow Triangle)</h3>\n<ul>\n<li>Yellow background, black border</li>\n<li>Black symbol</li>\n<li>Example: Electrical Hazard, Slippery Floor</li>\n</ul>\n<h3>Mandatory Signs (Blue Circle)</h3>\n<ul>\n<li>Blue background</li>\n<li>White symbol</li>\n<li>Example: Wear Eye Protection, Hard Hat Required</li>\n</ul>\n<h3>Safe Condition Signs (Green Rectangle)</h3>\n<ul>\n<li>Green background</li>\n<li>White symbol</li>\n<li>Example: Fire Exit, First Aid</li>\n</ul>\n<h3>Fire Equipment Signs (Red Rectangle)</h3>\n<ul>\n<li>Red background</li>\n<li>White symbol</li>\n<li>Example: Fire Extinguisher, Fire Alarm</li>\n</ul>\n<h2>Key Requirements</h2>\n<ol>\n<li><strong>Size</strong>: Must be proportional to viewing distance</li>\n<li><strong>Colors</strong>: Must match exact specifications (RAL colors)</li>\n<li><strong>Symbols</strong>: Must use approved pictograms only</li>\n<li><strong>Placement</strong>: Must be visible and unobstructed</li>\n</ol>\n<h2>Viewing Distance Formula</h2>\n<pre><code>Sign height = Viewing distance / 200\n</code></pre>\n<p>For example, a sign at 10m viewing distance needs a minimum height of 50mm.</p>\n<h2>Compliance Benefits</h2>\n<ul>\n<li>Universal recognition across cultures</li>\n<li>Legal protection</li>\n<li>Reduced workplace accidents</li>\n<li>Insurance requirements met</li>\n</ul>\n<p>Ensure your workplace meets these standards today.</p>"
+  },
+  "_id": "kb/iso-7010-standards.md",
+  "_raw": {
+    "sourceFilePath": "kb/iso-7010-standards.md",
+    "sourceFileName": "iso-7010-standards.md",
+    "sourceFileDir": "kb",
+    "contentType": "markdown",
+    "flattenedPath": "kb/iso-7010-standards"
+  },
+  "type": "KBArticle",
+  "slug": "iso-7010-standards",
+  "url": "/kb/iso-7010-standards",
+  "categoryFromPath": "iso-7010-standards"
+}

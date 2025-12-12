@@ -1,0 +1,27 @@
+{
+  "title": "How to Install Rigid Plastic Signs",
+  "description": "Step-by-step guide to properly installing rigid plastic safety signs for maximum durability and compliance.",
+  "lastUpdated": "2025-01-10T00:00:00.000Z",
+  "category": "Installation",
+  "difficulty": "Beginner",
+  "readingTime": 5,
+  "order": 1,
+  "featured": false,
+  "draft": false,
+  "body": {
+    "raw": "\n# How to Install Rigid Plastic Signs\n\nProper installation ensures your safety signs remain visible, compliant, and durable for years.\n\n## What You'll Need\n\n- Rigid plastic sign\n- Spirit level\n- Pencil\n- Drill with appropriate bit\n- Wall plugs and screws (or strong adhesive)\n- Tape measure\n\n## Installation Methods\n\n### Method 1: Screw Mounting (Recommended)\n\n1. **Position the sign** at the desired height (typically 1.5m-2m from floor)\n2. **Mark the holes** using the sign's pre-drilled corners\n3. **Drill pilot holes** using appropriate bit for your wall type\n4. **Insert wall plugs** if mounting to masonry\n5. **Secure with screws** — don't over-tighten\n\n### Method 2: Adhesive Mounting\n\n1. **Clean the surface** thoroughly and let dry\n2. **Apply adhesive** to sign corners and center\n3. **Press firmly** for 30 seconds\n4. **Allow to cure** for 24 hours before full load\n\n## Height Guidelines\n\n| Location | Recommended Height |\n|----------|-------------------|\n| General signage | 1.5m - 2m |\n| Exit signs | 2m - 2.5m |\n| Floor level warnings | 0.3m - 0.5m |\n\n## Common Mistakes to Avoid\n\n- Installing below eye level\n- Over-tightening screws (can crack plastic)\n- Not accounting for obstacles\n- Ignoring viewing distance requirements\n\nFollow these steps for a professional, compliant installation.\n",
+    "html": "<h1>How to Install Rigid Plastic Signs</h1>\n<p>Proper installation ensures your safety signs remain visible, compliant, and durable for years.</p>\n<h2>What You'll Need</h2>\n<ul>\n<li>Rigid plastic sign</li>\n<li>Spirit level</li>\n<li>Pencil</li>\n<li>Drill with appropriate bit</li>\n<li>Wall plugs and screws (or strong adhesive)</li>\n<li>Tape measure</li>\n</ul>\n<h2>Installation Methods</h2>\n<h3>Method 1: Screw Mounting (Recommended)</h3>\n<ol>\n<li><strong>Position the sign</strong> at the desired height (typically 1.5m-2m from floor)</li>\n<li><strong>Mark the holes</strong> using the sign's pre-drilled corners</li>\n<li><strong>Drill pilot holes</strong> using appropriate bit for your wall type</li>\n<li><strong>Insert wall plugs</strong> if mounting to masonry</li>\n<li><strong>Secure with screws</strong> — don't over-tighten</li>\n</ol>\n<h3>Method 2: Adhesive Mounting</h3>\n<ol>\n<li><strong>Clean the surface</strong> thoroughly and let dry</li>\n<li><strong>Apply adhesive</strong> to sign corners and center</li>\n<li><strong>Press firmly</strong> for 30 seconds</li>\n<li><strong>Allow to cure</strong> for 24 hours before full load</li>\n</ol>\n<h2>Height Guidelines</h2>\n<p>| Location | Recommended Height |\n|----------|-------------------|\n| General signage | 1.5m - 2m |\n| Exit signs | 2m - 2.5m |\n| Floor level warnings | 0.3m - 0.5m |</p>\n<h2>Common Mistakes to Avoid</h2>\n<ul>\n<li>Installing below eye level</li>\n<li>Over-tightening screws (can crack plastic)</li>\n<li>Not accounting for obstacles</li>\n<li>Ignoring viewing distance requirements</li>\n</ul>\n<p>Follow these steps for a professional, compliant installation.</p>"
+  },
+  "_id": "kb/installing-rigid-plastic.md",
+  "_raw": {
+    "sourceFilePath": "kb/installing-rigid-plastic.md",
+    "sourceFileName": "installing-rigid-plastic.md",
+    "sourceFileDir": "kb",
+    "contentType": "markdown",
+    "flattenedPath": "kb/installing-rigid-plastic"
+  },
+  "type": "KBArticle",
+  "slug": "installing-rigid-plastic",
+  "url": "/kb/installing-rigid-plastic",
+  "categoryFromPath": "installing-rigid-plastic"
+}

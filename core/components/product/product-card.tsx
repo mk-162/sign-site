@@ -45,7 +45,7 @@ export function ProductCard({
     return (
         <Card className={clsx('group h-full flex flex-col overflow-hidden transition-all hover:shadow-lg', className)}>
             {/* Image Container */}
-            <div className={clsx('relative bg-slate-100 overflow-hidden', {
+            <div className={clsx('relative bg-white border border-slate-200 overflow-hidden', {
                 'aspect-[5/6]': aspectRatio === '5:6',
                 'aspect-[3/4]': aspectRatio === '3:4',
                 'aspect-square': aspectRatio === '1:1',

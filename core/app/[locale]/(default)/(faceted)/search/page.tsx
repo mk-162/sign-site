@@ -17,6 +17,7 @@ import { MAX_COMPARE_LIMIT } from '../../compare/page-data';
 import { getCompareProducts as getCompareProductsData } from '../fetch-compare-products';
 import { fetchFacetedSearch } from '../fetch-faceted-search';
 
+import { SearchAnalytics } from './_components/search-analytics';
 import { getSearchPageData } from './page-data';
 
 const compareLoader = createCompareLoader();
@@ -150,6 +151,25 @@ export default async function Search(props: Props) {
     return format.number(search.products.collectionInfo?.totalItems ?? 0);
   });
 
+  const streamableSearchQuery = Streamable.from(async () => {
+    const searchParams = await props.searchParams;
+
+    return typeof searchParams.term === 'string' ? searchParams.term : '';
+  });
+
+  const streamableResultsCount = Streamable.from(async () => {
+    const searchParams = await props.searchParams;
+    const searchTerm = typeof searchParams.term === 'string' ? searchParams.term : '';
+
+    if (!searchTerm) {
+      return 0;
+    }
+
+    const search = await streamableFacetedSearch;
+
+    return search.products.collectionInfo?.totalItems ?? 0;
+  });
+
   const streamableEmptyStateTitle = Streamable.from(async () => {
     const searchParams = await props.searchParams;
     const searchTerm = typeof searchParams.term === 'string' ? searchParams.term : '';
@@ -233,7 +253,9 @@ export default async function Search(props: Props) {
   });
 
   return (
-    <ProductsListSection
+    <>
+      <SearchAnalytics count={streamableResultsCount} query={streamableSearchQuery} />
+      <ProductsListSection
       breadcrumbs={[
         { label: t('Search.Breadcrumbs.home'), href: '/' },
         { label: t('Search.Breadcrumbs.search'), href: `#` },
@@ -270,5 +292,6 @@ export default async function Search(props: Props) {
       title={streamableTitle}
       totalCount={streamableTotalCount}
     />
+    </>
   );
 }

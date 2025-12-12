@@ -1,0 +1,1 @@
+Original Affinity (.af) source files should be placed in this directory for editing

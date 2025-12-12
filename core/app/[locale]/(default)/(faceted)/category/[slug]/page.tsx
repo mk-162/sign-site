@@ -35,6 +35,10 @@ const createCategorySearchParamsLoader = cache(
   async (categoryId: number, customerAccessToken?: string) => {
     const cachedCategory = getCachedCategory(categoryId);
     const categorySearch = await fetchFacetedSearch(cachedCategory, undefined, customerAccessToken);
+
+    // Debug: Log what BigCommerce returns for facets
+    console.log('[DEBUG] All facets from BigCommerce:', categorySearch.facets.items.map(f => ({ name: f.name, type: f.__typename })));
+
     const categoryFacets = categorySearch.facets.items.filter(
       (facet) => facet.__typename !== 'CategorySearchFilter',
     );
