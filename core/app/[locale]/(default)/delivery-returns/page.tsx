@@ -47,8 +47,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           </p>
           <p className="mt-4 text-slate-700">
             For order status enquiries, please email{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:safety@gtse.co.uk">
-              safety@gtse.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             and our customer service team will assist you.
           </p>
@@ -142,8 +142,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h2 className="mb-4 text-2xl font-bold text-slate-900">EU & International Orders</h2>
           <p className="text-slate-700">
             To arrange safety signage delivery outside the UK, please contact us at{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:safety@gtse.co.uk">
-              safety@gtse.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             or call 01246 386 126.
           </p>
@@ -172,8 +172,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h3 className="mb-2 text-lg font-bold text-slate-900">Returns Process</h3>
           <p className="mb-6 text-slate-700">
             Email{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:safety@gtse.co.uk">
-              safety@gtse.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             with your order number. We'll arrange the best return method and process your refund or
             replacement promptly.
@@ -182,8 +182,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h3 className="mb-2 text-lg font-bold text-slate-900">Missing Items</h3>
           <p className="text-slate-700">
             Please notify us within 14 days of delivery if items are missing. Contact{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:safety@gtse.co.uk">
-              safety@gtse.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             or call 01246 386 126 with your order number.
           </p>

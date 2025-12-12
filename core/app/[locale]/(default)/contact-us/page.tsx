@@ -1,20 +1,22 @@
-import type { Metadata } from 'next';
-import { setRequestLocale } from 'next-intl/server';
+'use client';
+
+import { useActionState, useEffect } from 'react';
 import Link from 'next/link';
-import { Phone, Mail, MessageSquare, Briefcase } from 'lucide-react';
+import { Phone, Mail, MessageSquare, Briefcase, Loader2, CheckCircle } from 'lucide-react';
+import { submitContactForm, ContactFormState } from './_actions/submit-contact';
 
-interface Props {
-  params: Promise<{ locale: string }>;
-}
-
-export const metadata: Metadata = {
-  title: 'Contact Us | Safety Sign Hub',
-  description: 'Get expert safety signage advice. Contact our team for compliance questions, bulk orders, or product enquiries.',
+const initialState: ContactFormState = {
+  status: 'idle',
+  message: '',
 };
 
-export default async function ContactUsPage({ params }: Props) {
-  const { locale } = await params;
-  setRequestLocale(locale);
+export default function ContactUsPage() {
+  const [state, formAction, isPending] = useActionState(submitContactForm, initialState);
+
+  // Debug log
+  useEffect(() => {
+    console.log('Contact form state:', state);
+  }, [state]);
 
   return (
     <div className="container mx-auto max-w-5xl px-4 py-12">
@@ -56,9 +58,9 @@ export default async function ContactUsPage({ params }: Props) {
                 <h3 className="text-lg font-bold text-slate-900">Email</h3>
                 <a
                   className="my-1 block text-lg font-bold text-orange-600 hover:underline"
-                  href="mailto:safety@gtse.co.uk"
+                  href="mailto:sales@safetysignhub.co.uk"
                 >
-                  safety@gtse.co.uk
+                  sales@safetysignhub.co.uk
                 </a>
                 <p className="text-slate-600">
                   Contact us for compliance advice, bulk orders, or product enquiries. We aim to
@@ -127,53 +129,97 @@ export default async function ContactUsPage({ params }: Props) {
 
         <div className="h-fit rounded-xl border border-slate-100 bg-white p-8 shadow-lg">
           <h2 className="mb-6 text-2xl font-bold text-slate-900">Send us a Message</h2>
-          <form className="space-y-4">
-            <div className="grid gap-4 md:grid-cols-2">
+
+          {state.status === 'success' ? (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <CheckCircle className="h-16 w-16 text-green-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Message Sent!</h3>
+              <p className="text-slate-600">{state.message}</p>
+            </div>
+          ) : (
+            <form action={formAction} className="space-y-4">
+              {state.status === 'error' && (
+                <div className="rounded-md bg-red-50 border border-red-200 p-4 text-red-700 text-sm">
+                  {state.message}
+                </div>
+              )}
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700">First Name *</label>
+                  <input
+                    name="firstName"
+                    required
+                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                    type="text"
+                  />
+                  {state.errors?.firstName && (
+                    <p className="mt-1 text-sm text-red-500">{state.errors.firstName[0]}</p>
+                  )}
+                </div>
+                <div>
+                  <label className="mb-1 block text-sm font-medium text-slate-700">Last Name *</label>
+                  <input
+                    name="lastName"
+                    required
+                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                    type="text"
+                  />
+                  {state.errors?.lastName && (
+                    <p className="mt-1 text-sm text-red-500">{state.errors.lastName[0]}</p>
+                  )}
+                </div>
+              </div>
               <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">First Name</label>
+                <label className="mb-1 block text-sm font-medium text-slate-700">Email Address *</label>
                 <input
+                  name="email"
+                  required
                   className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                  type="text"
+                  type="email"
+                />
+                {state.errors?.email && (
+                  <p className="mt-1 text-sm text-red-500">{state.errors.email[0]}</p>
+                )}
+              </div>
+              <div>
+                <label className="mb-1 block text-sm font-medium text-slate-700">
+                  Phone Number (Optional)
+                </label>
+                <input
+                  name="phone"
+                  className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
+                  type="tel"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">Last Name</label>
-                <input
+                <label className="mb-1 block text-sm font-medium text-slate-700">Message *</label>
+                <textarea
+                  name="message"
+                  required
                   className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                  type="text"
+                  rows={4}
                 />
+                {state.errors?.message && (
+                  <p className="mt-1 text-sm text-red-500">{state.errors.message[0]}</p>
+                )}
               </div>
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">Email Address</label>
-              <input
-                className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                type="email"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">
-                Phone Number (Optional)
-              </label>
-              <input
-                className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                type="tel"
-              />
-            </div>
-            <div>
-              <label className="mb-1 block text-sm font-medium text-slate-700">Message</label>
-              <textarea
-                className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                rows={4}
-              />
-            </div>
-            <button
-              className="w-full rounded-md bg-orange-600 py-3 font-bold text-white shadow-md transition-colors hover:bg-orange-700"
-              type="submit"
-            >
-              Send Message
-            </button>
-          </form>
+              <button
+                className="w-full rounded-md bg-orange-600 py-3 font-bold text-white shadow-md transition-colors hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                type="submit"
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </div>
 

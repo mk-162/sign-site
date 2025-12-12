@@ -114,12 +114,12 @@ export default async function TermsConditionsPage({ params }: Props) {
         </h3>
         <p>
           Questions about the Terms of Service should be sent to us at{' '}
-          <a className="text-orange-600 hover:underline" href="mailto:safety@gtse.co.uk">
-            safety@gtse.co.uk
+          <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+            sales@safetysignhub.co.uk
           </a>{' '}
           or{' '}
-          <a className="text-orange-600 hover:underline" href="mailto:sales@gtse.co.uk">
-            sales@gtse.co.uk
+          <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+            sales@safetysignhub.co.uk
           </a>
           .
         </p>

@@ -116,7 +116,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-start gap-3">
                                 <Mail className="w-5 h-5 text-orange-500 shrink-0" />
-                                <span>support@safetysignhub.com</span>
+                                <span>sales@safetysignhub.co.uk</span>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-orange-500 shrink-0" />

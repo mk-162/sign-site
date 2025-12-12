@@ -213,7 +213,7 @@ export default async function TradeEnquiriesPage({ params }: Props) {
           <p className="text-slate-700">
             Reach us via live chat, phone{' '}
             <strong className="text-slate-900">(01246 386 126)</strong>, email{' '}
-            <strong className="text-slate-900">(safety@gtse.co.uk)</strong>, or the contact form
+            <strong className="text-slate-900">(sales@safetysignhub.co.uk)</strong>, or the contact form
             above.
           </p>
         </div>
