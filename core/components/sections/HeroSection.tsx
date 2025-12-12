@@ -38,17 +38,7 @@ export function HeroSection() {
                         with OSHA/ANSI standards. Same-day shipping on stock items.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
-                        <Button className="h-14 px-8 bg-orange-500 hover:bg-orange-400 text-white font-bold text-lg rounded shadow-xl shadow-orange-900/20 border-b-4 border-orange-700 active:border-b-0 active:translate-y-1 transition-all uppercase tracking-wide w-full sm:w-auto">
-                            Get Instant Quote
-                        </Button>
-                        <Button
-                            variant="outline"
-                            className="h-14 px-8 border-2 border-white/20 text-white hover:bg-white/10 hover:text-white font-bold text-lg rounded backdrop-blur-sm w-full sm:w-auto"
-                        >
-                            View Catalog
-                        </Button>
-                    </div>
+
 
                     <div className="pt-6 flex flex-col sm:flex-row items-center gap-6 text-slate-400 text-sm font-medium justify-center lg:justify-start">
                         <div className="flex items-center gap-2">
@@ -74,61 +64,88 @@ export function HeroSection() {
                     </div>
                 </div>
 
-                {/* Right Side Cards - Category Quick Links */}
+                {/* Right Side Cards - 2x2 Category Banners with Images */}
                 <div className="hidden lg:grid grid-cols-2 gap-4">
-                    {[
-                        {
-                            title: 'Warning Signs',
-                            icon: AlertTriangle,
-                            color: 'text-yellow-500',
-                            img: 'https://images.unsplash.com/photo-1626125345510-4603468eedfb?auto=format&fit=crop&w=500&q=80',
-                        },
-                        {
-                            title: 'Exit Signs',
-                            icon: LogOut,
-                            color: 'text-red-500',
-                            img: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?auto=format&fit=crop&w=500&q=80',
-                        },
-                    ].map((cat, i) => (
-                        <Link href="/category" key={i}>
-                            <div className="bg-white rounded-lg p-4 shadow-2xl shadow-black/30 transform hover:-translate-y-1 transition-all cursor-pointer group">
-                                <div className="h-32 bg-slate-100 rounded mb-4 overflow-hidden relative">
-                                    <img
-                                        src={cat.img}
-                                        alt={cat.title}
-                                        className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
-                                    />
-                                    <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-[2px]">
-                                        <cat.icon className={`w-12 h-12 ${cat.color} drop-shadow-sm`} />
-                                    </div>
-                                </div>
-                                <h3 className="font-bold text-slate-800 text-lg group-hover:text-orange-600 transition-colors">
-                                    {cat.title}
-                                </h3>
-                                <div className="flex justify-between items-center mt-2">
-                                    <span className="text-xs font-semibold text-slate-500">Shop Now</span>
-                                    <div className="bg-orange-100 text-orange-600 p-1 rounded-full group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                                        <ArrowRight className="w-4 h-4" />
-                                    </div>
-                                </div>
+                    {/* Prohibition Signs (Red) */}
+                    <Link href="/shop-by-sign-type/prohibition-signs/">
+                        <div className="bg-[#DC2626] rounded-lg h-32 shadow-xl shadow-black/20 transform hover:-translate-y-1 transition-all cursor-pointer group relative overflow-hidden flex items-center">
+                            <div className="relative z-10 pl-5 pr-2 w-3/5">
+                                <h3 className="font-bold text-white text-lg leading-none mb-1">Prohibition</h3>
+                                <p className="text-white text-[10px] uppercase font-bold tracking-wider mb-1">(Red)</p>
+                                <p className="text-white/90 text-[10px] leading-tight">Do Not Enter, No Smoking</p>
                             </div>
-                        </Link>
-                    ))}
-
-                    {/* Expert Widget Placeholder */}
-                    <div className="col-span-2 bg-white rounded-lg p-6 shadow-2xl shadow-black/30">
-                        <div className="flex items-center gap-4">
-                            <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center">
-                                <span className="text-2xl">👷</span>
-                            </div>
-                            <div>
-                                <h4 className="font-bold text-slate-900">Need Expert Advice?</h4>
-                                <p className="text-sm text-slate-500">
-                                    Call us now: <span className="font-bold text-orange-500">01246 386 126</span>
-                                </p>
+                            <div className="absolute top-0 right-0 w-1/2 h-full z-0">
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#DC2626] to-transparent z-10" style={{ clipPath: 'polygon(0 0, 20% 0, 0 100%, 0% 100%)' }}></div>
+                                <img
+                                    src="/images/prohibition_safety_s_a59355b4.jpg"
+                                    alt="Prohibition Sign"
+                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                                    style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                                />
+                                <div className="absolute inset-0 bg-[#DC2626]/20 group-hover:bg-transparent transition-colors z-20 pointer-events-none" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}></div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
+
+                    {/* Mandatory Signs (Blue) */}
+                    <Link href="/shop-by-sign-type/mandatory-signs/">
+                        <div className="bg-[#2563EB] rounded-lg h-32 shadow-xl shadow-black/20 transform hover:-translate-y-1 transition-all cursor-pointer group relative overflow-hidden flex items-center">
+                            <div className="relative z-10 pl-5 pr-2 w-3/5">
+                                <h3 className="font-bold text-white text-lg leading-none mb-1">Mandatory</h3>
+                                <p className="text-white text-[10px] uppercase font-bold tracking-wider mb-1">(Blue)</p>
+                                <p className="text-white/90 text-[10px] leading-tight">Must Do, Keep Clear</p>
+                            </div>
+                            <div className="absolute top-0 right-0 w-1/2 h-full z-0">
+                                <img
+                                    src="/images/mandatory_safety_sig_6cd85d63.jpg"
+                                    alt="Mandatory Sign"
+                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                                    style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                                />
+                                <div className="absolute inset-0 bg-[#2563EB]/20 group-hover:bg-transparent transition-colors z-20 pointer-events-none" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}></div>
+                            </div>
+                        </div>
+                    </Link>
+
+                    {/* Warning Signs (Yellow) */}
+                    <Link href="/shop-by-sign-type/warning-signs/">
+                        <div className="bg-[#FACC15] rounded-lg h-32 shadow-xl shadow-black/20 transform hover:-translate-y-1 transition-all cursor-pointer group relative overflow-hidden flex items-center">
+                            <div className="relative z-10 pl-5 pr-2 w-3/5">
+                                <h3 className="font-bold text-black text-lg leading-none mb-1">Warning</h3>
+                                <p className="text-black text-[10px] uppercase font-bold tracking-wider mb-1">(Yellow)</p>
+                                <p className="text-black/80 text-[10px] leading-tight">Hazard, Danger, Risk</p>
+                            </div>
+                            <div className="absolute top-0 right-0 w-1/2 h-full z-0">
+                                <img
+                                    src="/images/warning_safety_sign__21208945.jpg"
+                                    alt="Warning Sign"
+                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                                    style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                                />
+                                <div className="absolute inset-0 bg-[#FACC15]/20 group-hover:bg-transparent transition-colors z-20 pointer-events-none" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}></div>
+                            </div>
+                        </div>
+                    </Link>
+
+                    {/* Safe Condition Signs (Green) */}
+                    <Link href="/shop-by-sign-type/safe-condition-signs/">
+                        <div className="bg-[#16A34A] rounded-lg h-32 shadow-xl shadow-black/20 transform hover:-translate-y-1 transition-all cursor-pointer group relative overflow-hidden flex items-center">
+                            <div className="relative z-10 pl-5 pr-2 w-3/5">
+                                <h3 className="font-bold text-white text-lg leading-none mb-1">Safe Condition</h3>
+                                <p className="text-white text-[10px] uppercase font-bold tracking-wider mb-1">(Green)</p>
+                                <p className="text-white/90 text-[10px] leading-tight">Exit, First Aid, Escape</p>
+                            </div>
+                            <div className="absolute top-0 right-0 w-1/2 h-full z-0">
+                                <img
+                                    src="/images/safe_condition_sign__ee24a520.jpg"
+                                    alt="Safe Condition Sign"
+                                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
+                                    style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
+                                />
+                                <div className="absolute inset-0 bg-[#16A34A]/20 group-hover:bg-transparent transition-colors z-20 pointer-events-none" style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}></div>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -5,7 +5,16 @@ import { Star } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent } from '~/components/ui/card';
 import { Badge } from '~/components/ui/badge';
-import { getBestSellingProducts, GetProductsResponse } from '~/client/queries/get-products';
+import { getProductsBySkus, GetProductsResponse } from '~/client/queries/get-products';
+
+// Specific products to display on homepage
+const FEATURED_SKUS = [
+    'GTSE-SN19',        // Fire Door Keep Shut Symbol
+    'GTSE-SNCTHM36',    // Caution Trip Hazard (Free-Standing Floor Sign)
+    'GTSE-SN1101',      // Highly Flammable
+    'GTSE-SN414',       // No Dog Fouling It Is An Offence Not To Clean Up After Your Dog
+    'GTSE-SN25',        // No Smoking Vertical
+];
 
 function formatPrice(value: number, currencyCode: string = 'GBP'): string {
     return new Intl.NumberFormat('en-GB', {
@@ -56,7 +65,7 @@ function ProductCard({ product }: { product: GetProductsResponse[number] }) {
                 <Link href={path || '#'} className="w-full h-full relative">
                     {defaultImage?.url ? (
                         <Image
-                            src={defaultImage.url}
+                            src={defaultImage.url.replace('{:size}', '500x500')}
                             alt={defaultImage.altText || name}
                             fill
                             className="object-contain group-hover:scale-105 transition-transform duration-500"
@@ -112,9 +121,18 @@ function ProductCard({ product }: { product: GetProductsResponse[number] }) {
 }
 
 export async function FeaturedProducts() {
-    const result = await getBestSellingProducts({});
+    // Try specific products first
+    let result = await getProductsBySkus({ skus: FEATURED_SKUS });
+    let products = result.status === 'success' && result.products ? result.products : [];
 
-    const products = result.status === 'success' && result.products ? result.products.slice(0, 4) : [];
+    // Fallback to best sellers if no specific products found
+    if (products.length === 0) {
+        const { getBestSellingProducts } = await import('~/client/queries/get-products');
+        const fallbackResult = await getBestSellingProducts({});
+        products = fallbackResult.status === 'success' && fallbackResult.products
+            ? fallbackResult.products.slice(0, 4)
+            : [];
+    }
 
     if (products.length === 0) {
         return null;

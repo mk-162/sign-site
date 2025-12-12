@@ -13,7 +13,7 @@ const features = [
     {
         icon: Truck,
         title: 'Fast Shipping',
-        description: '98% of orders ship same-day. Free shipping on all orders over £99.',
+        description: '98% of orders ship same-day. Free shipping on all orders over £75 (ex. VAT).',
     },
     {
         icon: Settings,

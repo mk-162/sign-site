@@ -51,46 +51,52 @@ function CursorPaginationResolved({
     [startCursorParamName]: parseAsString,
     [endCursorParamName]: parseAsString,
   });
-  const previousLabel = useStreamable(streamablePreviousLabel) ?? 'Go to previous page';
-  const nextLabel = useStreamable(streamableNextLabel) ?? 'Go to next page';
+  const previousLabel = useStreamable(streamablePreviousLabel) ?? 'Previous';
+  const nextLabel = useStreamable(streamableNextLabel) ?? 'Next';
 
   return (
     <nav aria-label={label} className="py-10" role="navigation">
-      <ul className="flex items-center justify-center gap-3">
+      <ul className="flex items-center justify-center gap-4">
         <li>
           {startCursor != null ? (
-            <PaginationLink
-              aria-label={previousLabel}
+            <Link
+              aria-label="Go to previous page"
+              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors shadow-md"
               href={serialize(searchParams, {
                 [startCursorParamName]: startCursor,
                 [endCursorParamName]: null,
               })}
               scroll={scroll}
             >
-              <ArrowLeft size={24} strokeWidth={1} />
-            </PaginationLink>
+              <ArrowLeft size={20} strokeWidth={2} />
+              {previousLabel}
+            </Link>
           ) : (
-            <SkeletonLink>
-              <ArrowLeft size={24} strokeWidth={1} />
-            </SkeletonLink>
+            <div className="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-200 text-slate-400 font-bold cursor-not-allowed">
+              <ArrowLeft size={20} strokeWidth={2} />
+              {previousLabel}
+            </div>
           )}
         </li>
         <li>
           {endCursor != null ? (
-            <PaginationLink
-              aria-label={nextLabel}
+            <Link
+              aria-label="Go to next page"
+              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-500 text-white font-bold hover:bg-orange-600 transition-colors shadow-md"
               href={serialize(searchParams, {
                 [endCursorParamName]: endCursor,
                 [startCursorParamName]: null,
               })}
               scroll={scroll}
             >
-              <ArrowRight size={24} strokeWidth={1} />
-            </PaginationLink>
+              {nextLabel}
+              <ArrowRight size={20} strokeWidth={2} />
+            </Link>
           ) : (
-            <SkeletonLink>
-              <ArrowRight size={24} strokeWidth={1} />
-            </SkeletonLink>
+            <div className="flex items-center gap-2 px-6 py-3 rounded-lg bg-slate-200 text-slate-400 font-bold cursor-not-allowed">
+              {nextLabel}
+              <ArrowRight size={20} strokeWidth={2} />
+            </div>
           )}
         </li>
       </ul>

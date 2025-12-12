@@ -22,30 +22,37 @@ export function Footer() {
                             The leading provider of industrial safety signage and equipment. Dedicated to keeping your
                             workplace safe, compliant, and productive.
                         </p>
-                        <div className="flex gap-4 pt-2">
-                            {[1, 2, 3, 4].map((i) => (
-                                <div
-                                    key={i}
-                                    className="w-10 h-10 rounded bg-white/5 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-colors cursor-pointer"
-                                >
-                                    <User className="w-5 h-5" />
-                                </div>
-                            ))}
-                        </div>
+                        {/* Social icons will be added here later */}
                     </div>
 
                     <div className="space-y-4">
                         <h4 className="text-white font-bold uppercase tracking-wider text-sm">Shop</h4>
                         <ul className="space-y-2 text-sm">
-                            {['Warning Signs', 'Danger Signs', 'Notice Signs', 'Traffic Signs', 'Parking Signs'].map(
-                                (item) => (
-                                    <li key={item}>
-                                        <a href="#" className="hover:text-orange-500 transition-colors">
-                                            {item}
-                                        </a>
-                                    </li>
-                                )
-                            )}
+                            <li>
+                                <a href="/shop-by-sign-type/warning-signs/" className="hover:text-orange-500 transition-colors">
+                                    Warning Signs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/shop-by-sign-type/prohibition-signs/" className="hover:text-orange-500 transition-colors">
+                                    Prohibition Signs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/shop-by-sign-type/mandatory-signs/" className="hover:text-orange-500 transition-colors">
+                                    Mandatory Signs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/shop-by-sign-type/safe-condition-signs/" className="hover:text-orange-500 transition-colors">
+                                    Safe Condition Signs
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/shop-by-sign-type/fire-safety-signs/" className="hover:text-orange-500 transition-colors">
+                                    Fire Safety Signs
+                                </a>
+                            </li>
                         </ul>
                     </div>
 

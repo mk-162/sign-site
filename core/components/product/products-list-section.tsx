@@ -14,6 +14,7 @@ import { useQueryStates, parseAsString } from 'nuqs';
 import { Badge } from '~/components/ui/badge';
 import { getFilterParsers } from '@/vibes/soul/sections/products-list-section/filter-parsers';
 import { Filter } from '@/vibes/soul/sections/products-list-section/filters-panel';
+import { CursorPagination, CursorPaginationInfo } from '@/vibes/soul/primitives/cursor-pagination';
 
 import { Breadcrumbs as BreadcrumbsComponent } from '@/vibes/soul/sections/breadcrumbs';
 
@@ -38,7 +39,7 @@ interface ProductsListSectionProps {
     filtersPanelTitle?: string;
     maxCompareLimitMessage?: string;
     maxItems?: number;
-    paginationInfo?: any;
+    paginationInfo?: Streamable<CursorPaginationInfo>;
     rangeFilterApplyLabel?: string;
     removeLabel?: string;
     resetFiltersLabel?: string;
@@ -54,6 +55,7 @@ export function ProductsListSection({
     totalCount,
     showCompare = false,
     breadcrumbs,
+    paginationInfo,
 }: ProductsListSectionProps) {
     return (
         <div className="container mx-auto px-4 py-8">
@@ -108,6 +110,8 @@ export function ProductsListSection({
                     <Suspense fallback={<ProductListSkeleton />}>
                         <ProductList products={products} showCompare={showCompare} />
                     </Suspense>
+
+                    {paginationInfo && <CursorPagination info={paginationInfo} />}
                 </div>
             </div>
         </div>

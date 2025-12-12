@@ -174,7 +174,7 @@ interface ProductSearch {
 
 const getProductSearchResults = cache(
   async (
-    { limit = 9, after, before, sort, filters }: ProductSearch,
+    { limit = 16, after, before, sort, filters }: ProductSearch,
     currencyCode?: CurrencyCode,
     customerAccessToken?: string,
   ) => {
@@ -379,17 +379,17 @@ export const PublicToPrivateParams = PublicSearchParamsSchema.catchall(SearchPar
         price:
           minPrice || maxPrice
             ? {
-                maxPrice,
-                minPrice,
-              }
+              maxPrice,
+              minPrice,
+            }
             : undefined,
         productAttributes,
         rating:
           minRating || maxRating
             ? {
-                maxRating,
-                minRating,
-              }
+              maxRating,
+              minRating,
+            }
             : undefined,
         searchTerm: term,
       },
@@ -404,7 +404,7 @@ export const fetchFacetedSearch = cache(
     currencyCode?: CurrencyCode,
     customerAccessToken?: string,
   ) => {
-    const { after, before, limit = 9, sort, filters } = PublicToPrivateParams.parse(params);
+    const { after, before, limit = 16, sort, filters } = PublicToPrivateParams.parse(params);
 
     return getProductSearchResults(
       {

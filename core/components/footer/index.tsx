@@ -81,9 +81,9 @@ export const Footer = async () => {
 
   const contactInformation = data.settings?.contact
     ? {
-        address: data.settings.contact.address,
-        phone: data.settings.contact.phone,
-      }
+      address: data.settings.contact.address,
+      phone: data.settings.contact.phone,
+    }
     : undefined;
 
   const socialMediaLinks = data.settings?.socialMediaLinks
@@ -118,11 +118,11 @@ export const Footer = async () => {
         links: [
           ...(sectionsData.settings?.giftCertificates?.isEnabled
             ? [
-                {
-                  label: t('giftCertificates'),
-                  href: '/gift-certificates',
-                },
-              ]
+              {
+                label: t('giftCertificates'),
+                href: '/gift-certificates',
+              },
+            ]
             : []),
           ...removeEdgesAndNodes(sectionsData.content.pages).map((page) => ({
             label: page.name,
@@ -143,7 +143,8 @@ export const Footer = async () => {
       logoLabel={t('home')}
       paymentIcons={paymentIcons}
       sections={streamableSections}
-      socialMediaLinks={socialMediaLinks}
+    // socialMediaLinks hidden for now - will be replaced with actual social icons later
+    // socialMediaLinks={socialMediaLinks}
     />
   );
 };

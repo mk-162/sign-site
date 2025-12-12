@@ -34,6 +34,31 @@ const GetBestSellingProductsQuery = graphql(
   [ProductCardFragment],
 );
 
+const GetProductsBySkusQuery = graphql(
+  `
+    query getProductsBySkus($skus: [String!]!, $currencyCode: currencyCode) {
+      site {
+        products(skus: $skus) {
+          edges {
+            node {
+              categories {
+                edges {
+                  node {
+                    name
+                    path
+                  }
+                }
+              }
+              ...ProductCardFragment
+            }
+          }
+        }
+      }
+    }
+  `,
+  [ProductCardFragment],
+);
+
 const GetFeaturedProductsQuery = graphql(
   `
     query getFeaturedProducts($currencyCode: currencyCode) {
@@ -243,4 +268,37 @@ const getProductsByIds = cache(
   },
 );
 
-export { getBestSellingProducts, getFeaturedProducts, getNewestProducts, getProductsByIds };
+const getProductsBySkus = cache(
+  async ({ skus, locale }: { skus: string[]; locale?: string }) => {
+    const customerAccessToken = await getSessionCustomerAccessToken();
+    const currencyCode = await getPreferredCurrencyCode();
+
+    try {
+      const response = await client.fetch({
+        document: GetProductsBySkusQuery,
+        variables: { skus, currencyCode },
+        customerAccessToken,
+        fetchOptions: {
+          ...(locale && { headers: { 'Accept-Language': locale } }),
+          ...(customerAccessToken ? { cache: 'no-store' } : { next: { revalidate } }),
+        },
+      });
+
+      const { products } = response.data.site;
+
+      return {
+        status: 'success',
+        products: removeEdgesAndNodes(products),
+      };
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return { status: 'error', error: error.message };
+      }
+
+      return { status: 'error', error: 'Something went wrong. Please try again.' };
+    }
+  },
+);
+
+export { getBestSellingProducts, getFeaturedProducts, getNewestProducts, getProductsByIds, getProductsBySkus };
+
