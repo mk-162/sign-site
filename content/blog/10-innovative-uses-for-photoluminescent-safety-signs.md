@@ -1,7 +1,7 @@
 ---
 title: "10 Innovative Uses for Photoluminescent Safety Signs"
 description: "Beyond emergency exits: creative and effective applications for glow-in-the-dark safety signs."
-author: "Rachel Bennett"
+author: "Matt Naughton"
 publishedAt: "2025-10-20"
 tags: ['photoluminescent', 'innovation', 'creative', 'blog']
 featured: false
