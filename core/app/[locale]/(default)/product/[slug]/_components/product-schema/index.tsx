@@ -1,4 +1,4 @@
-import { Product as ProductSchemaType, WithContext } from 'schema-dts';
+import { Product as ProductSchemaType, WithContext, BreadcrumbList } from 'schema-dts';
 
 import { PricingFragment } from '~/client/fragments/pricing';
 import { FragmentOf } from '~/client/graphql';
@@ -7,11 +7,32 @@ import { ProductSchemaFragment } from './fragment';
 
 interface Props {
   product: FragmentOf<typeof ProductSchemaFragment> & FragmentOf<typeof PricingFragment>;
+  breadcrumbs: Array<{ label: string; href: string }>;
+  images: Array<{ src: string; alt: string }>;
 }
 
-export const ProductSchema = ({ product }: Props) => {
-  /* TODO: use common default image when product has no images */
-  const image = product.defaultImage ? { image: product.defaultImage.url } : null;
+export const ProductSchema = ({ product, breadcrumbs, images }: Props) => {
+  // Helper to ensure absolute URLs
+  const toAbsoluteUrl = (path: string) => {
+    const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://safetysignhub.co.uk';
+    // Remove leading slash if present to avoid double slashes
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return `${baseUrl}/${cleanPath}`;
+  };
+
+  const productUrl = toAbsoluteUrl(product.path);
+  const productId = `${productUrl}#product`;
+
+  const breadcrumbSchema: WithContext<BreadcrumbList> = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.label,
+      item: toAbsoluteUrl(crumb.href),
+    })),
+  };
 
   const sku = product.sku ? { sku: product.sku } : null;
   const gtin = product.gtin ? { gtin: product.gtin } : null;
@@ -19,33 +40,33 @@ export const ProductSchema = ({ product }: Props) => {
 
   const brand = product.brand
     ? {
-        '@type': 'Brand' as const,
-        url: product.brand.path,
-        name: product.brand.name,
-      }
+      '@type': 'Brand' as const,
+      url: product.brand.path,
+      name: product.brand.name,
+    }
     : null;
 
   const aggregateRating =
     product.reviewSummary.numberOfReviews > 0
       ? {
-          '@type': 'AggregateRating' as const,
-          ratingValue: product.reviewSummary.averageRating,
-          reviewCount: product.reviewSummary.numberOfReviews,
-        }
+        '@type': 'AggregateRating' as const,
+        ratingValue: product.reviewSummary.averageRating,
+        reviewCount: product.reviewSummary.numberOfReviews,
+      }
       : null;
 
   const priceSpecification = product.prices
     ? {
-        '@type': 'PriceSpecification' as const,
-        price: product.prices.price.value,
-        priceCurrency: product.prices.price.currencyCode,
-        ...(product.prices.priceRange.min.value !== product.prices.priceRange.max.value
-          ? {
-              minPrice: product.prices.priceRange.min.value,
-              maxPrice: product.prices.priceRange.max.value,
-            }
-          : null),
-      }
+      '@type': 'PriceSpecification' as const,
+      price: product.prices.price.value,
+      priceCurrency: product.prices.price.currencyCode,
+      ...(product.prices.priceRange.min.value !== product.prices.priceRange.max.value
+        ? {
+          minPrice: product.prices.priceRange.min.value,
+          maxPrice: product.prices.priceRange.max.value,
+        }
+        : null),
+    }
     : null;
 
   enum ItemCondition {
@@ -57,22 +78,27 @@ export const ProductSchema = ({ product }: Props) => {
   const itemCondition = ItemCondition[product.condition ?? 'NEW'];
 
   enum Availability {
-    Preorder = 'PreOrder',
-    Unavailable = 'OutOfStock',
-    Available = 'InStock',
+    Preorder = 'https://schema.org/PreOrder',
+    Unavailable = 'https://schema.org/OutOfStock',
+    Available = 'https://schema.org/InStock',
   }
 
   const availability = Availability[product.availabilityV2.status];
 
+  // Calculate price valid until (1 year from now)
+  const priceValidUntil = new Date();
+  priceValidUntil.setFullYear(priceValidUntil.getFullYear() + 1);
+
   const productSchema: WithContext<ProductSchemaType> = {
     '@context': 'https://schema.org',
     '@type': 'Product',
+    '@id': productId,
     name: product.name,
-    url: product.path,
+    url: productUrl,
     description: product.plainTextDescription,
+    image: images.length > 0 ? images.map((img) => img.src) : (product.defaultImage ? [product.defaultImage.url] : []),
     ...(brand && { brand }),
     ...(aggregateRating && { aggregateRating }),
-    ...image,
     ...sku,
     ...gtin,
     ...mpn,
@@ -81,14 +107,42 @@ export const ProductSchema = ({ product }: Props) => {
       ...(priceSpecification && { priceSpecification }),
       itemCondition,
       availability,
-      url: product.path,
+      url: productUrl,
+      priceValidUntil: priceValidUntil.toISOString().split('T')[0],
+      priceCurrency: product.prices?.price.currencyCode,
+      price: product.prices?.price.value,
+      hasMerchantReturnPolicy: {
+        '@type': 'MerchantReturnPolicy',
+        applicableCountry: 'GB',
+        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+        merchantReturnDays: 30,
+        returnMethod: 'https://schema.org/ReturnByMail',
+      },
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: {
+          '@type': 'MonetaryAmount',
+          value: 0,
+          currency: product.prices?.price.currencyCode || 'GBP',
+        },
+        shippingDestination: {
+          '@type': 'DefinedRegion',
+          addressCountry: 'GB',
+        },
+      }
     },
   };
 
   return (
-    <script
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-      type="application/ld+json"
-    />
+    <>
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        type="application/ld+json"
+      />
+      <script
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        type="application/ld+json"
+      />
+    </>
   );
 };

@@ -21,6 +21,7 @@ import { getCompareProducts } from '../../fetch-compare-products';
 import { fetchFacetedSearch } from '../../fetch-faceted-search';
 
 import { CategoryViewed } from './_components/category-viewed';
+import { CategorySchema } from './_components/category-schema';
 import { getCategoryPageData } from './page-data';
 
 const getCachedCategory = cache((categoryId: number) => {
@@ -288,7 +289,16 @@ export default async function Category(props: Props) {
         snapshotId={`category-${categoryId}-bottom-content`}
       />
       <Stream value={streamableFacetedSearch}>
-        {(search) => <CategoryViewed category={category} products={search.products.items} />}
+        {(search) => (
+          <>
+            <CategorySchema
+              breadcrumbs={breadcrumbs}
+              categoryName={category.name}
+              products={search.products.items}
+            />
+            <CategoryViewed category={category} products={search.products.items} />
+          </>
+        )}
       </Stream>
     </>
   );

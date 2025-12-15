@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Phone, Mail, User, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 
 export function Footer() {
     return (
@@ -9,15 +8,26 @@ export function Footer() {
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
                     <div className="col-span-2 lg:col-span-2 space-y-6">
-                        <Link href="/" className="block">
-                            <Image
-                                src="/images/ss-logo.svg"
-                                alt="SafetySignHub - GTSE Brand"
-                                width={200}
+                        <div className="flex gap-4 items-center">
+                            <Link href="/" className="block">
+                                {/* eslint-disable-next-line @next/next/no-img-element */}
+                                <img
+                                    src="/ss-logo.svg"
+                                    alt="SafetySignHub - GTSE Brand"
+                                    width={200}
+                                    height={60}
+                                    className="h-14 w-auto"
+                                />
+                            </Link>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                                src="/ISO-white.svg"
+                                alt="ISO 9001 Certified"
+                                width={60}
                                 height={60}
                                 className="h-14 w-auto"
                             />
-                        </Link>
+                        </div>
                         <p className="text-sm max-w-sm leading-relaxed">
                             The leading provider of industrial safety signage and equipment. Dedicated to keeping your
                             workplace safe, compliant, and productive.
@@ -116,7 +126,7 @@ export function Footer() {
                             </li>
                             <li className="flex items-start gap-3">
                                 <Mail className="w-5 h-5 text-orange-500 shrink-0" />
-                                <span>sales@safetysignhub.co.uk</span>
+                                <a href="mailto:sales@safetysignhub.co.uk" className="hover:text-orange-500 transition-colors">sales@safetysignhub.co.uk</a>
                             </li>
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-orange-500 shrink-0" />
@@ -135,12 +145,22 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-                    <p>&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Gocableties Ltd | Company No. 09162871 | VAT No. 197 116 978</p>
-                    <div className="flex gap-4">
-                        <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">Visa</span>
-                        <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">Mastercard</span>
-                        <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">Amex</span>
-                        <span className="bg-slate-800 px-2 py-1 rounded text-slate-300">PayPal</span>
+                    <p className="shrink min-w-0">&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Gocableties Ltd | Company No. 09162871 | VAT No. 197 116 978</p>
+                    <div className="flex gap-3 items-center flex-nowrap shrink-0 justify-center md:justify-end opacity-70 hover:opacity-100 transition-opacity duration-300">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/amex-stacked.svg" alt="American Express" className="h-4 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="/mastercard-new.svg" alt="Mastercard" className="h-5 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-3 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/29/Amazon_Pay_logo.svg" alt="Amazon Pay" className="h-3 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg" alt="Apple Pay" className="h-4 w-auto brightness-0 invert" />
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" alt="Google Pay" className="h-4 w-auto brightness-0 invert" />
                     </div>
                 </div>
             </div>

@@ -11,6 +11,8 @@ import {
   CategoryTreeItem,
 } from '~/components/layout/header-data';
 
+import { GlobalSchema } from './_components/global-schema';
+
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;
 }
@@ -50,6 +52,7 @@ export default async function DefaultLayout({ params, children }: Props) {
 
   return (
     <>
+      <GlobalSchema />
       <Header
         categories={categories}
         navGroups={navGroups}

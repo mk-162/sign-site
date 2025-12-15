@@ -41,20 +41,6 @@ export function HeroSection() {
 
 
                     <div className="pt-6 flex flex-col sm:flex-row items-center gap-6 text-slate-400 text-sm font-medium justify-center lg:justify-start">
-                        <div className="flex items-center gap-2">
-                            <div className="flex -space-x-2">
-                                {[1, 2, 3, 4].map((i) => (
-                                    <div
-                                        key={i}
-                                        className="w-8 h-8 rounded-full bg-slate-600 border-2 border-[#0f172a] flex items-center justify-center text-[10px] text-white font-bold"
-                                    >
-                                        {String.fromCharCode(64 + i)}
-                                    </div>
-                                ))}
-                            </div>
-                            <span>Trusted by 50,000+ Companies</span>
-                        </div>
-                        <div className="h-4 w-px bg-white/20 hidden sm:block" />
                         <div className="flex gap-1 text-orange-500">
                             {[1, 2, 3, 4, 5].map((i) => (
                                 <Star key={i} className="w-4 h-4 fill-current" />
@@ -77,7 +63,7 @@ export function HeroSection() {
                             <div className="absolute top-0 right-0 w-1/2 h-full z-0">
                                 <div className="absolute inset-0 bg-gradient-to-r from-[#DC2626] to-transparent z-10" style={{ clipPath: 'polygon(0 0, 20% 0, 0 100%, 0% 100%)' }}></div>
                                 <img
-                                    src="/images/prohibition_safety_s_a59355b4.jpg"
+                                    src="/images/red-signs.png"
                                     alt="Prohibition Sign"
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                                     style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
@@ -97,7 +83,7 @@ export function HeroSection() {
                             </div>
                             <div className="absolute top-0 right-0 w-1/2 h-full z-0">
                                 <img
-                                    src="/images/mandatory_safety_sig_6cd85d63.jpg"
+                                    src="/images/blue-signs.png"
                                     alt="Mandatory Sign"
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                                     style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
@@ -117,7 +103,7 @@ export function HeroSection() {
                             </div>
                             <div className="absolute top-0 right-0 w-1/2 h-full z-0">
                                 <img
-                                    src="/images/warning_safety_sign__21208945.jpg"
+                                    src="/images/yellow-signs.png"
                                     alt="Warning Sign"
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                                     style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}
@@ -137,7 +123,7 @@ export function HeroSection() {
                             </div>
                             <div className="absolute top-0 right-0 w-1/2 h-full z-0">
                                 <img
-                                    src="/images/safe_condition_sign__ee24a520.jpg"
+                                    src="/images/green-signs.png"
                                     alt="Safe Condition Sign"
                                     className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-500"
                                     style={{ clipPath: 'polygon(20% 0, 100% 0, 100% 100%, 0% 100%)' }}

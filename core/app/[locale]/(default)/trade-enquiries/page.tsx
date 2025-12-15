@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
-import { Shield, LayoutGrid, CheckCircle2, TrendingDown, Clock, MoveRight } from 'lucide-react';
+import { Shield, LayoutGrid, CheckCircle2, TrendingDown, Clock } from 'lucide-react';
+import { TradeEnquiryForm } from './_components/trade-enquiry-form';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -122,90 +123,7 @@ export default async function TradeEnquiriesPage({ params }: Props) {
             </div>
           </div>
 
-          <div
-            className="rounded-xl border border-slate-100 bg-white p-8 shadow-xl"
-            id="contact-form"
-          >
-            <h3 className="mb-2 text-2xl font-bold text-slate-900">
-              Apply for a Trade Credit Account
-            </h3>
-            <p className="mb-6 text-slate-500">
-              Streamline procurement across your sites with a GTSE trade account.
-            </p>
-
-            <form className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700">First Name</label>
-                  <input
-                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                    type="text"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700">Last Name</label>
-                  <input
-                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                    type="text"
-                  />
-                </div>
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">Company Name</label>
-                <input
-                  className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                  type="text"
-                />
-              </div>
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700">
-                    Email Address
-                  </label>
-                  <input
-                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                    type="email"
-                  />
-                </div>
-                <div>
-                  <label className="mb-1 block text-sm font-medium text-slate-700">
-                    Phone Number
-                  </label>
-                  <input
-                    className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                    type="tel"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Estimated Monthly Spend
-                </label>
-                <select className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500">
-                  <option>Not sure</option>
-                  <option>Less than £500</option>
-                  <option>£500 - £2000</option>
-                  <option>£2000+</option>
-                </select>
-              </div>
-              <div>
-                <label className="mb-1 block text-sm font-medium text-slate-700">
-                  Additional Details
-                </label>
-                <textarea
-                  className="w-full rounded-md border border-slate-300 px-4 py-2 outline-none transition-all focus:border-orange-500 focus:ring-2 focus:ring-orange-500"
-                  rows={3}
-                />
-              </div>
-              <button
-                className="flex w-full items-center justify-center gap-2 rounded-md bg-slate-900 py-3 font-bold text-white shadow-md transition-colors hover:bg-slate-800"
-                type="submit"
-              >
-                Submit Application <MoveRight className="h-4 w-4" />
-              </button>
-            </form>
-          </div>
+          <TradeEnquiryForm />
         </div>
 
         <div className="rounded-xl border border-orange-100 bg-orange-50 p-8 text-center">
@@ -213,7 +131,7 @@ export default async function TradeEnquiriesPage({ params }: Props) {
           <p className="text-slate-700">
             Reach us via live chat, phone{' '}
             <strong className="text-slate-900">(01246 386 126)</strong>, email{' '}
-            <strong className="text-slate-900">(sales@safetysignhub.co.uk)</strong>, or the contact form
+            <a href="mailto:sales@safetysignhub.co.uk" className="font-bold text-orange-600 hover:underline">(sales@safetysignhub.co.uk)</a>, or the contact form
             above.
           </p>
         </div>

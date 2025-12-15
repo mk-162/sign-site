@@ -245,6 +245,7 @@ function CounterForm({ lineItem, action, onSubmit }: any) {
         onSubmit(event, { formData }) {
             event.preventDefault();
             onSubmit(formData);
+            action(formData);
         }
     });
 

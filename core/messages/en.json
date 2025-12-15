@@ -441,7 +441,7 @@
       "additionalInformation": "Additional information",
       "currentStock": "Current stock: {quantity, number}",
       "Submit": {
-        "addToCart": "Add to cart",
+        "addToCart": "Add to basket",
         "outOfStock": "Out of stock",
         "preorder": "Preorder",
         "unavailable": "Unavailable"

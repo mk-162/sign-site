@@ -215,6 +215,20 @@ const config = {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
+        blob: {
+          '0%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+          '33%': {
+            transform: 'translate(30px, -50px) scale(1.1)',
+          },
+          '66%': {
+            transform: 'translate(-20px, 20px) scale(0.9)',
+          },
+          '100%': {
+            transform: 'translate(0px, 0px) scale(1)',
+          },
+        },
       },
       animation: {
         collapse: 'collapse 400ms cubic-bezier(1, 0, 0.25, 1)',
@@ -225,6 +239,7 @@ const config = {
         scrollLeft: 'scrollLeft var(--marquee-duration) linear infinite',
         shake: 'shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both',
         slideIn: 'slideIn 800ms cubic-bezier(0.25, 1, 0, 1)',
+        blob: 'blob 7s infinite',
       },
     },
   },

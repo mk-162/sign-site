@@ -416,17 +416,24 @@ export default async function Product({ params, searchParams }: Props) {
         title={t('RelatedProducts.title')}
       />
 
-      <Reviews productId={productId} searchParams={searchParams} />
+      {/* <Reviews productId={productId} productPath={baseProduct.path} searchParams={searchParams} /> */}
 
       <Stream
         fallback={null}
         value={Streamable.from(async () =>
-          Streamable.all([streamableProduct, streamableProductPricingAndRelatedProducts]),
+          Streamable.all([
+            streamableProduct,
+            streamableProductPricingAndRelatedProducts,
+            streamableBreadcrumbs,
+            streamableImages,
+          ]),
         )}
       >
-        {([extendedProduct, pricingProduct]) => (
+        {([extendedProduct, pricingProduct, breadcrumbs, images]) => (
           <>
             <ProductSchema
+              breadcrumbs={breadcrumbs}
+              images={images}
               product={{ ...extendedProduct, prices: pricingProduct?.prices ?? null }}
             />
             <ProductViewed

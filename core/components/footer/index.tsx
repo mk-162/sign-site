@@ -21,20 +21,58 @@ import { getPreferredCurrencyCode } from '~/lib/currency';
 import { SiteFooter as FooterSection } from '~/lib/makeswift/components/site-footer';
 
 import { FooterFragment, FooterSectionsFragment } from './fragment';
-import { AmazonIcon } from './payment-icons/amazon';
-import { AmericanExpressIcon } from './payment-icons/american-express';
-import { ApplePayIcon } from './payment-icons/apple-pay';
-import { MastercardIcon } from './payment-icons/mastercard';
-import { PayPalIcon } from './payment-icons/paypal';
-import { VisaIcon } from './payment-icons/visa';
+
 
 const paymentIcons = [
-  <AmazonIcon key="amazon" />,
-  <AmericanExpressIcon key="americanExpress" />,
-  <ApplePayIcon key="apple" />,
-  <MastercardIcon key="mastercard" />,
-  <PayPalIcon key="paypal" />,
-  <VisaIcon key="visa" />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="American Express"
+    className="h-4 w-auto brightness-0 invert"
+    key="amex"
+    src="/amex-stacked.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="Mastercard"
+    className="h-5 w-auto brightness-0 invert"
+    key="mastercard"
+    src="/mastercard-new.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="PayPal"
+    className="h-4 w-auto brightness-0 invert"
+    key="paypal"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="Visa"
+    className="h-3 w-auto brightness-0 invert"
+    key="visa"
+    src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="Amazon Pay"
+    className="h-3 w-auto brightness-0 invert"
+    key="amazon"
+    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Amazon_Pay_logo.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="Apple Pay"
+    className="h-4 w-auto brightness-0 invert"
+    key="apple"
+    src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Apple_Pay_logo.svg"
+  />,
+  // eslint-disable-next-line @next/next/no-img-element
+  <img
+    alt="Google Pay"
+    className="h-4 w-auto brightness-0 invert"
+    key="google"
+    src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg"
+  />,
 ];
 
 const socialIcons: Record<string, { icon: JSX.Element }> = {

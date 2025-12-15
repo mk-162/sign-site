@@ -15,6 +15,8 @@ import {
     User,
     ChevronRight,
     ChevronDown,
+    Factory,
+    PoundSterling,
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -50,7 +52,7 @@ export function Header({ categories = [] }: { categories?: CategoryTreeItem[] })
                         </span>
                         <span className="items-center gap-1.5 hover:text-white transition-colors cursor-pointer hidden sm:flex">
                             <Mail className="h-3 w-3 text-orange-500" />
-                            sales@safetysignhub.com
+                            sales@safetysignhub.co.uk
                         </span>
                     </div>
                     <div className="hidden sm:flex gap-6">
@@ -277,22 +279,28 @@ export function Header({ categories = [] }: { categories?: CategoryTreeItem[] })
 
             {/* Trust Bar */}
             <div className="bg-white border-b border-slate-200 shadow-sm py-3">
-                <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-semibold text-slate-600">
+                <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-4 text-xs font-semibold text-slate-600">
                     <div className="flex items-center justify-center gap-3">
                         <CheckCircle2 className="h-5 w-5 text-orange-500" />
-                        <span>OSHA & ANSI Compliant Signs</span>
+                        <span>HSE & BSI Compliant</span>
                     </div>
                     <div className="flex items-center justify-center gap-3 border-l border-slate-100">
                         <Truck className="h-5 w-5 text-orange-500" />
-                        <span>Free Shipping on Orders $99+</span>
+                        <span>Free Delivery - if over £50 (net)</span>
                     </div>
                     <div className="flex items-center justify-center gap-3 border-l border-slate-100">
                         <Settings className="h-5 w-5 text-orange-500" />
                         <span>Custom Signs Available</span>
                     </div>
                     <div className="flex items-center justify-center gap-3 border-l border-slate-100">
-                        <Clock className="h-5 w-5 text-orange-500" />
-                        <span>24/7 Expert Support</span>
+                        <Factory className="h-5 w-5 text-orange-500" />
+                        <span>UK Made (Standard Signs)</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-3 border-l border-slate-100">
+                        <div className="flex items-center justify-center h-5 w-5 rounded-full border-2 border-orange-500">
+                            <PoundSterling className="h-3 w-3 text-orange-500" />
+                        </div>
+                        <span>Bulk pricing</span>
                     </div>
                 </div>
             </div>

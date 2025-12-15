@@ -81,7 +81,7 @@ export default async function DeliveryReturnsPage({ params }: Props) {
                 <tr>
                   <td className="p-4 font-medium text-slate-900">Free Next Working Day - FedEx</td>
                   <td className="p-4 text-slate-600">
-                    1-2 working days tracked for orders over £75 ex VAT (selected UK areas)
+                    1-2 working days tracked for orders over £50 ex VAT (selected UK areas)
                   </td>
                   <td className="p-4 font-bold text-green-600">FREE</td>
                   <td className="p-4 font-bold text-green-600">FREE</td>

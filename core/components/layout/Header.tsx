@@ -35,6 +35,7 @@ import {
   UtensilsCrossed,
   Anchor,
   LucideIcon,
+  PoundSterling,
 } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
@@ -126,10 +127,10 @@ export function Header({
               <span className="text-orange-500 font-bold">Speak to a Human:</span>
               <span className="text-white font-bold tracking-wide">01246 386 126</span>
             </span>
-            <span className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer hidden sm:flex">
+            <a href="mailto:sales@safetysignhub.co.uk" className="flex items-center gap-1.5 hover:text-white transition-colors hidden sm:flex">
               <Mail className="h-3 w-3 text-orange-500" />
-              sales@safetysignhub.com
-            </span>
+              sales@safetysignhub.co.uk
+            </a>
           </div>
           <div className="hidden sm:flex gap-6">
             <a
@@ -199,7 +200,7 @@ export function Header({
                   name="term"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search over 25,000 safety products..."
+                  placeholder="Search over 10,000 safety products..."
                   className="w-full pl-5 pr-4 h-12 border-0 rounded-none focus-visible:ring-0 text-slate-900 bg-white placeholder:text-slate-400 text-base"
                 />
                 <button
@@ -366,20 +367,22 @@ export function Header({
                   <div className="w-64 bg-slate-900 text-white p-6 flex flex-col justify-between">
                     <div>
                       <Badge className="bg-orange-500 hover:bg-orange-600 border-none mb-4">
-                        Special Offer
+                        Trade Account
                       </Badge>
                       <h3 className="text-xl font-black leading-tight mb-2">
-                        Custom Safety Signage
+                        Credit available to businesses.
                       </h3>
                       <p className="text-slate-400 text-sm mb-4">
-                        Design your own compliant signs with your logo and text.
+                        Complete our account form with your company information.
                       </p>
-                      <Button
-                        size="sm"
-                        className="w-full bg-white text-slate-900 hover:bg-slate-100 font-bold"
-                      >
-                        Start Designing
-                      </Button>
+                      <Link href="/trade-enquires">
+                        <Button
+                          size="sm"
+                          className="w-full bg-white text-slate-900 hover:bg-slate-100 font-bold"
+                        >
+                          Start Application
+                        </Button>
+                      </Link>
                     </div>
                     <div className="mt-8 pt-8 border-t border-slate-700">
                       <h4 className="font-bold text-orange-500 mb-2 text-sm">Most Popular</h4>
@@ -485,6 +488,8 @@ export function Header({
                   </div>
                 ))}
 
+
+
                 {/* Knowledge Link */}
                 <Link
                   href="/kb"
@@ -525,9 +530,8 @@ export function Header({
 
                   {/* Expanded Content */}
                   <div
-                    className={`overflow-hidden transition-all duration-200 ${
-                      expandedSections.includes(group.key) ? 'max-h-[2000px]' : 'max-h-0'
-                    }`}
+                    className={`overflow-hidden transition-all duration-200 ${expandedSections.includes(group.key) ? 'max-h-[2000px]' : 'max-h-0'
+                      }`}
                   >
                     {group.isIndustry ? (
                       /* Industry Grid for Mobile */
@@ -570,11 +574,10 @@ export function Header({
                               {/* Third level items */}
                               {category.children.length > 0 && (
                                 <div
-                                  className={`overflow-hidden transition-all duration-200 ${
-                                    expandedSections.includes(`${group.key}-${category.name}`)
-                                      ? 'max-h-[1000px]'
-                                      : 'max-h-0'
-                                  }`}
+                                  className={`overflow-hidden transition-all duration-200 ${expandedSections.includes(`${group.key}-${category.name}`)
+                                    ? 'max-h-[1000px]'
+                                    : 'max-h-0'
+                                    }`}
                                 >
                                   <div className="bg-slate-900/50 py-1">
                                     {category.children.map((child) => (
@@ -600,6 +603,7 @@ export function Header({
               ))}
 
               {/* Static Links */}
+
               <Link
                 href="/kb"
                 onClick={() => setMobileMenuOpen(false)}
@@ -662,22 +666,28 @@ export function Header({
 
       {/* Trust Bar */}
       <div className="bg-white border-b border-slate-200 shadow-sm py-3">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 text-xs font-semibold text-slate-600">
+        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-4 text-xs font-semibold text-slate-600">
           <div className="flex items-center justify-center gap-3">
             <CheckCircle2 className="h-5 w-5 text-orange-500" />
-            <span>OSHA & ANSI Compliant Signs</span>
+            <span>HSE & BSI Compliant</span>
           </div>
           <div className="flex items-center justify-center gap-3 border-l border-slate-100">
             <Truck className="h-5 w-5 text-orange-500" />
-            <span>Free Delivery when on Orders £75+ (ex. VAT)</span>
+            <span>Free Delivery over £50 ex. VAT</span>
           </div>
           <div className="flex items-center justify-center gap-3 border-l border-slate-100">
             <Settings className="h-5 w-5 text-orange-500" />
             <span>Custom Signs Available</span>
           </div>
           <div className="flex items-center justify-center gap-3 border-l border-slate-100">
-            <Clock className="h-5 w-5 text-orange-500" />
-            <span>24/7 Expert Support</span>
+            <Factory className="h-5 w-5 text-orange-500" />
+            <span>UK Made (Standard Signs)</span>
+          </div>
+          <div className="flex items-center justify-center gap-3 border-l border-slate-100">
+            <div className="flex items-center justify-center h-5 w-5 rounded-full border-2 border-orange-500">
+              <PoundSterling className="h-3 w-3 text-orange-500" />
+            </div>
+            <span>Bulk pricing</span>
           </div>
         </div>
       </div>

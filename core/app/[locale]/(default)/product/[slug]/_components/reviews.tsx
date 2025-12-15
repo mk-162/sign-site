@@ -71,10 +71,11 @@ const getReviews = cache(async (productId: number, paginationArgs: object) => {
 
 interface Props {
   productId: number;
+  productPath: string;
   searchParams: Promise<SearchParams>;
 }
 
-export const Reviews = async ({ productId, searchParams }: Props) => {
+export const Reviews = async ({ productId, productPath, searchParams }: Props) => {
   const t = await getTranslations('Product.Reviews');
 
   const streamableReviewsData = Streamable.from(async () => {
@@ -146,6 +147,7 @@ export const Reviews = async ({ productId, searchParams }: Props) => {
           removeEdgesAndNodes(product.reviews).length > 0 && (
             <ProductReviewSchema
               productId={productId}
+              productPath={productPath}
               reviews={removeEdgesAndNodes(product.reviews)}
             />
           )
@@ -154,3 +156,4 @@ export const Reviews = async ({ productId, searchParams }: Props) => {
     </>
   );
 };
+

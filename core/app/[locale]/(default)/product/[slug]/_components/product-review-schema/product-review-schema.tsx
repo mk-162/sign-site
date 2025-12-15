@@ -8,16 +8,28 @@ import { ProductReviewSchemaFragment } from './fragment';
 
 interface Props {
   productId: number;
+  productPath: string;
   reviews: Array<FragmentOf<typeof ProductReviewSchemaFragment>>;
 }
 
-export const ProductReviewSchema = ({ reviews, productId }: Props) => {
+export const ProductReviewSchema = ({ reviews, productId, productPath }: Props) => {
   const format = useFormatter();
+
+  // Helper to ensure absolute URLs
+  const toAbsoluteUrl = (path: string) => {
+    const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://safetysignhub.co.uk';
+    // Remove leading slash if present to avoid double slashes
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    return `${baseUrl}/${cleanPath}`;
+  };
+
+  const productUrl = toAbsoluteUrl(productPath);
+  const productCanonicalId = `${productUrl}#product`;
 
   const productReviewSchema: WithContext<ProductSchemaType> = {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    '@id': `product-${productId}`,
+    '@id': productCanonicalId,
     review: reviews.map((review) => {
       return {
         '@type': 'Review' as const,
@@ -45,3 +57,4 @@ export const ProductReviewSchema = ({ reviews, productId }: Props) => {
     />
   );
 };
+

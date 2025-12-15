@@ -20,6 +20,8 @@ interface Props {
   emailLabel?: string;
   passwordLabel?: string;
   submitLabel?: string;
+  emailPrepend?: React.ReactNode;
+  passwordPrepend?: React.ReactNode;
 }
 
 export function SignInForm({
@@ -27,6 +29,8 @@ export function SignInForm({
   emailLabel = 'Email',
   passwordLabel = 'Password',
   submitLabel = 'Sign in',
+  emailPrepend,
+  passwordPrepend,
 }: Props) {
   const [lastResult, formAction] = useActionState(action, null);
   const [form, fields] = useForm({
@@ -47,6 +51,7 @@ export function SignInForm({
         errors={fields.email.errors}
         key={fields.email.id}
         label={emailLabel}
+        prepend={emailPrepend}
       />
       <Input
         {...getInputProps(fields.password, { type: 'password' })}
@@ -54,6 +59,7 @@ export function SignInForm({
         errors={fields.password.errors}
         key={fields.password.id}
         label={passwordLabel}
+        prepend={passwordPrepend}
       />
       <SubmitButton>{submitLabel}</SubmitButton>
       {form.errors?.map((error, index) => (
@@ -69,7 +75,12 @@ function SubmitButton({ children }: { children: React.ReactNode }) {
   const { pending } = useFormStatus();
 
   return (
-    <Button className="mt-auto w-full" loading={pending} type="submit" variant="secondary">
+    <Button
+      className="mt-auto w-full bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:text-white"
+      loading={pending}
+      type="submit"
+      variant="primary" // Keeping variant for structure but overriding colors
+    >
       {children}
     </Button>
   );

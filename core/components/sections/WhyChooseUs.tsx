@@ -8,12 +8,12 @@ const features = [
         icon: CheckCircle2,
         title: 'Compliance Guaranteed',
         description:
-            'Every sign we manufacture meets the latest OSHA 1910.145 and ANSI Z535 standards.',
+            'Every sign we manufacture meets the latest ISO 7010 and BS EN ISO 7010 standards.',
     },
     {
         icon: Truck,
         title: 'Fast Shipping',
-        description: '98% of orders ship same-day. Free shipping on all orders over £75 (ex. VAT).',
+        description: '98% of orders ship same-day. Free shipping on all orders over £50 (ex. VAT).',
     },
     {
         icon: Settings,
@@ -42,13 +42,14 @@ export function WhyChooseUs() {
                         </h3>
                         <div className="flex items-center gap-4 justify-center md:justify-start">
                             <div className="h-12 px-3 bg-white rounded flex items-center">
-                                <span className="text-slate-800 font-bold text-sm">OSHA</span>
+                                <span className="text-slate-800 font-bold text-sm">ISO 7010</span>
                             </div>
                             <div className="h-12 px-3 bg-white rounded flex items-center">
-                                <span className="text-slate-800 font-bold text-sm">ANSI</span>
+                                <span className="text-slate-800 font-bold text-sm">BS EN</span>
                             </div>
                         </div>
                     </div>
+
 
                     <div className="col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
                         {features.map((feature, i) => (
@@ -65,6 +66,6 @@ export function WhyChooseUs() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }
