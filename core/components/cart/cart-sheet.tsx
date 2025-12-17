@@ -222,7 +222,7 @@ export function CartSheet({
                 <span className="text-xl font-black text-slate-900">{subtotal}</span>
               </div>
               <p className="text-xs text-slate-500 text-center">
-                Shipping & taxes calculated at checkout
+                Shipping & vat calculated at checkout
               </p>
               <div className="grid gap-2">
                 <Button
