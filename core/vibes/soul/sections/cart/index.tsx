@@ -137,7 +137,12 @@ export function CartEmptyState({ title, subtitle, cta }: CartEmptyState) {
       <p className="leading-normaltext-[var(--cart-subtitle,hsl(var(--contrast-500)))] mb-6 text-center @3xl:text-lg">
         {subtitle}
       </p>
-      <ButtonLink href={cta.href}>{cta.label}</ButtonLink>
+      <ButtonLink
+        className="[--button-primary-background:theme(colors.orange.500)] [--button-primary-background-hover:theme(colors.orange.600)] [--button-primary-border:theme(colors.orange.500)] [--button-primary-text:white] [--button-focus:theme(colors.orange.500)]"
+        href={cta.href}
+      >
+        {cta.label}
+      </ButtonLink>
     </SectionLayout>
   );
 }

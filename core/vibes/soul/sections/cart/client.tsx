@@ -162,8 +162,8 @@ export interface CartProps<LineItem extends CartLineItem> {
 }
 
 const defaultEmptyState = {
-  title: 'Your cart is empty',
-  subtitle: 'Add some products to get started.',
+  title: 'Your basket is empty',
+  subtitle: 'Add some products to get started',
   cta: { label: 'Continue shopping', href: '#' },
 };
 
@@ -579,7 +579,7 @@ function CounterForm({
               className={clsx(
                 'text-[var(--cart-counter-icon,hsl(var(--contrast-300)))] transition-colors duration-300',
                 lineItem.quantity !== 1 &&
-                  'group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]',
+                'group-hover:text-[var(--cart-counter-icon-hover,hsl(var(--foreground)))]',
               )}
               size={18}
               strokeWidth={1.5}

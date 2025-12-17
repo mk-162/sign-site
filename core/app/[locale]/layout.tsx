@@ -129,7 +129,7 @@ export default async function RootLayout({ params, children }: Props) {
 
   return (
     <MakeswiftProvider siteVersion={siteVersion}>
-      <html className={clsx(fonts.map((f) => f.variable))} lang={locale}>
+      <html className={clsx(fonts.map((f) => f.variable))} lang={locale} suppressHydrationWarning>
         <head>
           <Script
             async

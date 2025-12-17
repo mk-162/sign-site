@@ -56,7 +56,7 @@ export function GiftCertificatePurchaseSection({
   settings,
   expiresAt,
   expiresAtLabel,
-  ctaLabel = 'Add to cart',
+  ctaLabel = 'Add to basket',
 }: Props) {
   const format = useFormatter();
   const [formattedAmount, setFormattedAmount] = useState<string | undefined>(undefined);

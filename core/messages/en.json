@@ -162,7 +162,7 @@
         "digitalDelivery": "Digital delivery to {email}",
         "subtotal": "Subtotal",
         "shipping": "Shipping",
-        "tax": "Tax",
+        "tax": "VAT",
         "orderSummary": "Order summary",
         "paymentMethodsLabel": "{count, plural, =1 {Payment method} other {Payment methods}}",
         "paymentEndingInLabel": "ending in",
@@ -347,27 +347,27 @@
     }
   },
   "Cart": {
-    "title": "Cart",
-    "heading": "Your cart",
+    "title": "Basket",
+    "heading": "Your basket",
     "proceedToCheckout": "Proceed to checkout",
     "increment": "Increase quantity",
     "decrement": "Decrease quantity",
     "removeItem": "Remove item",
-    "cartCombined": "We noticed you had items saved in a previous cart, so we've added them to your current cart for you.",
-    "cartRestored": "You started a cart on another device, and we've restored it here so you can pick up where you left off.",
-    "cartUpdateInProgress": "You have a cart update in progress. Are you sure you want to leave this page? Your changes may be lost.",
+    "cartCombined": "We noticed you had items saved in a previous basket, so we've added them to your current basket for you.",
+    "cartRestored": "You started a basket on another device, and we've restored it here so you can pick up where you left off.",
+    "cartUpdateInProgress": "You have a basket update in progress. Are you sure you want to leave this page? Your changes may be lost.",
     "CheckoutSummary": {
       "title": "Summary",
       "subTotal": "Subtotal",
       "discounts": "Discounts",
-      "tax": "Tax",
+      "tax": "VAT",
       "total": "Total",
       "CouponCode": {
         "apply": "Apply",
         "couponCode": "Coupon code",
         "removeCouponCode": "Remove coupon code",
         "invalidCouponCode": "Please enter a valid coupon code",
-        "cartNotFound": "An error occurred when retrieving your cart"
+        "cartNotFound": "An error occurred when retrieving your basket"
       },
       "Shipping": {
         "shipping": "Shipping",
@@ -384,7 +384,7 @@
         "shippingOptions": "Shipping options",
         "updateShipping": "Update shipping",
         "addShipping": "Add shipping",
-        "cartNotFound": "An error occurred when retrieving your cart",
+        "cartNotFound": "An error occurred when retrieving your basket",
         "noShippingOptions": "There are no shipping options available for your address"
       }
     },
@@ -396,15 +396,15 @@
       "to": "To",
       "message": "Message",
       "invalidGiftCertificate": "Please enter a valid gift certificate code",
-      "cartNotFound": "An error occurred when retrieving your cart"
+      "cartNotFound": "An error occurred when retrieving your basket"
     },
     "Empty": {
-      "title": "Your cart is empty.",
+      "title": "Your basket is empty.",
       "subtitle": "Add some products to get started.",
       "cta": "Continue shopping"
     },
     "Errors": {
-      "cartNotFound": "An error occurred when retrieving your cart",
+      "cartNotFound": "An error occurred when retrieving your basket",
       "lineItemNotFound": "Line item not found.",
       "failedToUpdateQuantity": "Failed to update quantity.",
       "somethingWentWrong": "Something went wrong. Please try again later."
@@ -412,7 +412,7 @@
   },
   "Compare": {
     "title": "Compare products",
-    "addToCart": "Add to cart",
+    "addToCart": "Add to basket",
     "next": "Next products",
     "previous": "Previous products",
     "noProductsToCompare": "No products to compare",
@@ -425,8 +425,8 @@
     "otherDetails": "Other details",
     "noOtherDetails": "There are no other details.",
     "viewOptions": "View options",
-    "successMessage": "{cartItems, plural, =1 {1 item} other {# items}} added to <cartLink> your cart</cartLink>",
-    "missingCart": "Cart not found. Please try again later.",
+    "successMessage": "{cartItems, plural, =1 {1 item} other {# items}} added to <cartLink> your basket</cartLink>",
+    "missingCart": "Basket not found. Please try again later.",
     "unknownError": "Unknown error. Please try again later."
   },
   "Product": {
@@ -435,10 +435,10 @@
       "increaseQuantity": "Increase quantity",
       "decreaseQuantity": "Decrease quantity",
       "emptySelectPlaceholder": "Select an option",
-      "successMessage": "{cartItems, plural, =1 {1 item} other {# items}} added to <cartLink> your cart</cartLink>",
-      "missingCart": "Cart not found. Please try again later!",
+      "successMessage": "{cartItems, plural, =1 {1 item} other {# items}} added to <cartLink> your basket</cartLink>",
+      "missingCart": "Basket not found. Please try again later!",
       "unknownError": "Unknown error. Please try again later.",
-      "variantRequiredError": "This product requires options to be selected in order to add to the cart.",
+      "variantRequiredError": "This product requires options to be selected in order to add to the basket.",
       "increaseNumber": "Increase number",
       "decreaseNumber": "Decrease number",
       "thumbnail": "View image number",
@@ -517,14 +517,14 @@
       "toggleNavigation": "Toggle navigation",
       "Icons": {
         "account": "Profile",
-        "cart": "Cart",
+        "cart": "Basket",
         "search": "Open search popup",
         "giftCertificates": "Gift certificates"
       },
       "SwitchCurrency": {
         "label": "Switch currency",
         "invalidCurrency": "Invalid currency",
-        "errorUpdatingCurrency": "Error updating currency for your cart. Please try again."
+        "errorUpdatingCurrency": "Error updating currency for your basket. Please try again."
       },
       "Search": {
         "products": "Products",
@@ -614,8 +614,8 @@
       "breadcrumbTitle": "Purchase a gift certificate",
       "title": "Digital gift certificate",
       "description": "Explore our gift certificates, perfect for any occasion. Choose the amount and personalize your message.",
-      "successMessage": "Gift certificate has been added to <cartLink> your cart</cartLink>",
-      "missingCart": "Cart not found. Please try again later.",
+      "successMessage": "Gift certificate has been added to <cartLink> your basket</cartLink>",
+      "missingCart": "Basket not found. Please try again later.",
       "unknownError": "Unknown error. Please try again later.",
       "Form": {
         "amountLabel": "Amount",
@@ -632,7 +632,7 @@
         "messagePlaceholder": "Enter your message (optional)",
         "nonRefundableCheckboxLabel": "I agree that Gift Certificates are non-refundable",
         "expiryCheckboxLabel": "I acknowledge that this Gift Certificate will expire on {expiryDate}",
-        "ctaLabel": "Add to cart",
+        "ctaLabel": "Add to basket",
         "Errors": {
           "amountRequired": "Please select or enter a gift certificate amount.",
           "amountInvalid": "Please select a valid gift certificate amount.",

@@ -20,70 +20,23 @@ interface ToastOptions {
 export const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
-      toastOptions={{
-        unstyled: true,
-        classNames: {
-          toast: 'group focus-visible:ring-0',
-        },
-      }}
-      offset={120}
       gap={8}
+      offset={120}
+      toastOptions={{
+        className: 'group',
+      }}
       {...props}
     />
   );
 };
 
 export const toast = {
-  success: (message: ReactNode, options?: ToastOptions) => {
-    const position = options?.position;
-
-    const toastId = SonnerToast(
-      <Alert
-        message={message}
-        onDismiss={() => SonnerToast.dismiss(toastId)}
-        variant="success"
-        {...options}
-      />,
-      { position },
-    );
-  },
-  error: (message: ReactNode, options?: ToastOptions) => {
-    const position = options?.position;
-
-    const toastId = SonnerToast(
-      <Alert
-        message={message}
-        onDismiss={() => SonnerToast.dismiss(toastId)}
-        variant="error"
-        {...options}
-      />,
-      { position },
-    );
-  },
-  warning: (message: ReactNode, options?: ToastOptions) => {
-    const position = options?.position;
-
-    const toastId = SonnerToast(
-      <Alert
-        message={message}
-        onDismiss={() => SonnerToast.dismiss(toastId)}
-        variant="warning"
-        {...options}
-      />,
-      { position },
-    );
-  },
-  info: (message: ReactNode, options?: ToastOptions) => {
-    const position = options?.position;
-
-    const toastId = SonnerToast(
-      <Alert
-        message={message}
-        onDismiss={() => SonnerToast.dismiss(toastId)}
-        variant="info"
-        {...options}
-      />,
-      { position },
-    );
-  },
+  success: (message: ReactNode, options?: ToastOptions) =>
+    SonnerToast.success(message, options),
+  error: (message: ReactNode, options?: ToastOptions) =>
+    SonnerToast.error(message, options),
+  warning: (message: ReactNode, options?: ToastOptions) =>
+    SonnerToast.warning(message, options),
+  info: (message: ReactNode, options?: ToastOptions) =>
+    SonnerToast.message(message, options),
 };

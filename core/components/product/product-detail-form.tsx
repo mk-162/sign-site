@@ -14,7 +14,7 @@ import { createSerializer, parseAsString, useQueryStates } from 'nuqs';
 import { ReactNode, startTransition, useActionState, useCallback, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
 import { z } from 'zod';
-import { toast } from 'sonner';
+import { toast } from '@/vibes/soul/primitives/toaster';
 
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
@@ -60,7 +60,7 @@ export function ProductDetailForm<F extends Field>({
     action,
     fields,
     productId,
-    ctaLabel = 'Add to cart',
+    ctaLabel = 'Add to basket',
     quantityLabel = 'Quantity',
     emptySelectPlaceholder = 'Select an option',
     ctaDisabled = false,

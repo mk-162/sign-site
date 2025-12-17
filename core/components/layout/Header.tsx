@@ -337,14 +337,13 @@ export function Header({
 
         {/* Navigation Bar - Orange High Vis */}
         <div className="bg-orange-500 shadow-md hidden lg:block relative z-40">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 relative">
             <nav className="flex items-center text-sm font-bold text-white">
               <div className="flex-1 flex no-scrollbar">
                 {/* Dynamic Nav Groups with Mega Menu Dropdowns */}
                 {navGroups.map((group) => (
                   <div
                     key={group.key}
-                    className="relative"
                     onMouseEnter={() => setActiveDropdown(group.key)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
@@ -358,7 +357,7 @@ export function Header({
 
                     {/* Mega Menu Dropdown for this group */}
                     {activeDropdown === group.key && (
-                      <div className={`absolute top-full left-0 bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 z-[100] ${group.isDepartments ? 'min-w-[900px]' : 'min-w-[600px]'}`}>
+                      <div className="absolute top-full left-0 w-full bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 z-[100]">
                         {group.isIndustry ? (
                           /* Industry Icon Grid */
                           <div className="p-6">

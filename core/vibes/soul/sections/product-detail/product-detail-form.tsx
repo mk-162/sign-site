@@ -64,7 +64,7 @@ export function ProductDetailForm<F extends Field>({
   action,
   fields,
   productId,
-  ctaLabel = 'Add to cart',
+  ctaLabel = 'Add to basket',
   quantityLabel = 'Quantity',
   incrementLabel = 'Increase quantity',
   decrementLabel = 'Decrease quantity',
