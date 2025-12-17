@@ -85,7 +85,8 @@ export const productOptionsTransformer = async (
               label: option.displayName,
               required: option.isRequired,
               name: option.entityId.toString(),
-              defaultValue: values.find((value) => value.isDefault)?.entityId.toString(),
+              // Don't set defaultValue for dropdowns - user must explicitly select
+              defaultValue: undefined,
               options: values.map((value) => ({
                 label: value.label,
                 value: value.entityId.toString(),

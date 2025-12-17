@@ -3,6 +3,7 @@
 import { Minus, Plus, ShoppingBag, ShoppingCart, Trash2, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState, useOptimistic, startTransition } from 'react';
 
 import { Button } from '~/components/ui/button';
@@ -19,6 +20,8 @@ import { Separator } from '~/components/ui/separator';
 
 export interface CartSheetItem {
   id: string;
+  productEntityId: number;
+  variantEntityId?: number;
   name: string;
   image?: { src: string; alt: string };
   quantity: number;
@@ -34,7 +37,7 @@ interface CartSheetProps {
   subtotal: string;
   checkoutUrl?: string;
   currencyCode?: string;
-  updateQuantityAction?: (id: string, quantity: number) => Promise<void>;
+  updateQuantityAction?: (id: string, productEntityId: number, quantity: number, variantEntityId?: number) => Promise<void>;
   removeItemAction?: (id: string) => Promise<void>;
   children?: React.ReactNode;
 }
@@ -48,6 +51,7 @@ export function CartSheet({
   removeItemAction,
   children,
 }: CartSheetProps) {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [optimisticItems, setOptimisticItems] = useOptimistic<CartSheetItem[], { type: 'update' | 'remove'; id: string; quantity?: number }>(
     items,
@@ -67,23 +71,25 @@ export function CartSheet({
   const optimisticCount = optimisticItems.reduce((sum, item) => sum + item.quantity, 0);
   const optimisticSubtotal = optimisticItems.reduce((sum, item) => sum + item.priceValue * item.quantity, 0);
 
-  const handleUpdateQuantity = async (id: string, newQuantity: number) => {
+  const handleUpdateQuantity = async (item: CartSheetItem, newQuantity: number) => {
     if (newQuantity < 1) return;
-    startTransition(() => {
-      setOptimisticItems({ type: 'update', id, quantity: newQuantity });
+    startTransition(async () => {
+      setOptimisticItems({ type: 'update', id: item.id, quantity: newQuantity });
+      if (updateQuantityAction) {
+        await updateQuantityAction(item.id, item.productEntityId, newQuantity, item.variantEntityId);
+        router.refresh();
+      }
     });
-    if (updateQuantityAction) {
-      await updateQuantityAction(id, newQuantity);
-    }
   };
 
   const handleRemoveItem = async (id: string) => {
-    startTransition(() => {
+    startTransition(async () => {
       setOptimisticItems({ type: 'remove', id });
+      if (removeItemAction) {
+        await removeItemAction(id);
+        router.refresh();
+      }
     });
-    if (removeItemAction) {
-      await removeItemAction(id);
-    }
   };
 
   return (
@@ -183,7 +189,7 @@ export function CartSheet({
                         {/* Quantity Controls */}
                         <div className="flex items-center gap-1">
                           <button
-                            onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+                            onClick={() => handleUpdateQuantity(item, item.quantity - 1)}
                             disabled={item.quantity <= 1}
                             className="h-7 w-7 rounded border border-slate-300 bg-white flex items-center justify-center hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                           >
@@ -193,7 +199,7 @@ export function CartSheet({
                             {item.quantity}
                           </span>
                           <button
-                            onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+                            onClick={() => handleUpdateQuantity(item, item.quantity + 1)}
                             className="h-7 w-7 rounded border border-slate-300 bg-white flex items-center justify-center hover:bg-slate-50 transition-colors"
                           >
                             <Plus className="h-3 w-3" />

@@ -76,10 +76,11 @@ function SubmitButton({ children }: { children: React.ReactNode }) {
 
   return (
     <Button
-      className="mt-auto w-full bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:text-white"
+      className="mt-auto w-full bg-orange-500 hover:bg-orange-600 border-orange-500 text-white hover:text-white after:hidden"
       loading={pending}
       type="submit"
-      variant="primary" // Keeping variant for structure but overriding colors
+      variant="primary"
+      shape="rounded"
     >
       {children}
     </Button>

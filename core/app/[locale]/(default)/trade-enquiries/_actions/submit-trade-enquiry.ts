@@ -90,7 +90,7 @@ export async function submitTradeEnquiry(
 
     const contactPages = pagesResponse.data.site.content.pages.edges;
 
-    if (!contactPages || contactPages.length === 0) {
+    if (!contactPages || contactPages.length === 0 || !contactPages[0]?.node) {
       console.error('No contact page found in BigCommerce');
       return {
         status: 'error',

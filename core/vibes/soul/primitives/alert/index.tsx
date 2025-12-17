@@ -16,6 +16,13 @@ interface Props {
   onDismiss?: () => void;
 }
 
+const variantStyles = {
+  success: { background: '#16a34a', borderColor: '#15803d' },
+  warning: { background: '#f59e0b', borderColor: '#d97706' },
+  error: { background: '#dc2626', borderColor: '#b91c1c' },
+  info: { background: '#2563eb', borderColor: '#1d4ed8' },
+};
+
 export function Alert({
   variant,
   message,
@@ -26,40 +33,39 @@ export function Alert({
 }: Props) {
   return (
     <div
-      className={clsx(
-        'flex min-w-[284px] max-w-[356px] items-center justify-between gap-2 rounded-xl border border-foreground/10 py-3 pe-3 ps-4 shadow-sm ring-foreground group-focus-visible:outline-none group-focus-visible:ring-2',
-        {
-          success: 'bg-success-highlight',
-          warning: 'bg-warning-highlight',
-          error: 'bg-error-highlight',
-          info: 'bg-background',
-        }[variant],
-      )}
+      className="flex min-w-[320px] max-w-[420px] items-center justify-between gap-3 rounded-lg px-5 py-4 shadow-2xl group-focus-visible:outline-none group-focus-visible:ring-2"
+      style={{
+        backgroundColor: variantStyles[variant].background,
+        borderWidth: '2px',
+        borderStyle: 'solid',
+        borderColor: variantStyles[variant].borderColor,
+        color: 'white',
+      }}
       role="alert"
     >
-      <div className="flex flex-col">
-        <span className="text-sm font-normal text-foreground">{message}</span>
+      <div className="flex flex-col gap-0.5">
+        <span className="text-base font-bold">{message}</span>
         {Boolean(description) && (
-          <span className="text-xs font-medium text-contrast-400">{description}</span>
+          <span className="text-sm font-medium" style={{ color: 'rgba(255,255,255,0.9)' }}>{description}</span>
         )}
       </div>
 
       <div className="flex items-center gap-1">
         {action && (
-          <Button onClick={action.onClick} size="x-small" variant="ghost">
+          <Button className="text-white hover:bg-white/20 border-white/30" onClick={action.onClick} size="x-small" variant="ghost">
             {action.label}
           </Button>
         )}
 
-        <Button
+        <button
           aria-label={dismissLabel}
+          className="p-1.5 rounded-full hover:bg-white/20 transition-colors"
+          style={{ color: 'rgba(255,255,255,0.8)' }}
           onClick={onDismiss}
-          shape="circle"
-          size="x-small"
-          variant="ghost"
+          type="button"
         >
-          <X size={20} strokeWidth={1} />
-        </Button>
+          <X size={20} strokeWidth={2} />
+        </button>
       </div>
     </div>
   );

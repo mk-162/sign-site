@@ -34,6 +34,7 @@ export interface NavGroup {
   label: string;
   categories: CategoryTreeItem[];
   isIndustry?: boolean;
+  isDepartments?: boolean;
 }
 
 export interface IndustryItem {
@@ -59,35 +60,37 @@ const INDUSTRY_ICONS: Record<string, LucideIcon> = {
 // Navigation group configuration
 // Maps BigCommerce category names to navigation groups
 const NAV_GROUP_CONFIG = {
-  signs: {
-    key: 'signs',
-    label: 'Signs',
+  signType: {
+    key: 'signType',
+    label: 'Shop by Sign Type',
     categoryNames: ['Shop by Sign Type'],
   },
-  labelsAndTags: {
-    key: 'labelsAndTags',
-    label: 'Labels & Tags',
-    categoryNames: ['Labels & Stickers', 'Safety Tags'],
+  industry: {
+    key: 'industry',
+    label: 'Shop by Industry',
+    categoryNames: ['Shop by Industry'],
+    isIndustry: true,
   },
-  equipment: {
-    key: 'equipment',
-    label: 'Equipment',
+  departments: {
+    key: 'departments',
+    label: 'All Departments',
     categoryNames: [
+      'Labels & Stickers',
+      'Safety Tags',
       'Floor Marking & Graphics',
       'Safety Equipment & Kits',
       'Mirrors & Visibility',
       'Barriers & Access Control',
       'Sign Accessories',
       'Notice Boards & Displays',
+      'Symbols & Identification',
+      'Custom Signs & Messages',
     ],
-  },
-  industry: {
-    key: 'industry',
-    label: 'By Industry',
-    categoryNames: ['Shop by Industry'],
-    isIndustry: true,
+    isDepartments: true,
   },
 };
+
+
 
 /**
  * Groups flat category tree into navigation groups
@@ -113,6 +116,7 @@ export function groupCategories(categoryTree: CategoryTreeItem[]): NavGroup[] {
         label: config.label,
         categories: matchingCategories,
         isIndustry: 'isIndustry' in config ? config.isIndustry : false,
+        isDepartments: 'isDepartments' in config ? config.isDepartments : false,
       });
     }
   }
@@ -164,6 +168,8 @@ const HeaderCartQuery = graphql(`
         lineItems {
           physicalItems {
             entityId
+            productEntityId
+            variantEntityId
             name
             quantity
             url
@@ -184,6 +190,8 @@ const HeaderCartQuery = graphql(`
           }
           digitalItems {
             entityId
+            productEntityId
+            variantEntityId
             name
             quantity
             url
@@ -294,14 +302,16 @@ export const getHeaderCartData = cache(async (): Promise<HeaderCartData> => {
 
     const physicalItems = cart.lineItems.physicalItems.map((item) => ({
       id: item.entityId,
+      productEntityId: item.productEntityId,
+      variantEntityId: item.variantEntityId ?? undefined,
       name: item.name,
       quantity: item.quantity,
       href: item.url,
       image: item.image
         ? {
-            src: item.image.url.replace('{:size}', '80x80'),
-            alt: item.name,
-          }
+          src: item.image.url.replace('{:size}', '80x80'),
+          alt: item.name,
+        }
         : undefined,
       price: formatPrice(item.extendedSalePrice.value / item.quantity, item.extendedSalePrice.currencyCode),
       priceValue: item.extendedSalePrice.value / item.quantity,
@@ -315,14 +325,16 @@ export const getHeaderCartData = cache(async (): Promise<HeaderCartData> => {
 
     const digitalItems = cart.lineItems.digitalItems.map((item) => ({
       id: item.entityId,
+      productEntityId: item.productEntityId,
+      variantEntityId: item.variantEntityId ?? undefined,
       name: item.name,
       quantity: item.quantity,
       href: item.url,
       image: item.image
         ? {
-            src: item.image.url.replace('{:size}', '80x80'),
-            alt: item.name,
-          }
+          src: item.image.url.replace('{:size}', '80x80'),
+          alt: item.name,
+        }
         : undefined,
       price: formatPrice(item.extendedSalePrice.value / item.quantity, item.extendedSalePrice.currencyCode),
       priceValue: item.extendedSalePrice.value / item.quantity,

@@ -78,7 +78,7 @@ function SubmitButton({ ctaLabel, disabled }: { ctaLabel: string; disabled?: boo
   const { pending } = useFormStatus();
 
   return (
-    <Button className="flex-1" disabled={disabled} loading={pending} size="small" type="submit">
+    <Button className="flex-1 bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white font-bold uppercase tracking-wide after:bg-orange-600" disabled={disabled} loading={pending} size="small" type="submit">
       {ctaLabel}
     </Button>
   );

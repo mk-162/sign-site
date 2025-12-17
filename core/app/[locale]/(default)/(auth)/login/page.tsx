@@ -7,7 +7,6 @@ import { SignInForm } from '@/vibes/soul/sections/sign-in-section/sign-in-form';
 import { ArrowRight, Check, Lock, Mail } from 'lucide-react';
 import { buildConfig } from '~/build-config/reader';
 import { ForceRefresh } from '~/components/force-refresh';
-import { Slot } from '~/lib/makeswift/slot';
 
 import { login } from './_actions/login';
 
@@ -116,9 +115,10 @@ export default async function Login({ params, searchParams }: Props) {
                   </div>
 
                   <ButtonLink
-                    className="w-full h-12 border-2 border-white/20 text-white hover:bg-white hover:text-[#1e293b] font-bold text-base uppercase tracking-wide transition-all group flex items-center justify-center bg-transparent whitespace-nowrap"
+                    className="w-full h-12 border-2 border-white/20 text-white hover:bg-white hover:text-[#1e293b] font-bold text-base uppercase tracking-wide transition-all group flex items-center justify-center bg-transparent whitespace-nowrap after:hidden"
                     href="/register"
                     variant="ghost"
+                    shape="rounded"
                   >
                     {t('CreateAccount.cta')}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -128,13 +128,7 @@ export default async function Login({ params, searchParams }: Props) {
             </div>
 
             {/* Trust Badges */}
-            <div className="mt-16 pt-8 border-t border-slate-200 grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-              <div className="flex justify-center items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/OSHA_logo.svg/1200px-OSHA_logo.svg.png" className="h-8 md:h-10 object-contain" alt="OSHA" />
-              </div>
-              <div className="flex justify-center items-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/ANSI_logo.svg/1200px-ANSI_logo.svg.png" className="h-8 md:h-10 object-contain" alt="ANSI" />
-              </div>
+            <div className="mt-16 pt-8 border-t border-slate-200 grid grid-cols-2 gap-8 max-w-md mx-auto opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
               <div className="flex justify-center items-center font-black text-2xl text-slate-400">
                 ISO 9001
               </div>

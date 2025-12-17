@@ -117,7 +117,7 @@ export function OrderList({
                       </div>
                       <Badge className="mt-0.5">{order.status}</Badge>
                     </div>
-                    <ButtonLink href={order.href} size="small">
+                    <ButtonLink href={order.href} size="small" className="bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white font-bold uppercase tracking-wide after:bg-orange-600">
                       {viewDetailsLabel}
                     </ButtonLink>
                   </div>
@@ -187,7 +187,7 @@ function OrderListEmptyState({
           <h2 className="text-center text-lg font-semibold text-[var(--order-list-empty-state-title,hsl(var(--foreground)))]">
             {emptyStateTitle}
           </h2>
-          <ButtonLink className="w-fit" href={emptyStateActionHref}>
+          <ButtonLink className="w-fit bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white font-bold uppercase tracking-wide after:bg-orange-600" href={emptyStateActionHref}>
             {emptyStateActionLabel}
           </ButtonLink>
         </header>

@@ -8,7 +8,7 @@ import { SearchProvider } from '~/lib/search';
 export function Providers({ children }: PropsWithChildren) {
   return (
     <SearchProvider>
-      <Toaster position="top-right" />
+      <Toaster position="top-center" />
       {children}
     </SearchProvider>
   );

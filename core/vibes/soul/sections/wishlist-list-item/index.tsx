@@ -68,7 +68,7 @@ export const WishlistListItem = ({
               </div>
               <div className="my-4 flex gap-2 whitespace-nowrap @sm:my-0 @sm:ml-2 @sm:items-center">
                 {actionsPosition === 'left' && actionsComponent?.(wishlist)}
-                <ButtonLink className="flex-1" href={href} size="small" variant="primary">
+                <ButtonLink className="flex-1 bg-orange-500 hover:bg-orange-600 border-orange-500 hover:border-orange-600 text-white font-bold uppercase tracking-wide after:bg-orange-600" href={href} size="small" variant="primary">
                   {viewWishlistLabel}
                 </ButtonLink>
                 {actionsPosition === 'right' && actionsComponent?.(wishlist)}

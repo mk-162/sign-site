@@ -4,12 +4,6 @@ import { Suspense, useEffect, useRef } from 'react';
 
 import { Streamable, useStreamable } from '@/vibes/soul/lib/streamable';
 
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
-
 interface SearchAnalyticsProps {
   query: Streamable<string>;
   count: Streamable<number>;
@@ -31,8 +25,9 @@ function SearchAnalyticsResolved({ query, count }: SearchAnalyticsProps) {
   useEffect(() => {
     if (tracked.current || !query_resolved) return;
 
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'search', {
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'search', {
         search_term: query_resolved,
         results_count: count_resolved,
       });

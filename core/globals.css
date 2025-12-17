@@ -42,6 +42,12 @@
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
 
+  /* Status Colors for Alerts/Toasts */
+  --success: 142 76% 36%;
+  --warning: 38 92% 50%;
+  --error: 0 84% 60%;
+  --info: 199 89% 48%;
+
   /* Borders & Inputs */
   --border: 214 32% 91%;
   --input: 214 32% 91%;
@@ -50,6 +56,17 @@
 
   /* Radius */
   --radius: 0.25rem;
+
+  /* Vibes Button Overrides - Orange Theme */
+  --button-focus: hsl(var(--primary));
+  --button-primary-background: hsl(var(--primary));
+  --button-primary-background-hover: hsl(22 89% 45%);
+  --button-primary-text: hsl(0 0% 100%);
+  --button-primary-border: hsl(var(--primary));
+
+  /* Vibes Input Overrides - Orange Focus */
+  --input-light-focus: hsl(var(--primary));
+  --input-light-border: hsl(214 32% 85%);
 
   /* Contrast scale (for backwards compatibility) */
   --contrast-100: 210 8% 96%;
@@ -118,6 +135,12 @@
 
   --destructive: 0 62% 30%;
   --destructive-foreground: 210 40% 98%;
+
+  /* Status Colors for Alerts/Toasts */
+  --success: 142 76% 36%;
+  --warning: 38 92% 50%;
+  --error: 0 62% 30%;
+  --info: 199 89% 48%;
 
   --border: 217 33% 20%;
   --input: 217 33% 20%;

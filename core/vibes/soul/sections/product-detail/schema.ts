@@ -159,6 +159,10 @@ export function schema(
 
       default:
         fieldSchema = z.string();
+        // For required select/radio fields, ensure a non-empty value is selected
+        if (field.required === true && (field.type === 'select' || field.type === 'radio-group' || field.type === 'swatch-radio-group' || field.type === 'card-radio-group' || field.type === 'button-radio-group')) {
+          fieldSchema = fieldSchema.min(1, 'Please select an option');
+        }
 
         shape[field.name] = fieldSchema;
         break;

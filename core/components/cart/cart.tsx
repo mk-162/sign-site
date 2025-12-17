@@ -134,7 +134,7 @@ function CartClient({
                 <h1 className="text-3xl font-bold">Your cart is empty</h1>
                 <p className="text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
                 <Button asChild>
-                    <Link href="/shop-all">Start Shopping</Link>
+                    <Link href="/">Continue Shopping</Link>
                 </Button>
             </div>
         )
@@ -244,13 +244,17 @@ function CounterForm({ lineItem, action, onSubmit }: any) {
         defaultValue: { id: lineItem.id },
         onSubmit(event, { formData }) {
             event.preventDefault();
+            // Set optimistic state first
             onSubmit(formData);
-            action(formData);
+            // Then call the actual server action
+            startTransition(() => {
+                action(formData);
+            });
         }
     });
 
     return (
-        <form {...getFormProps(form)} action={action} className="flex justify-center items-center gap-2">
+        <form {...getFormProps(form)} className="flex justify-center items-center gap-2">
             <input {...getInputProps(fields.id, { type: 'hidden' })} />
 
             <Button variant="outline" size="icon" className="h-8 w-8" name="intent" value="decrement" type="submit" disabled={lineItem.quantity <= 1}>

@@ -36,6 +36,9 @@ import {
   Anchor,
   LucideIcon,
   PoundSterling,
+  Wrench,
+  Tag,
+  Pencil,
 } from 'lucide-react';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
@@ -49,7 +52,9 @@ import {
   DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { CartSheet, CartSheetItem } from '~/components/cart/cart-sheet';
+import { updateCartItemQuantity, removeCartItem } from '~/components/cart/cart-sheet-actions';
 import type { NavGroup, CategoryTreeItem } from '~/components/layout/header-data';
+import { DEPARTMENT_GROUPS } from '~/components/layout/header-config';
 
 // Industry icon mapping
 const INDUSTRY_ICONS: Record<string, LucideIcon> = {
@@ -161,7 +166,7 @@ export function Header({
                   <img
                     src="/images/ss-logo.svg"
                     alt="SafetySignHub - GTSE Brand"
-                    className="h-14 w-auto"
+                    className="h-10 md:h-14 w-auto"
                   />
                 </Link>
               </div>
@@ -172,6 +177,8 @@ export function Header({
                   items={cartItems}
                   itemCount={cartItemCount}
                   subtotal={cartSubtotal}
+                  updateQuantityAction={updateCartItemQuantity}
+                  removeItemAction={removeCartItem}
                 >
                   <button className="relative p-1">
                     <ShoppingCart className="h-6 w-6 text-white" />
@@ -302,7 +309,13 @@ export function Header({
               <div className="h-8 w-px bg-white/10 hidden lg:block" />
 
               {/* Cart with Sheet */}
-              <CartSheet items={cartItems} itemCount={cartItemCount} subtotal={cartSubtotal}>
+              <CartSheet
+                items={cartItems}
+                itemCount={cartItemCount}
+                subtotal={cartSubtotal}
+                updateQuantityAction={updateCartItemQuantity}
+                removeItemAction={removeCartItem}
+              >
                 <button className="flex items-center gap-3 cursor-pointer group focus:outline-none">
                   <div className="relative bg-orange-500 p-2 rounded-full shadow-lg shadow-orange-500/20 group-hover:bg-orange-400 transition-colors">
                     <ShoppingCart className="h-6 w-6 text-white" />
@@ -326,83 +339,7 @@ export function Header({
         <div className="bg-orange-500 shadow-md hidden lg:block relative z-40">
           <div className="container mx-auto px-4">
             <nav className="flex items-center text-sm font-bold text-white">
-              {/* Mega Menu Trigger */}
-              <div className="group relative z-50">
-                <div className="flex items-center gap-2 bg-orange-600 px-6 py-3 mr-4 cursor-pointer hover:bg-orange-700 transition-colors shadow-inner">
-                  <Menu className="h-5 w-5" />
-                  <span className="uppercase tracking-wide">All Departments</span>
-                  <ChevronDown className="h-4 w-4 ml-1 opacity-70" />
-                </div>
-
-                {/* Mega Menu Dropdown */}
-                <div className="absolute top-full left-0 w-[800px] bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top translate-y-2 group-hover:translate-y-0 z-[100] flex overflow-hidden">
-                  {categories.slice(0, 4).map((category, index) => (
-                    <div
-                      key={category.name}
-                      className={`flex-1 p-6 ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}
-                    >
-                      <h3 className="text-lg font-black text-slate-900 mb-4 border-b border-slate-200 pb-2 flex items-center gap-2">
-                        {index === 0 && <Shield className="w-5 h-5 text-orange-500" />}
-                        {index === 1 && <Package className="w-5 h-5 text-orange-500" />}
-                        {index > 1 && <ChevronRight className="w-5 h-5 text-orange-500" />}
-                        <Link href={category.path} className="hover:text-orange-600">
-                          {category.name}
-                        </Link>
-                      </h3>
-                      <div className="space-y-2">
-                        {category.children.map((child) => (
-                          <div key={child.name}>
-                            <Link href={child.path}>
-                              <span className="text-sm text-slate-500 hover:text-orange-600 hover:translate-x-1 transition-all cursor-pointer block py-1">
-                                {child.name}
-                              </span>
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Featured / Sale Column */}
-                  <div className="w-64 bg-slate-900 text-white p-6 flex flex-col justify-between">
-                    <div>
-                      <Badge className="bg-orange-500 hover:bg-orange-600 border-none mb-4">
-                        Trade Account
-                      </Badge>
-                      <h3 className="text-xl font-black leading-tight mb-2">
-                        Credit available to businesses.
-                      </h3>
-                      <p className="text-slate-400 text-sm mb-4">
-                        Complete our account form with your company information.
-                      </p>
-                      <Link href="/trade-enquires">
-                        <Button
-                          size="sm"
-                          className="w-full bg-white text-slate-900 hover:bg-slate-100 font-bold"
-                        >
-                          Start Application
-                        </Button>
-                      </Link>
-                    </div>
-                    <div className="mt-8 pt-8 border-t border-slate-700">
-                      <h4 className="font-bold text-orange-500 mb-2 text-sm">Most Popular</h4>
-                      <ul className="space-y-2 text-sm">
-                        <li className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
-                          <ChevronRight className="w-3 h-3" /> Fire Exit Signs
-                        </li>
-                        <li className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
-                          <ChevronRight className="w-3 h-3" /> No Smoking
-                        </li>
-                        <li className="flex items-center gap-2 cursor-pointer hover:text-orange-400">
-                          <ChevronRight className="w-3 h-3" /> CCTV Signs
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-1 flex overflow-x-auto no-scrollbar">
+              <div className="flex-1 flex no-scrollbar">
                 {/* Dynamic Nav Groups with Mega Menu Dropdowns */}
                 {navGroups.map((group) => (
                   <div
@@ -411,14 +348,17 @@ export function Header({
                     onMouseEnter={() => setActiveDropdown(group.key)}
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
-                    <button className={`px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 first:border-l flex items-center gap-1 ${activeDropdown === group.key ? 'bg-orange-400' : ''}`}>
+                    <button
+                      onClick={() => setActiveDropdown(activeDropdown === group.key ? null : group.key)}
+                      className={`px-5 py-3 hover:bg-orange-400 transition-colors whitespace-nowrap border-r border-orange-400/30 first:border-l flex items-center gap-1 ${activeDropdown === group.key ? 'bg-orange-400' : ''}`}
+                    >
                       {group.label}
-                      <ChevronDown className="h-3 w-3 opacity-70" />
+                      <ChevronDown className={`h-3 w-3 opacity-70 transition-transform ${activeDropdown === group.key ? 'rotate-180' : ''}`} />
                     </button>
 
                     {/* Mega Menu Dropdown for this group */}
                     {activeDropdown === group.key && (
-                      <div className="absolute top-full left-0 min-w-[600px] bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 z-[100]">
+                      <div className={`absolute top-full left-0 bg-white text-slate-900 shadow-2xl rounded-b-lg border-t-4 border-slate-900 z-[100] ${group.isDepartments ? 'min-w-[900px]' : 'min-w-[600px]'}`}>
                         {group.isIndustry ? (
                           /* Industry Icon Grid */
                           <div className="p-6">
@@ -445,10 +385,77 @@ export function Header({
                               })}
                             </div>
                           </div>
+                        ) : group.isDepartments ? (
+                          /* Grouped Departments Mega Menu */
+                          <div className="p-6">
+                            <div className="grid grid-cols-4 gap-6">
+                              {DEPARTMENT_GROUPS.map((deptGroup) => {
+                                const GroupIcon = deptGroup.icon;
+                                // Find matching categories from the nav group
+                                const matchingCategories = group.categories.filter((cat: CategoryTreeItem) =>
+                                  deptGroup.categoryNames.some(
+                                    (name) => name.toLowerCase().trim() === cat.name.toLowerCase().trim()
+                                  )
+                                );
+
+                                if (matchingCategories.length === 0) return null;
+
+                                return (
+                                  <div key={deptGroup.key} className="space-y-3">
+                                    {/* Group Header */}
+                                    <div className="flex items-center gap-2 pb-2 border-b border-slate-200">
+                                      <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center">
+                                        <GroupIcon className="h-4 w-4 text-orange-600" />
+                                      </div>
+                                      <h3 className="text-sm font-black text-slate-900 uppercase tracking-wide">
+                                        {deptGroup.label}
+                                      </h3>
+                                    </div>
+
+                                    {/* Categories in this group */}
+                                    <div className="space-y-3">
+                                      {matchingCategories.map((category: CategoryTreeItem) => (
+                                        <div key={category.name}>
+                                          <Link
+                                            href={category.path}
+                                            className="text-sm font-semibold text-slate-800 hover:text-orange-600 block"
+                                          >
+                                            {category.name}
+                                          </Link>
+                                          {/* Subcategories */}
+                                          {category.children.length > 0 && (
+                                            <div className="mt-1 space-y-1 pl-2 border-l-2 border-slate-100">
+                                              {category.children.slice(0, 4).map((child: CategoryTreeItem) => (
+                                                <Link
+                                                  key={child.name}
+                                                  href={child.path}
+                                                  className="text-xs text-slate-500 hover:text-orange-600 block py-0.5"
+                                                >
+                                                  {child.name}
+                                                </Link>
+                                              ))}
+                                              {category.children.length > 4 && (
+                                                <Link
+                                                  href={category.path}
+                                                  className="text-xs text-orange-600 font-medium block py-0.5"
+                                                >
+                                                  View all →
+                                                </Link>
+                                              )}
+                                            </div>
+                                          )}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
                         ) : (
-                          /* Standard Category Grid */
+                          /* Standard Category Grid (Shop by Sign Type) */
                           <div className="flex">
-                            {group.categories.map((parentCat) =>
+                            {group.categories.map((parentCat: CategoryTreeItem) =>
                               parentCat.children.slice(0, 5).map((category, index) => (
                                 <div
                                   key={category.name}
@@ -551,25 +558,102 @@ export function Header({
                           );
                         })}
                       </div>
+                    ) : group.isDepartments ? (
+                      /* Grouped Departments for Mobile */
+                      <div className="bg-slate-800/50 py-2">
+                        {DEPARTMENT_GROUPS.map((deptGroup) => {
+                          const GroupIcon = deptGroup.icon;
+                          // Find matching categories from the nav group
+                          const matchingCategories = group.categories.filter((cat: CategoryTreeItem) =>
+                            deptGroup.categoryNames.some(
+                              (name) => name.toLowerCase().trim() === cat.name.toLowerCase().trim()
+                            )
+                          );
+
+                          if (matchingCategories.length === 0) return null;
+
+                          return (
+                            <div key={deptGroup.key} className="mb-2">
+                              {/* Group Header */}
+                              <div className="flex items-center gap-2 px-4 py-2 bg-slate-900/30">
+                                <GroupIcon className="h-4 w-4 text-orange-500" />
+                                <span className="text-xs font-bold text-slate-400 uppercase tracking-wide">
+                                  {deptGroup.label}
+                                </span>
+                              </div>
+
+                              {/* Categories in this group */}
+                              {matchingCategories.map((category: CategoryTreeItem) => (
+                                <div key={category.name}>
+                                  <button
+                                    onClick={() => toggleSubSection(group.key, category.name)}
+                                    className="w-full px-6 py-2.5 flex items-center justify-between text-left text-sm hover:bg-slate-700/50 transition-colors"
+                                  >
+                                    <span className="text-slate-300">{category.name}</span>
+                                    {category.children.length > 0 && (
+                                      expandedSections.includes(`${group.key}-${category.name}`) ? (
+                                        <ChevronDown className="h-3 w-3 text-orange-500" />
+                                      ) : (
+                                        <ChevronRight className="h-3 w-3 text-slate-500" />
+                                      )
+                                    )}
+                                  </button>
+
+                                  {/* Subcategories */}
+                                  {category.children.length > 0 && (
+                                    <div
+                                      className={`overflow-hidden transition-all duration-200 ${expandedSections.includes(`${group.key}-${category.name}`)
+                                        ? 'max-h-[1000px]'
+                                        : 'max-h-0'
+                                        }`}
+                                    >
+                                      <div className="bg-slate-900/50 py-1">
+                                        {category.children.map((child) => (
+                                          <Link
+                                            key={child.name}
+                                            href={child.path}
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            className="block px-8 py-2 text-xs text-slate-400 hover:text-orange-400 hover:bg-slate-800/50 transition-colors"
+                                          >
+                                            {child.name}
+                                          </Link>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        })}
+                      </div>
                     ) : (
-                      /* Standard Category Accordion */
+                      /* Standard Category Accordion (Shop by Sign Type) */
                       <div className="bg-slate-800/50">
-                        {group.categories.map((parentCat) =>
+                        {group.categories.map((parentCat: CategoryTreeItem) =>
                           parentCat.children.map((category) => (
                             <div key={category.name}>
-                              <button
-                                onClick={() => toggleSubSection(group.key, category.name)}
-                                className="w-full px-6 py-2.5 flex items-center justify-between text-left text-sm hover:bg-slate-700/50 transition-colors"
-                              >
-                                <span className="text-slate-300">{category.name}</span>
+                              <div className="flex items-center justify-between px-6 py-2.5 hover:bg-slate-700/50 transition-colors">
+                                <Link
+                                  href={category.path}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="flex-1 text-sm text-slate-300 hover:text-orange-400"
+                                >
+                                  {category.name}
+                                </Link>
                                 {category.children.length > 0 && (
-                                  expandedSections.includes(`${group.key}-${category.name}`) ? (
-                                    <ChevronDown className="h-3 w-3 text-orange-500" />
-                                  ) : (
-                                    <ChevronRight className="h-3 w-3 text-slate-500" />
-                                  )
+                                  <button
+                                    onClick={() => toggleSubSection(group.key, category.name)}
+                                    className="p-1 hover:bg-slate-600 rounded"
+                                  >
+                                    {expandedSections.includes(`${group.key}-${category.name}`) ? (
+                                      <ChevronDown className="h-3 w-3 text-orange-500" />
+                                    ) : (
+                                      <ChevronRight className="h-3 w-3 text-slate-500" />
+                                    )}
+                                  </button>
                                 )}
-                              </button>
+                              </div>
 
                               {/* Third level items */}
                               {category.children.length > 0 && (
@@ -664,8 +748,8 @@ export function Header({
         )}
       </header>
 
-      {/* Trust Bar */}
-      <div className="bg-white border-b border-slate-200 shadow-sm py-3">
+      {/* Trust Bar - hidden on mobile */}
+      <div className="hidden md:block bg-white border-b border-slate-200 shadow-sm py-3">
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-5 gap-4 text-xs font-semibold text-slate-600">
           <div className="flex items-center justify-center gap-3">
             <CheckCircle2 className="h-5 w-5 text-orange-500" />
