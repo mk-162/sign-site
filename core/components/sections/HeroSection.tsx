@@ -34,8 +34,8 @@ export function HeroSection() {
                     </h1>
 
                     <p className="text-base sm:text-lg text-slate-300 max-w-lg mx-auto lg:mx-0 leading-relaxed font-medium">
-                        Equip your facility with industrial-grade signage and safety equipment. Fully compliant
-                        with OSHA/ANSI standards. Same-day shipping on stock items.
+                        Equip your facility with industrial-grade signage and safety equipment. BS EN ISO 7010
+                        compliant for UK workplaces. Same-day shipping on stock items.
                     </p>
 
 

@@ -171,9 +171,8 @@ Non-compliant signage affects:
 
 If your business operates across borders:
 
-- **EU**: Same ISO 7010 standard applies
-- **USA**: ANSI Z535 standards differ (shape and colour variations)
-- **Australia**: AS 1319 similar to ISO 7010 but with modifications
+- **EU**: Same BS EN ISO 7010 standard applies
+- **Australia**: AS 1319 similar to ISO 7010 but with local modifications
 
 ## Staying Current with Regulations
 

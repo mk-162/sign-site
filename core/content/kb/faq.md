@@ -44,7 +44,7 @@ Use warm water and mild detergent. Avoid abrasive cleaners or solvents.
 
 ### Are your signs compliant with current regulations?
 
-All signs comply with ISO 7010, ANSI Z535, and relevant OSHA standards.
+All signs comply with **BS EN ISO 7010** and the **UK Health and Safety (Safety Signs and Signals) Regulations 1996**.
 
 ### Do you provide compliance certificates?
 
