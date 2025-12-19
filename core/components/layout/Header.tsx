@@ -371,6 +371,7 @@ export function Header({
                                   <Link
                                     key={industry.name}
                                     href={`/category/${industry.entityId}`}
+                                    onClick={() => setActiveDropdown(null)}
                                     className="flex flex-col items-center gap-2 p-3 rounded-lg hover:bg-orange-50 transition-colors"
                                   >
                                     <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center hover:bg-orange-500 transition-colors group">
@@ -417,6 +418,7 @@ export function Header({
                                         <div key={category.name}>
                                           <Link
                                             href={`/category/${category.entityId}`}
+                                            onClick={() => setActiveDropdown(null)}
                                             className="text-sm font-semibold text-slate-800 hover:text-orange-600 block"
                                           >
                                             {category.name}
@@ -428,6 +430,7 @@ export function Header({
                                                 <Link
                                                   key={child.name}
                                                   href={`/category/${child.entityId}`}
+                                                  onClick={() => setActiveDropdown(null)}
                                                   className="text-xs text-slate-500 hover:text-orange-600 block py-0.5"
                                                 >
                                                   {child.name}
@@ -436,6 +439,7 @@ export function Header({
                                               {category.children.length > 4 && (
                                                 <Link
                                                   href={`/category/${category.entityId}`}
+                                                  onClick={() => setActiveDropdown(null)}
                                                   className="text-xs text-orange-600 font-medium block py-0.5"
                                                 >
                                                   View all →
@@ -461,7 +465,7 @@ export function Header({
                                   className={`flex-1 p-6 min-w-[180px] ${index % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}
                                 >
                                   <h3 className="text-sm font-black text-slate-900 mb-3 border-b border-slate-200 pb-2">
-                                    <Link href={`/category/${category.entityId}`} className="hover:text-orange-600">
+                                    <Link href={`/category/${category.entityId}`} onClick={() => setActiveDropdown(null)} className="hover:text-orange-600">
                                       {category.name}
                                     </Link>
                                   </h3>
@@ -470,6 +474,7 @@ export function Header({
                                       <Link
                                         key={child.name}
                                         href={`/category/${child.entityId}`}
+                                        onClick={() => setActiveDropdown(null)}
                                         className="text-sm text-slate-500 hover:text-orange-600 block py-1"
                                       >
                                         {child.name}
@@ -478,6 +483,7 @@ export function Header({
                                     {category.children.length > 6 && (
                                       <Link
                                         href={`/category/${category.entityId}`}
+                                        onClick={() => setActiveDropdown(null)}
                                         className="text-xs text-orange-600 font-medium block pt-2"
                                       >
                                         View all →
