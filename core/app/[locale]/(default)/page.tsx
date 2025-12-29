@@ -1,8 +1,11 @@
+import { Metadata } from 'next';
+
 import { locales } from '~/i18n/locales';
 import { HeroSection } from '~/components/sections/HeroSection';
 import { CategoriesGrid } from '~/components/sections/CategoriesGrid';
 import { FeaturedProducts } from '~/components/sections/FeaturedProducts';
 import { WhyChooseUs } from '~/components/sections/WhyChooseUs';
+import { SITE_URL } from '~/lib/config/site';
 
 interface Params {
   locale: string;
@@ -10,6 +13,14 @@ interface Params {
 
 export function generateStaticParams(): Params[] {
   return locales.map((locale) => ({ locale }));
+}
+
+export function generateMetadata(): Metadata {
+  return {
+    alternates: {
+      canonical: SITE_URL,
+    },
+  };
 }
 
 interface Props {

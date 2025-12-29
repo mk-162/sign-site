@@ -290,6 +290,20 @@ export const withRoutes: MiddlewareFactory = () => {
   return async (request, event) => {
     const locale = request.headers.get('x-bc-locale') ?? '';
 
+    // Handle contact page routing
+    const pathname = request.nextUrl.pathname;
+
+    // Let /contact-us pass through without BigCommerce route lookup
+    if (pathname === '/contact-us' || pathname === `/${locale}/contact-us`) {
+      const rewriteUrl = new URL(`/${locale}/contact-us`, request.url);
+      return NextResponse.rewrite(rewriteUrl);
+    }
+
+    // Redirect /contact to custom /contact-us page with proper styling
+    if (pathname === '/contact' || pathname === `/${locale}/contact`) {
+      return NextResponse.redirect(new URL(`/${locale}/contact-us`, request.url), { status: 301 });
+    }
+
     const { route, status } = await getRouteInfo(request, event);
 
     if (status === 'MAINTENANCE') {

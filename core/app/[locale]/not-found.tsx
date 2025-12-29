@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Home, Search, ArrowLeft, MapPinOff } from 'lucide-react';
-import { Header } from '~/components/vibe/Header';
-import { Footer } from '~/components/vibe/Footer';
+import { Home, MapPinOff } from 'lucide-react';
+import { Header } from '~/components/layout/Header';
+import { Footer } from '~/components/layout/Footer';
 import { CategoriesGrid } from '~/components/sections/CategoriesGrid';
 
 export default function NotFound() {
