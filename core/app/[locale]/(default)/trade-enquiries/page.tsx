@@ -3,6 +3,7 @@ import { setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import { Shield, LayoutGrid, CheckCircle2, TrendingDown, Clock } from 'lucide-react';
 import { TradeEnquiryForm } from './_components/trade-enquiry-form';
+import { buildCanonical } from '~/lib/seo/canonical';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -11,6 +12,9 @@ interface Props {
 export const metadata: Metadata = {
   title: 'Trade Enquiries | Safety Sign Hub',
   description: 'Bulk safety signage for businesses. High-volume safety signage at competitive trade prices.',
+  alternates: {
+    canonical: buildCanonical('/trade-enquiries'),
+  },
 };
 
 export default async function TradeEnquiriesPage({ params }: Props) {
