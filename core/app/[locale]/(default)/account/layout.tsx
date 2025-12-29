@@ -1,8 +1,14 @@
+import { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { PropsWithChildren } from 'react';
 
 import { SidebarMenu } from '@/vibes/soul/sections/sidebar-menu';
 import { StickySidebarLayout } from '@/vibes/soul/sections/sticky-sidebar-layout';
+import { NOINDEX_FOLLOW } from '~/lib/seo/robots';
+
+export const metadata: Metadata = {
+  robots: NOINDEX_FOLLOW,
+};
 
 interface Props extends PropsWithChildren {
   params: Promise<{ locale: string }>;

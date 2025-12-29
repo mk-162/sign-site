@@ -8,6 +8,7 @@ import { CartAnalyticsProvider } from '~/app/[locale]/(default)/cart/_components
 import { getCartId } from '~/lib/cart';
 import { getPreferredCurrencyCode } from '~/lib/currency';
 import { Slot } from '~/lib/makeswift/slot';
+import { NOINDEX_FOLLOW } from '~/lib/seo/robots';
 import { exists } from '~/lib/utils';
 
 import { updateCouponCode } from './_actions/update-coupon-code';
@@ -31,6 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: t('title'),
+    robots: NOINDEX_FOLLOW,
   };
 }
 

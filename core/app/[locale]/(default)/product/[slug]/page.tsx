@@ -12,6 +12,7 @@ import { productCardTransformer } from '~/data-transformers/product-card-transfo
 import { productOptionsTransformer } from '~/data-transformers/product-options-transformer';
 import { getPreferredCurrencyCode } from '~/lib/currency';
 import { ProductDetail } from '~/lib/makeswift/components/product-detail';
+import { buildCanonical } from '~/lib/seo/canonical';
 
 import { addToCart } from './_actions/add-to-cart';
 import { ProductAnalyticsProvider } from './_components/product-analytics-provider';
@@ -52,6 +53,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: pageTitle || product.name,
     description: metaDescription || `${product.plainTextDescription.slice(0, 150)}...`,
     keywords: metaKeywords ? metaKeywords.split(',') : null,
+    alternates: {
+      canonical: buildCanonical(product.path),
+    },
     openGraph: url
       ? {
         images: [

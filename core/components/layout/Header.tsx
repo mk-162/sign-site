@@ -207,7 +207,7 @@ export function Header({
                   name="term"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  placeholder="Search over 10,000 safety products..."
+                  placeholder="Search over 10,000 safety signs..."
                   className="w-full pl-5 pr-4 h-12 border-0 rounded-none focus-visible:ring-0 text-slate-900 bg-white placeholder:text-slate-400 text-base"
                 />
                 <button

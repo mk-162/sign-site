@@ -2,6 +2,7 @@ import { Product as ProductSchemaType, WithContext, BreadcrumbList } from 'schem
 
 import { PricingFragment } from '~/client/fragments/pricing';
 import { FragmentOf } from '~/client/graphql';
+import { SITE_URL } from '~/lib/config/site';
 
 import { ProductSchemaFragment } from './fragment';
 
@@ -14,10 +15,9 @@ interface Props {
 export const ProductSchema = ({ product, breadcrumbs, images }: Props) => {
   // Helper to ensure absolute URLs
   const toAbsoluteUrl = (path: string) => {
-    const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://safetysignhub.co.uk';
     // Remove leading slash if present to avoid double slashes
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    return `${baseUrl}/${cleanPath}`;
+    return `${SITE_URL}/${cleanPath}`;
   };
 
   const productUrl = toAbsoluteUrl(product.path);

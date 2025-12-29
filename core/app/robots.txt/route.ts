@@ -14,6 +14,7 @@ import { getChannelIdFromLocale } from '~/channels.config';
 import { client } from '~/client';
 import { graphql } from '~/client/graphql';
 import { defaultLocale } from '~/i18n/locales';
+import { SITE_URL } from '~/lib/config/site';
 
 const RobotsTxtQuery = graphql(`
   query RobotsTxtQuery {
@@ -25,21 +26,6 @@ const RobotsTxtQuery = graphql(`
   }
 `);
 
-function parseUrl(url?: string): URL {
-  let incomingUrl = '';
-  const defaultUrl = new URL('http://localhost:3000/');
-
-  if (url && !url.startsWith('http')) {
-    incomingUrl = `https://${url}`;
-  }
-
-  return new URL(incomingUrl || defaultUrl);
-}
-
-const baseUrl = parseUrl(
-  process.env.NEXTAUTH_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL || '',
-);
-
 export const GET = async () => {
   const { data } = await client.fetch({
     document: RobotsTxtQuery,
@@ -47,7 +33,7 @@ export const GET = async () => {
     fetchOptions: { cache: 'no-store' }, // disable caching to get the latest robots.txt at build time
   });
 
-  const robotsTxt = `${data.site.settings?.robotsTxt ?? ''}\nSitemap: ${baseUrl.origin}/sitemap.xml\n`;
+  const robotsTxt = `${data.site.settings?.robotsTxt ?? ''}\nSitemap: ${SITE_URL}/sitemap.xml\n`;
 
   return new Response(robotsTxt, {
     headers: {

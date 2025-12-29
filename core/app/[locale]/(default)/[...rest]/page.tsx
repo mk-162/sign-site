@@ -1,5 +1,8 @@
+import { Metadata } from 'next';
+
 import { defaultLocale, locales } from '~/i18n/locales';
 import { client, Page } from '~/lib/makeswift';
+import { buildCanonical } from '~/lib/seo/canonical';
 
 interface PageParams {
   locale: string;
@@ -21,6 +24,17 @@ export async function generateStaticParams(): Promise<PageParams[]> {
   }
 
   return params;
+}
+
+export async function generateMetadata({ params }: { params: Promise<PageParams> }): Promise<Metadata> {
+  const { rest } = await params;
+  const path = `/${rest.join('/')}`;
+
+  return {
+    alternates: {
+      canonical: buildCanonical(path),
+    },
+  };
 }
 
 export default async function CatchAllPage({ params }: { params: Promise<PageParams> }) {

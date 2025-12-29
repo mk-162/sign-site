@@ -12,6 +12,8 @@ import { cache, PropsWithChildren } from 'react';
 
 import '../../globals.css';
 
+import { SITE_URL } from '~/lib/config/site';
+
 import { fonts } from '~/app/fonts';
 import { CookieNotifications } from '~/app/notifications';
 import { Providers } from '~/app/providers';
@@ -74,6 +76,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const { pageTitle, metaDescription, metaKeywords } = data.site.settings?.seo || {};
 
   return {
+    metadataBase: new URL(SITE_URL),
     title: {
       template: `%s - ${storeName}`,
       default: pageTitle || storeName,
@@ -131,6 +134,22 @@ export default async function RootLayout({ params, children }: Props) {
     <MakeswiftProvider siteVersion={siteVersion}>
       <html className={clsx(fonts.map((f) => f.variable))} lang={locale} suppressHydrationWarning>
         <head>
+          {/* Usercentrics Consent Management - must load before other third-party scripts */}
+          {process.env.NODE_ENV === 'production' && (
+            <>
+              <Script
+                src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
+                strategy="beforeInteractive"
+              />
+              <Script
+                id="usercentrics-cmp"
+                src="https://web.cmp.usercentrics.eu/ui/loader.js"
+                data-settings-id="2_Vy5vMPCeQHC1"
+                strategy="beforeInteractive"
+                async
+              />
+            </>
+          )}
           <Script
             async
             src="https://www.googletagmanager.com/gtag/js?id=G-FS01ETTS97"

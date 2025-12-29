@@ -1,5 +1,7 @@
 import { BreadcrumbList, ItemList, WithContext } from 'schema-dts';
 
+import { SITE_URL } from '~/lib/config/site';
+
 interface Product {
     entityId: number;
     name: string;
@@ -17,10 +19,9 @@ interface Props {
 export const CategorySchema = ({ categoryName, breadcrumbs, products }: Props) => {
     // Helper to ensure absolute URLs
     const toAbsoluteUrl = (path: string) => {
-        const baseUrl = process.env.NEXT_PUBLIC_URL || 'https://safetysignhub.co.uk';
         // Remove leading slash if present to avoid double slashes
         const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-        return `${baseUrl}/${cleanPath}`;
+        return `${SITE_URL}/${cleanPath}`;
     };
 
     const breadcrumbSchema: WithContext<BreadcrumbList> = {

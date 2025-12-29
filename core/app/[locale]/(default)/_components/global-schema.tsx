@@ -1,8 +1,10 @@
 import { Organization, WebSite, WithContext } from 'schema-dts';
 
+import { SITE_URL } from '~/lib/config/site';
+
 export const GlobalSchema = () => {
     const storeName = process.env.NEXT_PUBLIC_STORE_NAME || 'Safety Sign Hub';
-    const storeUrl = process.env.NEXT_PUBLIC_URL || 'https://safetysignhub.co.uk';
+    const storeUrl = SITE_URL;
 
     const organizationSchema: WithContext<Organization> = {
         '@context': 'https://schema.org',

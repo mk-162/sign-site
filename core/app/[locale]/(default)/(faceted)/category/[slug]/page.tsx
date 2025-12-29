@@ -15,6 +15,7 @@ import { pageInfoTransformer } from '~/data-transformers/page-info-transformer';
 import { pricesTransformer } from '~/data-transformers/prices-transformer';
 import { getPreferredCurrencyCode } from '~/lib/currency';
 import { Slot } from '~/lib/makeswift/slot';
+import { buildCanonical } from '~/lib/seo/canonical';
 
 import { MAX_COMPARE_LIMIT } from '../../../compare/page-data';
 import { getCompareProducts } from '../../fetch-compare-products';
@@ -92,6 +93,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title: pageTitle || category.name,
     description: metaDescription,
     keywords: metaKeywords ? metaKeywords.split(',') : null,
+    alternates: {
+      canonical: buildCanonical(category.path),
+    },
   };
 }
 

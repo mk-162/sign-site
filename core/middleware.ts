@@ -30,6 +30,6 @@ export const config = {
      * - robots.txt (robots route)
      * - Static files in public folder
      */
-    '/((?!api|admin|_next/static|_next/image|_vercel|favicon\\.ico|xmlsitemap\\.php|sitemap\\.xml|robots\\.txt|stock_images|images|ss-logo\\.svg|ISO-white\\.svg|amex-stacked\\.svg|mastercard-new\\.svg|favicon\\.png|iso-9001\\.png).*)',
+    '/((?!api|admin|_next/static|_next/image|_vercel|favicon\\.ico|xmlsitemap\\.php|sitemap\\.xml|sitemap/|robots\\.txt|stock_images|images|ss-logo\\.svg|ISO-white\\.svg|amex-stacked\\.svg|mastercard-new\\.svg|favicon\\.png|iso-9001\\.png).*)',
   ],
 };
