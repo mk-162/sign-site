@@ -63,6 +63,14 @@ export const getAnonymousSession = async () => {
 
     return session;
   } catch (err) {
+    // If the secret has changed or is missing, the cookie will be invalid.
+    // We should clear it so that a new one can be generated.
+    if (err instanceof Error && err.message === 'no matching decryption secret') {
+      await clearAnonymousSession();
+
+      return null;
+    }
+
     // eslint-disable-next-line no-console
     console.error('Failed to decode anonymous session cookie', err);
 
