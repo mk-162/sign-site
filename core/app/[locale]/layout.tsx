@@ -81,9 +81,7 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s - ${storeName}`,
       default: pageTitle || storeName,
     },
-    icons: {
-      icon: '/favicon.png',
-    },
+
     description: metaDescription,
     keywords: metaKeywords ? metaKeywords.split(',') : null,
     other: {
