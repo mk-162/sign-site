@@ -21,12 +21,12 @@ export default async function TermsConditionsPage({ params }: Props) {
       <div className="prose prose-slate max-w-none">
         <h2 className="mb-4 mt-8 text-2xl font-bold text-slate-900">Overview</h2>
         <p>
-          This website is operated by <strong>Caledonia Signs Limited</strong> (Company Registration No.
-          SC163223) trading as <strong>Safety Sign Hub</strong>. Throughout
-          the site, the terms "we", "us", "our", "Safety Sign Hub" refer to Caledonia Signs Limited.
+          This website is operated by <strong>Gocableties Ltd</strong> (Company Registration No.
+          09162871) trading as <strong>Safety Sign Hub</strong> (a GTSE brand). Throughout
+          the site, the terms "we", "us", "our", "Safety Sign Hub" refer to Gocableties Ltd.
         </p>
         <p>
-          Caledonia Signs Limited offers this website, including all information, tools, and services
+          Gocableties Ltd offers this website, including all information, tools, and services
           available from this site to you, the user, conditioned upon your acceptance of all terms,
           conditions, policies, and notices stated here.
         </p>
@@ -95,7 +95,7 @@ export default async function TermsConditionsPage({ params }: Props) {
 
         <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">SECTION 4 - PROHIBITED USES</h3>
         <p>
-          Furthermore, any products purchased from safetysignhub.co.uk, operated by Caledonia Signs Limited,
+          Furthermore, any products purchased from safetysignhub.co.uk, operated by Gocableties Ltd,
           may not be resold on Amazon or eBay marketplaces without prior written authorization.
         </p>
 
@@ -105,7 +105,7 @@ export default async function TermsConditionsPage({ params }: Props) {
           be governed by and construed in accordance with the laws of England and Wales.
         </p>
         <p className="mt-4">
-          <strong>Registered Office:</strong> Caledonia Signs Limited | Units 3 Waverley Road | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT
+          <strong>Registered Office:</strong> GTSE | WeWork - Dalton Place | 29 John Dalton St | Manchester | M2 6DS
         </p>
 
         <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">
@@ -126,10 +126,10 @@ export default async function TermsConditionsPage({ params }: Props) {
               <span className="font-semibold">Trading Names:</span> Safety Sign Hub
             </li>
             <li>
-              <span className="font-semibold">Legal Entity:</span> Caledonia Signs Limited
+              <span className="font-semibold">Legal Entity:</span> Gocableties Ltd (trading as GTSE)
             </li>
             <li>
-              <span className="font-semibold">Company Registration:</span> SC163223
+              <span className="font-semibold">Company Registration:</span> 09162871
             </li>
           </ul>
         </div>

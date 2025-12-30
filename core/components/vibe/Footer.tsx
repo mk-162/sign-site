@@ -47,7 +47,7 @@ export function Footer() {
             </div>
             <div className="border-t border-gray-800 bg-gray-950 py-4">
                 <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 text-xs md:flex-row">
-                    <span>&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Caledonia Signs Limited | Company No. SC163223</span>
+                    <span>&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Gocableties Ltd (GTSE) | Company No. 09162871</span>
                     <div className="flex gap-4">
                         <Link href="#" className="hover:text-white">Privacy Policy</Link>
                         <Link href="#" className="hover:text-white">Terms of Service</Link>

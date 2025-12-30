@@ -47,8 +47,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           </p>
           <p className="mt-4 text-slate-700">
             For order status enquiries, please email{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:sales@caledoniasigns.co.uk">
-              sales@caledoniasigns.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             and our customer service team will assist you.
           </p>
@@ -142,10 +142,10 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h2 className="mb-4 text-2xl font-bold text-slate-900">EU & International Orders</h2>
           <p className="text-slate-700">
             To arrange safety signage delivery outside the UK, please contact us at{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:sales@caledoniasigns.co.uk">
-              sales@caledoniasigns.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
-            or call 01592 655646.
+            or call 0161 870 6350.
           </p>
         </section>
 
@@ -172,8 +172,8 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h3 className="mb-2 text-lg font-bold text-slate-900">Returns Process</h3>
           <p className="mb-6 text-slate-700">
             Email{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:sales@caledoniasigns.co.uk">
-              sales@caledoniasigns.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
             with your order number. We'll arrange the best return method and process your refund or
             replacement promptly.
@@ -182,15 +182,15 @@ export default async function DeliveryReturnsPage({ params }: Props) {
           <h3 className="mb-2 text-lg font-bold text-slate-900">Missing Items</h3>
           <p className="text-slate-700">
             Please notify us within 14 days of delivery if items are missing. Contact{' '}
-            <a className="text-orange-600 hover:underline" href="mailto:sales@caledoniasigns.co.uk">
-              sales@caledoniasigns.co.uk
+            <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
+              sales@safetysignhub.co.uk
             </a>{' '}
-            or call 01592 655646 with your order number.
+            or call 0161 870 6350 with your order number.
           </p>
         </section>
 
         <div className="mt-12 border-t border-slate-200 pt-8 text-center text-sm text-slate-500">
-          Operated by: Caledonia Signs Limited | Company No. SC163223
+          Operated by: Gocableties Ltd (GTSE) | Company No. 09162871
         </div>
       </div>
     </div>

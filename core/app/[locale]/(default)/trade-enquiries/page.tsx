@@ -133,14 +133,14 @@ export default async function TradeEnquiriesPage({ params }: Props) {
           <h3 className="mb-4 text-xl font-bold text-slate-900">How to Connect</h3>
           <p className="text-slate-700">
             Reach us via live chat, phone{' '}
-            <strong className="text-slate-900">(01592 655646)</strong>, email{' '}
-            <a href="mailto:sales@caledoniasigns.co.uk" className="font-bold text-orange-600 hover:underline">(sales@caledoniasigns.co.uk)</a>, or the contact form
+            <strong className="text-slate-900">(0161 870 6350)</strong>, email{' '}
+            <a href="mailto:sales@safetysignhub.co.uk" className="font-bold text-orange-600 hover:underline">(sales@safetysignhub.co.uk)</a>, or the contact form
             above.
           </p>
         </div>
 
         <div className="mt-8 text-center text-sm text-slate-500">
-          Safety Sign Hub is operated by Caledonia Signs Limited | Company No. SC163223
+          Safety Sign Hub is operated by Gocableties Ltd (GTSE) | Company No. 09162871
         </div>
       </div>
     </>

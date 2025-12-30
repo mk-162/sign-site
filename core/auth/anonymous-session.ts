@@ -64,10 +64,12 @@ export const getAnonymousSession = async () => {
     return session;
   } catch (err) {
     // If the secret has changed or is missing, the cookie will be invalid.
-    // We should clear it so that a new one can be generated.
+    // In Next.js 15, we cannot delete cookies during render (only in Server Actions).
+    // Just return null and let the invalid cookie be ignored.
+    // A fresh session will be created on the next action that sets cookies.
     if (err instanceof Error && err.message === 'no matching decryption secret') {
-      await clearAnonymousSession();
-
+      // eslint-disable-next-line no-console
+      console.warn('Anonymous session cookie is invalid (secret changed). Ignoring.');
       return null;
     }
 

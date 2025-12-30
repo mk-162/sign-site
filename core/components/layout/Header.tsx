@@ -130,11 +130,11 @@ export function Header({
             <span className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
               <Phone className="h-3 w-3 text-orange-500" />
               <span className="text-orange-500 font-bold">Talk to our Team:</span>
-              <span className="text-white font-bold tracking-wide">01592 655646</span>
+              <span className="text-white font-bold tracking-wide">0161 870 6350</span>
             </span>
-            <a href="mailto:sales@caledoniasigns.co.uk" className="flex items-center gap-1.5 hover:text-white transition-colors hidden sm:flex">
+            <a href="mailto:sales@safetysignhub.co.uk" className="flex items-center gap-1.5 hover:text-white transition-colors hidden sm:flex">
               <Mail className="h-3 w-3 text-orange-500" />
-              sales@caledoniasigns.co.uk
+              sales@safetysignhub.co.uk
             </a>
           </div>
           <div className="hidden sm:flex gap-6">

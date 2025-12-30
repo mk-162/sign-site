@@ -81,14 +81,14 @@ export default async function AboutUsPage({ params }: Props) {
               <span className="font-semibold">Trading Name:</span> Safety Sign Hub
             </li>
             <li>
-              <span className="font-semibold">Operated by:</span> Caledonia Signs Limited
+              <span className="font-semibold">Operated by:</span> Gocableties Ltd (trading as GTSE)
             </li>
             <li>
-              <span className="font-semibold">Company Registration Number:</span> SC163223
+              <span className="font-semibold">Company Registration Number:</span> 09162871
             </li>
             <li>
-              <span className="font-semibold">Registered Office:</span> Caledonia Signs Limited | Units 3 Waverley Road
-              | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT
+              <span className="font-semibold">Registered Office:</span> GTSE | WeWork - Dalton Place
+              | 29 John Dalton St | Manchester | M2 6DS
             </li>
           </ul>
         </div>

@@ -94,7 +94,7 @@ export async function submitTradeEnquiry(
       console.error('No contact page found in BigCommerce');
       return {
         status: 'error',
-        message: 'Contact form is not configured. Please email us directly at sales@caledoniasigns.co.uk',
+        message: 'Contact form is not configured. Please email us directly at sales@safetysignhub.co.uk',
       };
     }
 
@@ -146,7 +146,7 @@ ${data.message || 'None provided'}
     console.error('Trade enquiry form error:', error);
     return {
       status: 'error',
-      message: 'Something went wrong. Please try again or email us directly at sales@caledoniasigns.co.uk',
+      message: 'Something went wrong. Please try again or email us directly at sales@safetysignhub.co.uk',
     };
   }
 }
