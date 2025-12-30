@@ -117,7 +117,7 @@ export default async function BlogPage({ params }: Props) {
                       </p>
                       <div className="flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
                         <span>{post.author}</span>
-                        <time dateTime={postDate.toISOString()}>
+                        <time dateTime={postDate.toISOString()} suppressHydrationWarning>
                           {postDate.toLocaleDateString('en-gb', {
                             day: 'numeric',
                             month: 'short',
@@ -179,7 +179,7 @@ export default async function BlogPage({ params }: Props) {
                     </p>
                     <div className="mt-auto flex items-center justify-between border-t border-slate-100 pt-4 text-xs text-slate-400">
                       <span>{post.author}</span>
-                      <time dateTime={postDate.toISOString()}>
+                      <time dateTime={postDate.toISOString()} suppressHydrationWarning>
                         {postDate.toLocaleDateString('en-gb', {
                           day: 'numeric',
                           month: 'short',
