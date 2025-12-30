@@ -48,7 +48,7 @@ export function Header({ categories = [] }: { categories?: CategoryTreeItem[] })
                         <span className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
                             <Phone className="h-3 w-3 text-orange-500" />
                             <span className="inline">Phone:</span>
-                            <span className="text-white font-bold tracking-wide">01246 386 126</span>
+                            <span className="text-white font-bold tracking-wide">0161 870 6350</span>
                         </span>
                         <span className="items-center gap-1.5 hover:text-white transition-colors cursor-pointer hidden sm:flex">
                             <Mail className="h-3 w-3 text-orange-500" />

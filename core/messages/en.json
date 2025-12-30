@@ -3,7 +3,7 @@
     "Slideshow": {
       "Slide01": {
         "title": "Fresh finds for every occasion",
-        "description": "Explore our latest arrivals, curated to bring you style, functionality, and inspiration. Shop now and discover your next favorite.",
+        "description": "Explore our latest arrivals, curated to bring you style, functionality, and inspiration. Shop now and discover your next favourite.",
         "alt": "Five small potted plants displayed on beige stacked blocks, featuring a variety of green foliage in dark gray pots against a neutral background.",
         "cta": "Shop Now"
       },
@@ -25,14 +25,14 @@
       "description": "Explore our top picks in this featured collection. Find the perfect gift or treat yourself!",
       "cta": "View more",
       "emptyStateTitle": "No products found",
-      "emptyStateSubtitle": "Try browsing our complete catalog of products."
+      "emptyStateSubtitle": "Try browsing our complete catalogue of products."
     },
     "NewestProducts": {
       "title": "New arrivals",
       "description": "Our latest products are here. Check out what's new in store.",
       "cta": "See all",
       "emptyStateTitle": "No products found",
-      "emptyStateSubtitle": "Try browsing our complete catalog of products.",
+      "emptyStateSubtitle": "Try browsing our complete catalogue of products.",
       "previousProducts": "Previous products",
       "nextProducts": "Next products"
     }
@@ -251,7 +251,7 @@
       "updateFailed": "Failed to update your wish list. Please try again.",
       "deleteFailed": "Failed to delete your wish list. Please try again.",
       "removeProductFailed": "Failed to remove the product from your wish list. Please try again.",
-      "unauthorized": "You are not authorized to perform this action, please sign in and try again",
+      "unauthorized": "You are not authorised to perform this action, please sign in and try again",
       "unexpected": "An unexpected error occurred, please try again"
     },
     "Result": {
@@ -277,7 +277,7 @@
       "items": "{count, plural, =1 {1 item} other {# items}}",
       "viewWishlist": "View list",
       "noWishlists": "You don't have any wish lists",
-      "noWishlistsSubtitle": "Create a wishlist to save your favorite products.",
+      "noWishlistsSubtitle": "Create a wishlist to save your favourite products.",
       "noWishlistsCallToAction": "Create a wishlist",
       "emptyWishlist": "You haven't added products to this wish list.",
       "share": "Share",
@@ -317,7 +317,7 @@
         "updateFailed": "Failed to update your wish list. Please try again.",
         "deleteFailed": "Failed to delete your wish list. Please try again.",
         "removeProductFailed": "Failed to remove the product from your wish list. Please try again.",
-        "unauthorized": "You are not authorized to perform this action. Please sign in and try again.",
+        "unauthorized": "You are not authorised to perform this action. Please sign in and try again.",
         "unexpected": "An unexpected error occurred. Please try again."
       },
       "Result": {
@@ -461,7 +461,7 @@
     "RelatedProducts": {
       "title": "Related products",
       "noRelatedProducts": "No related products found",
-      "browseCatalog": "Try browsing our complete catalog of products.",
+      "browseCatalog": "Try browsing our complete catalogue of products.",
       "cta": "Shop all",
       "previousProducts": "Previous products",
       "nextProducts": "Next products",
@@ -556,16 +556,16 @@
       "Common": {
         "rejectAll": "Reject All",
         "acceptAll": "Accept All",
-        "customize": "Customize",
+        "customize": "Customise",
         "save": "Save Settings"
       },
       "CookieBanner": {
         "title": "We value your privacy",
-        "description": "This site uses cookies to improve your browsing experience, analyze site traffic, and show personalized content."
+        "description": "This site uses cookies to improve your browsing experience, analyse site traffic, and show personalised content."
       },
       "Dialog": {
         "title": "Privacy Settings",
-        "description": "Customize your privacy settings here. You can choose which types of cookies and tracking technologies you would like to allow."
+        "description": "Customise your privacy settings here. You can choose which types of cookies and tracking technologies you would like to allow."
       },
       "ConsentTypes": {
         "necessary": {
@@ -574,7 +574,7 @@
         },
         "functionality": {
           "title": "Functionality",
-          "description": "These cookies enable enhanced functionality and personalization of the website."
+          "description": "These cookies enable enhanced functionality and personalisation of the website."
         },
         "marketing": {
           "title": "Marketing",
@@ -613,7 +613,7 @@
     "Purchase": {
       "breadcrumbTitle": "Purchase a gift certificate",
       "title": "Digital gift certificate",
-      "description": "Explore our gift certificates, perfect for any occasion. Choose the amount and personalize your message.",
+      "description": "Explore our gift certificates, perfect for any occasion. Choose the amount and personalise your message.",
       "successMessage": "Gift certificate has been added to <cartLink> your basket</cartLink>",
       "missingCart": "Basket not found. Please try again later.",
       "unknownError": "Unknown error. Please try again later.",

@@ -94,12 +94,7 @@ export const Header = async () => {
         })),
     }));
 
-    // Add Blog Link (Pointing to Astro)
-    links.push({
-        label: 'Blog',
-        href: 'http://localhost:4321/blog',
-        groups: [],
-    });
+
 
     const cartId = await getCartId();
     const cartCount = cartId ? await getCartCount(cartId, customerAccessToken) : null;

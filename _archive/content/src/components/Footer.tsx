@@ -78,7 +78,7 @@ export function Footer() {
                             <li className="flex items-start gap-2">
                                 <Phone className="w-4 h-4 mt-0.5 text-orange-500" />
                                 <div>
-                                    <div className="font-medium text-white">01246 386 126</div>
+                                    <div className="font-medium text-white">0161 870 6350</div>
                                     <div className="text-xs">Mon-Fri 9am-5:30pm GMT</div>
                                 </div>
                             </li>

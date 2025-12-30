@@ -24,8 +24,8 @@ export default async function PrivacyPolicyPage({ params }: Props) {
           when you visit or make a purchase from safetysignhub.co.uk (the "Site").
         </p>
         <p>
-          <strong>Data Controller:</strong> Gocableties Ltd (trading as GTSE and Safety Sign Hub),
-          Company No. 09162871
+          <strong>Data Controller:</strong> Caledonia Signs Limited (trading as Safety Sign Hub),
+          Company No. SC163223
         </p>
 
         <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">
@@ -163,23 +163,15 @@ export default async function PrivacyPolicyPage({ params }: Props) {
           <ul className="space-y-2 text-sm text-slate-700">
             <li>
               <span className="font-semibold">Email:</span>{' '}
-              <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
-                sales@safetysignhub.co.uk
-              </a>{' '}
-              or{' '}
-              <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
-                sales@safetysignhub.co.uk
+              <a className="text-orange-600 hover:underline" href="mailto:sales@caledoniasigns.co.uk">
+                sales@caledoniasigns.co.uk
               </a>
             </li>
             <li>
-              <span className="font-semibold">Mail:</span> Gocableties Ltd (trading as Safety Sign
-              Hub) | WeWork - Dalton Place | 29 John Dalton St | Manchester | M2 6DS
+              <span className="font-semibold">Mail:</span> Caledonia Signs Limited | Units 3 Waverley Road | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT
             </li>
             <li>
-              <span className="font-semibold">Company Registration:</span> 09162871
-            </li>
-            <li>
-              <span className="font-semibold">VAT:</span> 197 116 978
+              <span className="font-semibold">Company Registration:</span> SC163223
             </li>
           </ul>
         </div>

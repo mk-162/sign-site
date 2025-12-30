@@ -76,7 +76,7 @@ export function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a href="/faq" className="hover:text-orange-500 transition-colors">
+                                <a href="/kb/faq" className="hover:text-orange-500 transition-colors">
                                     FAQs
                                 </a>
                             </li>
@@ -119,7 +119,7 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <Phone className="w-5 h-5 text-orange-500 shrink-0" />
                                 <span>
-                                    01246 386 126
+                                    01592 655646
                                     <br />
                                     <span className="text-xs text-slate-500">Mon-Fri 9am-5.30pm GMT</span>
                                 </span>
@@ -131,13 +131,13 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-orange-500 shrink-0" />
                                 <span>
-                                    GTSE | WeWork - Dalton Place
+                                    Units 3 Waverley Road
                                     <br />
-                                    29 John Dalton St
+                                    Mitchelston Industrial Estate
                                     <br />
-                                    Manchester
+                                    Kirkcaldy
                                     <br />
-                                    M2 6DS
+                                    KY1 3LT
                                 </span>
                             </li>
                         </ul>
@@ -145,7 +145,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
-                    <p className="shrink min-w-0">&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Gocableties Ltd | Company No. 09162871 | VAT No. 197 116 978</p>
+                    <p className="shrink min-w-0">&copy; 2025 Safety Sign Hub - A GTSE Brand. All rights reserved. Operated by Caledonia Signs Limited | Company No. SC163223</p>
                     <div className="flex gap-3 items-center flex-nowrap shrink-0 justify-center md:justify-end opacity-70 hover:opacity-100 transition-opacity duration-300">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src="/amex-stacked.svg" alt="American Express" className="h-4 w-auto brightness-0 invert" />

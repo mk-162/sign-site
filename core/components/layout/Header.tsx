@@ -129,12 +129,12 @@ export function Header({
           <div className="flex gap-6 w-full sm:w-auto justify-between sm:justify-start">
             <span className="flex items-center gap-1.5 hover:text-white transition-colors cursor-pointer">
               <Phone className="h-3 w-3 text-orange-500" />
-              <span className="text-orange-500 font-bold">Speak to a Human:</span>
-              <span className="text-white font-bold tracking-wide">01246 386 126</span>
+              <span className="text-orange-500 font-bold">Talk to our Team:</span>
+              <span className="text-white font-bold tracking-wide">01592 655646</span>
             </span>
-            <a href="mailto:sales@safetysignhub.co.uk" className="flex items-center gap-1.5 hover:text-white transition-colors hidden sm:flex">
+            <a href="mailto:sales@caledoniasigns.co.uk" className="flex items-center gap-1.5 hover:text-white transition-colors hidden sm:flex">
               <Mail className="h-3 w-3 text-orange-500" />
-              sales@safetysignhub.co.uk
+              sales@caledoniasigns.co.uk
             </a>
           </div>
           <div className="hidden sm:flex gap-6">

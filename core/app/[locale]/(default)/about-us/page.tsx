@@ -20,30 +20,22 @@ export default async function AboutUsPage({ params }: Props) {
 
       <div className="prose prose-slate max-w-none">
         <p className="lead mb-8 text-xl text-slate-600">
-          <strong>Safety Sign Hub</strong> is the specialist safety signage division of{' '}
-          <strong>GTSE</strong> (Gocableties Ltd), bringing over a decade of trade supply expertise
+          <strong>Safety Sign Hub</strong> is a specialist safety signage provider, bringing years of trade supply expertise
           to workplace safety compliance.
         </p>
 
         <h2 className="mb-4 mt-8 text-2xl font-bold text-slate-900">Our History</h2>
         <p>
-          Founded in 2011, our parent company GTSE began as Gocableties, established by entrepreneur
-          Freddie Miller alongside his parents Jon and Karen Miller—experienced small-business
-          owners—and ecommerce expert Tom Armenante. What started as a focused product venture
-          quickly evolved into a technology-led, global supplier of trade products and consumables
-          for businesses worldwide.
-        </p>
-        <p>
-          By 2017, GTSE had expanded onto Amazon UK, EU, and US platforms, and by 2021 rebranded to
-          GTSE (Global Trade Supplies Exchange) to reflect its international reach. Today, GTSE
-          operates warehousing facilities across the UK, EU, and US, with our dedicated UK head
-          office team processing over 3,000 orders daily across 15,000+ SKUs.
+          We operate as a dedicated safety signage manufacturer and supplier, focused on delivering
+          high-quality, compliant signage to businesses across the UK. With our manufacturing
+          expertise, we ensure every sign meets strict quality and safety standards.
         </p>
 
         <h2 className="mb-4 mt-8 text-2xl font-bold text-slate-900">Why Safety Sign Hub?</h2>
         <p>
           Recognising the critical importance of workplace safety compliance and the specialized
-          knowledge required in safety signage, GTSE established <strong>Safety Sign Hub</strong> as
+          Recognising the critical importance of workplace safety compliance and the specialized
+          knowledge required in safety signage, <strong>Safety Sign Hub</strong> was established as
           a dedicated brand focused exclusively on:
         </p>
         <ul className="my-4 list-disc space-y-2 pl-6">
@@ -65,15 +57,15 @@ export default async function AboutUsPage({ params }: Props) {
             photoluminescent and aluminum options
           </li>
           <li>
-            <strong>Fast Delivery</strong>: Leveraging GTSE's established logistics network for
+            <strong>Fast Delivery</strong>: Utilizing established logistics networks for
             rapid UK-wide delivery
           </li>
         </ul>
 
         <p>
-          While we operate as a specialized brand, Safety Sign Hub benefits from GTSE's family-first
-          ethos, combining the personalized service of a family business with the logistics,
-          technology, and purchasing power of an international supplier. Whether you're a small
+          While we operate as a specialized brand, Safety Sign Hub is committed to
+          combining the personalized service of a dedicated team with the logistics,
+          technology, and purchasing power of a leading supplier. Whether you're a small
           workshop or a large industrial facility, we ensure you get compliant, durable safety
           signage exactly when you need it.
         </p>
@@ -89,17 +81,14 @@ export default async function AboutUsPage({ params }: Props) {
               <span className="font-semibold">Trading Name:</span> Safety Sign Hub
             </li>
             <li>
-              <span className="font-semibold">Operated by:</span> Gocableties Ltd (trading as GTSE)
+              <span className="font-semibold">Operated by:</span> Caledonia Signs Limited
             </li>
             <li>
-              <span className="font-semibold">Company Registration Number:</span> 09162871
+              <span className="font-semibold">Company Registration Number:</span> SC163223
             </li>
             <li>
-              <span className="font-semibold">VAT Registered:</span> 197 116 978
-            </li>
-            <li>
-              <span className="font-semibold">Registered Office:</span> GTSE | WeWork - Dalton Place
-              | 29 John Dalton St | Manchester | M2 6DS
+              <span className="font-semibold">Registered Office:</span> Caledonia Signs Limited | Units 3 Waverley Road
+              | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT
             </li>
           </ul>
         </div>

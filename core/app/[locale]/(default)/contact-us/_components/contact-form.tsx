@@ -33,9 +33,9 @@ export function ContactForm() {
             </a>
             <a
               className="rounded-full bg-white/10 px-8 py-3 font-bold text-white backdrop-blur-sm transition-colors hover:bg-white/20"
-              href="tel:01246386126"
+              href="tel:01592655646"
             >
-              Call Us Now
+              01592 655646
             </a>
           </div>
         </div>
@@ -62,8 +62,8 @@ export function ContactForm() {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-slate-900">Phone</h3>
-                  <a href="tel:01246386126" className="my-1 block text-xl font-bold text-orange-600 hover:underline">
-                    01246 386 126
+                  <a href="tel:01592655646" className="my-1 block text-xl font-bold text-orange-600 hover:underline">
+                    01592 655646
                   </a>
                   <p className="text-slate-600">
                     Speak directly with our team for expert advice on regulations, materials, and custom solutions.
@@ -267,22 +267,18 @@ export function ContactForm() {
             </div>
             <div>
               <span className="block text-slate-500">Company Name</span>
-              <span className="font-semibold text-slate-900">Gocableties Ltd (GTSE)</span>
+              <span className="font-semibold text-slate-900">Caledonia Signs Limited</span>
             </div>
             <div>
               <span className="block text-slate-500">Company Number</span>
-              <span className="font-semibold text-slate-900">09162871</span>
-            </div>
-            <div>
-              <span className="block text-slate-500">VAT Number</span>
-              <span className="font-semibold text-slate-900">197 116 978</span>
+              <span className="font-semibold text-slate-900">SC163223</span>
             </div>
           </div>
         </div>
 
         <div className="mt-8 flex items-center justify-center gap-2 text-center text-sm text-slate-500">
           <MapPin className="h-4 w-4" />
-          <span>GTSE | WeWork - Dalton Place | 29 John Dalton St | Manchester | M2 6DS</span>
+          <span>Units 3 Waverley Road | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT</span>
         </div>
       </div>
     </>

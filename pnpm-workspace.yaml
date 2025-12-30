@@ -1,6 +1,6 @@
 packages:
   - core
-  - content
+
   - packages/*
 publicHoistPattern:
   - '@bigcommerce/eslint-*'

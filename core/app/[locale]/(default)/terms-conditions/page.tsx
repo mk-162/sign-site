@@ -21,12 +21,12 @@ export default async function TermsConditionsPage({ params }: Props) {
       <div className="prose prose-slate max-w-none">
         <h2 className="mb-4 mt-8 text-2xl font-bold text-slate-900">Overview</h2>
         <p>
-          This website is operated by <strong>Gocableties Ltd</strong> (Company Registration No.
-          09162871) trading as <strong>GTSE</strong> and <strong>Safety Sign Hub</strong>. Throughout
-          the site, the terms "we", "us", "our", "Safety Sign Hub" refer to Gocableties Ltd.
+          This website is operated by <strong>Caledonia Signs Limited</strong> (Company Registration No.
+          SC163223) trading as <strong>Safety Sign Hub</strong>. Throughout
+          the site, the terms "we", "us", "our", "Safety Sign Hub" refer to Caledonia Signs Limited.
         </p>
         <p>
-          Gocableties Ltd offers this website, including all information, tools, and services
+          Caledonia Signs Limited offers this website, including all information, tools, and services
           available from this site to you, the user, conditioned upon your acceptance of all terms,
           conditions, policies, and notices stated here.
         </p>
@@ -93,31 +93,26 @@ export default async function TermsConditionsPage({ params }: Props) {
           through which the service is provided, without express written permission by us.
         </p>
 
-        <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">SECTION 12 - PROHIBITED USES</h3>
+        <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">SECTION 4 - PROHIBITED USES</h3>
         <p>
-          Furthermore, any products purchased from safetysignhub.co.uk, operated by Gocableties Ltd,
+          Furthermore, any products purchased from safetysignhub.co.uk, operated by Caledonia Signs Limited,
           may not be resold on Amazon or eBay marketplaces without prior written authorization.
         </p>
 
-        <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">SECTION 19 - GOVERNING LAW</h3>
+        <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">SECTION 5 - GOVERNING LAW</h3>
         <p>
           These Terms of Service and any separate agreements whereby we provide you Services shall
           be governed by and construed in accordance with the laws of England and Wales.
         </p>
         <p className="mt-4">
-          <strong>Registered Office:</strong> Gocableties Ltd (trading as GTSE/Safety Sign Hub) |
-          WeWork - Dalton Place | 29 John Dalton St | Manchester | M2 6DS
+          <strong>Registered Office:</strong> Caledonia Signs Limited | Units 3 Waverley Road | Mitchelston Industrial Estate | Kirkcaldy | KY1 3LT
         </p>
 
         <h3 className="mb-2 mt-8 text-xl font-bold text-slate-900">
-          SECTION 21 - CONTACT INFORMATION
+          SECTION 6 - CONTACT INFORMATION
         </h3>
         <p>
           Questions about the Terms of Service should be sent to us at{' '}
-          <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
-            sales@safetysignhub.co.uk
-          </a>{' '}
-          or{' '}
           <a className="text-orange-600 hover:underline" href="mailto:sales@safetysignhub.co.uk">
             sales@safetysignhub.co.uk
           </a>
@@ -128,24 +123,18 @@ export default async function TermsConditionsPage({ params }: Props) {
           <h3 className="mb-4 text-lg font-bold text-slate-900">Company Details</h3>
           <ul className="space-y-2 text-sm text-slate-700">
             <li>
-              <span className="font-semibold">Trading Names:</span> Safety Sign Hub, GTSE
+              <span className="font-semibold">Trading Names:</span> Safety Sign Hub
             </li>
             <li>
-              <span className="font-semibold">Legal Entity:</span> Gocableties Ltd
+              <span className="font-semibold">Legal Entity:</span> Caledonia Signs Limited
             </li>
             <li>
-              <span className="font-semibold">Company Registration:</span> 09162871
-            </li>
-            <li>
-              <span className="font-semibold">VAT Registration:</span> 197 116 978
+              <span className="font-semibold">Company Registration:</span> SC163223
             </li>
           </ul>
         </div>
 
-        <p className="mt-8 text-sm italic text-slate-500">
-          (Note: Full T&Cs should be reviewed by a legal professional and include all 21 standard
-          sections covering store terms, warranties, liability limitations, etc.)
-        </p>
+
       </div>
     </div>
   );
